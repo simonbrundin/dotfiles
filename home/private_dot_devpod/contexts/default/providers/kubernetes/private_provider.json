@@ -4,7 +4,7 @@
   "icon": "https://devpod.sh/assets/kubernetes.svg",
   "home": "https://github.com/loft-sh/devpod",
   "source": { "internal": true, "raw": "kubernetes" },
-  "description": "DevPod on Talos Clustesr",
+  "description": "DevPod on Talos Cluster",
   "optionGroups": [
     {
       "name": "Options",
