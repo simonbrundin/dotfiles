@@ -1,0 +1,10 @@
+export PATH=$PATH:/nix
+
+# Generated for envman. Do not edit.
+[ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
+
+### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
+export PATH="/Users/simon/.rd/bin:$PATH"
+### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
+export MCP_AUTH_HEADER="your_actual_token_here"
+export MCP_AUTH_HEADER="your_actual_token_from_claude_code"
