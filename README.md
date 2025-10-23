@@ -39,5 +39,5 @@ curl
 3. For 1Password integration:
    - Install 1Password CLI: `brew install 1password-cli`
    - Sign in: `op signin`
-   - Ensure vault "dotfiles" exists with item "mcp-auth" containing the token
-     field
+   - Ensure vault "dotfiles" exists with item "mcp-auth" containing the
+4.
