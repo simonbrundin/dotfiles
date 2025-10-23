@@ -1,6 +1,6 @@
 contexts:
   default:
-    defaultProvider: docker
+    defaultProvider: talos
     providers:
       docker:
         creationTimestamp: "2025-10-01T23:22:01Z"
