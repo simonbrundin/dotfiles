@@ -2,5 +2,6 @@ packages:
   darwin:
     brews:
       - "git"
+      - "1password-cli"
     casks:
       - "google-chrome"
