@@ -1,5 +1,5 @@
  <p align="center">
-  <a href="https://alfonsofortunato.com">
+  <a href="https://simonbrundin.com">
     <picture>
       <source media="(prefers-color-scheme: dark)" srcset="https://alfonsofortunato.com/img/logo.png">
       <img src="https://alfonsofortunato.com/img/logo.png" height="90">
@@ -10,7 +10,7 @@
 
 <p align="center">
   <a href="https://github.com/MovieMaker93/devpod-dotfiles-chezmoi/commit">
-    <img alt="LastCommit" src="https://img.shields.io/github/last-commit/MovieMaker93/devpod-dotfiles-chezmoi/main?style=for-the-badge&logo=github&color=%237dcfff">
+    <img alt="LastCommit" src="https://img.shields.io/github/last-commit/simonbrundin/devpod-dotfiles-chezmoi/main?style=for-the-badge&logo=github&color=%237dcfff">
   </a>
   <!-- <a href="https://github.com/MovieMaker93/devpod-dotfiles-chezmoi/actions/workflows/"> -->
   <!-- </a> -->
