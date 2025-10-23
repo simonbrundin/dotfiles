@@ -10,7 +10,7 @@
 
 <p align="center">
   <a href="https://github.com/MovieMaker93/devpod-dotfiles-chezmoi/commit">
-    <img alt="LastCommit" src="https://img.shields.io/github/last-commit/simonbrundin/devpod-dotfiles-chezmoi/main?style=for-the-badge&logo=github&color=%237dcfff">
+    <img alt="LastCommit" src="https://img.shields.io/github/last-commit/simonbrundin/dotfiles/main?style=for-the-badge&logo=github&color=%237dcfff">
   </a>
   <!-- <a href="https://github.com/MovieMaker93/devpod-dotfiles-chezmoi/actions/workflows/"> -->
   <!-- </a> -->
