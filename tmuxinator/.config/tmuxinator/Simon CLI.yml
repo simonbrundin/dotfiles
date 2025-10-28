@@ -1,0 +1,8 @@
+# /Users/simon/.config/tmuxinator/simon.yml
+
+name: Simon CLI
+root: ~/repos/simon-cli/
+
+windows:
+  - Editor: nvim simon
+  - Terminal: simon

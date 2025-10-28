@@ -1,0 +1,8 @@
+# /Users/simon/.config/ muxinator/Ekonomi.yml
+
+name: Nuxt - Base Layer
+root: ~/repos/nuxt-base-layer
+
+windows:
+  - NeoVim: nvim
+  - Terminal:

@@ -1,0 +1,10 @@
+# /Users/simon/.config/tmuxinator/Config-Tmuxinator.yml
+
+name: Plan
+root: ~/repos/plan
+
+windows:
+  - NeoVim: nvim README.md
+  - Agent: simon ai
+  - Development Server: simon dev
+  - Terminal:

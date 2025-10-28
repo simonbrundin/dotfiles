@@ -1,0 +1,8 @@
+# /Users/simon/.config/ muxinator/Ekonomi.yml
+
+name: Files
+root: ~/
+
+windows:
+  - Yazi: yazi
+  - SPF: spf

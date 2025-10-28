@@ -1,0 +1,7 @@
+# /Users/simon/.config/tmuxinator/Config-Tmuxinator.yml
+
+name: Config - Keymap
+root: ~/repos/devenv/.config/karabiner
+
+windows:
+  - NeoVim: nvim "karabiner-config.ts"

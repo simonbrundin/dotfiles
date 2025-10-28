@@ -1,0 +1,7 @@
+# /Users/simon/.config/tmuxinator/Config.yml
+
+name: Config
+root: ~/repos/devenv/.config/
+
+windows:
+  - Editor: nvim

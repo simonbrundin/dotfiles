@@ -1,0 +1,8 @@
+# /Users/simon/.config/tmuxinator/Config.yml
+
+name: Dotfiles
+root: ~/.local/share/chezmoi
+
+windows:
+  - NeoVim: nvim README.md
+  - Terminal: chezmoi help

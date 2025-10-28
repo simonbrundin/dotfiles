@@ -1,0 +1,8 @@
+# /Users/simon/.config/ muxinator/Ekonomi.yml
+
+name: Deployment Pipeline
+root: ~/repos/deployment-pipeline
+
+windows:
+  - NeoVim: nvim
+  - Agent: simon ai
