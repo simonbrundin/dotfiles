@@ -8,10 +8,11 @@ windows:
   - Talos Dashboard: simon talos dashboard
   - Agent: simon ai
   - Kubernetes Dashboard: simon kubernetes dashboard
-  - Dashboards:
+  - Nodes:
+      layout: even-horizontal
       panes:
+        - k9s -c 'nodes' -A --logoless --headless
         - simon talos dashboard
-        - simon kubernetes dashboard
 # Optional tmux socket
 # socket_name: foo
 

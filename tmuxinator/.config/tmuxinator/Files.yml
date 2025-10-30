@@ -4,5 +4,4 @@ name: Files
 root: ~/
 
 windows:
-  - Yazi: yazi
   - SPF: spf
