@@ -87,7 +87,7 @@ def --env y [...args] {
 	rm -fp $tmp
 }
 
-source ~/.cache/carapace/init.nu
+source $"($nu.cache-dir)/carapace.nu"
 source ~/.local/share/atuin/init.nu
 
 # Kör DevPod CLI via bash-login-shell
