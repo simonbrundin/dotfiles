@@ -1,3 +1,8 @@
+tap "dagger/tap"
+tap "dotenvx/brew"
+tap "hashicorp/tap"
+tap "loft-sh/tap"
+tap "teamookla/speedtest"
 brew "atuin"
 brew "bat"
 brew "bcrypt"
