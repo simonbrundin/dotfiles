@@ -1,8 +1,0 @@
-# Generated for envman. Do not edit.
-[ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
-
-eval "$(devbox global shellenv)"
-
-### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
-export PATH="/Users/simon/.rd/bin:$PATH"
-### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
