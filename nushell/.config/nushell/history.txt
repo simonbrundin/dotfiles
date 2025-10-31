@@ -112,3 +112,66 @@ ls
 z devenv
 lg
 z dot
+lg
+z cli
+lg
+sudo pacman -S --needed git base-devel<\n>git clone https://aur.archlinux.org/yay.git<\n>cd yay<\n>makepkg -si
+yay -S hunspell-sv
+sudo pacman -S hunspell-sv
+which hunspell-sv
+sudo pacman -S hunspell-sv
+yay -S hunspell-sv
+s i kanata
+z dotfiles
+yazi
+kanata -c ~/.config/kanata/kanata.kbd
+<\n>sudo modprobe uinput
+sudo usermod -a -G uinput $USER
+sudo usermod -a -G uinput $env.USER
+ai
+z dotfiles
+ai
+z dot
+kanata -c ~/.config/kanata/kanata.kbd
+sudo kanata -c ~/.config/kanata/kanata.kbd
+which kanata
+sudo usermod -aG uinput $USER
+ai
+z dot
+sudo systemctl start kanata
+systemctl --user start kanata
+sudo cp kanata/etc/udev/rules.d/99-uinput.rules /etc/udev/rules.d/ && sudo udevadm control --reload-rules && sudo udevadm trigger
+z dot
+sudo usermod -aG uinput $USER
+nvim 
+nvim /etc/udev/rules.d/99-uinput.rules
+sudo sed -i 's/uinput/input/' /etc/udev/rules.d/99-uinput.rules<\n>sudo udevadm control --reload-rules<\n>sudo udevadm trigger
+systemctl --user restart kanata
+sudo modprobe -r uinput<\n>sudo modprobe uinput
+systemctl --user<\n>restart kanata
+systemctl --user restart kanata
+sudo sed -i 's/KERNEL=="input"/KERNEL=="uinput"/' /etc/udev/rules.d/99-uinput.rules<\n>sudo modprobe -r uinput<\n>sudo modprobe uinput
+systemctl --user restart kanata
+sudo sed -i 's/GROUP="uinput"/GROUP="input"/' /etc/udev/rules.d/99-uinput.rules<\n>sudo modprobe -r uinput<\n>sudo modprobe uinput
+systemctl --user restart kanata
+ai
+z 
+z repos
+sudo evtest /dev/input/event3
+z dotf
+nvim
+simon kanata restart
+ai
+z dot
+nvim
+sudo modprobe uinput<\n>sudo udevadm control --reload-rules<\n>sudo udevadm trigger
+systemctl --user restart kanat
+systemctl --user restart kanata
+ai
+z dot
+nvim
+n
+s kanata restart
+./kanata/install-kanata.sh
+sudo loginctl enable-linger $USER
+z dot
