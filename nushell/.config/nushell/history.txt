@@ -35,3 +35,19 @@ z repos
 git clone git@github.com:simonbrundin/devenv.git
 z devenv
 nvim
+z devenv
+nvim
+z simon-cli
+z ..
+z simon-cli
+nvim
+z devenv
+nvim
+yazi
+z boot
+bash bootstrap.sh
+nvim
+curl -sL bootstrap.simonbrundin.com | bash
+nvim
+simon setup mac
+simon bootstrap mac
