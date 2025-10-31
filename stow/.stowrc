@@ -1,2 +1,2 @@
---target=~
---dir=~/repos/dotfiles
+--target=$HOME
+--dir=$HOME/repos/dotfiles
