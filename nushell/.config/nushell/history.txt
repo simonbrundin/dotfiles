@@ -1,1 +1,37 @@
 n
+config nu
+starship
+config nu
+starship
+s i starship
+nu
+bash
+starship
+bash
+zsh
+sh
+brew install starship
+bash
+config nu
+envs
+bash
+env
+$env
+$env | get path
+$env | get PATH
+let-env OMARCHY_PATH = ($"~/.local/share/omarchy" | path expand)<\n>let-env PATH = [<\n>    $env.OMARCHY_PATH/bin<\n>    /usr/local/bin /usr/bin /bin /usr/local/sbin /usr/sbin /sbin<\n>    /opt/homebrew/bin /opt/homebrew/sbin<\n>    /home/simon/repos/simon-cli<\n>    ...$env.PATH<\n>]
+$env.OMARCHY_PATH = ($"~/.local/share/omarchy" | path expand)<\n>$env.PATH = [<\n>    ($env.OMARCHY_PATH / bin)<\n>    "/usr/local/bin"<\n>    "/usr/bin"<\n>    "/bin"<\n>    "/usr/local/sbin"<\n>    "/usr/sbin"<\n>    "/sbin"<\n>    "/opt/homebrew/bin"<\n>    "/opt/homebrew/sbin"<\n>    "/home/simon/repos/simon-cli"<\n>    ...$env.PATH<\n>]
+$env.OMARCHY_PATH = ($"~/.local/share/omarchy" | path expand)<\n>$env.PATH = [<\n>    ($env.OMARCHY_PATH / "bin")<\n>    "/usr/local/bin"<\n>    "/usr/bin"<\n>    "/bin"<\n>    "/usr/local/sbin"<\n>    "/usr/sbin"<\n>    "/sbin"<\n>    "/opt/homebrew/bin"<\n>    "/opt/homebrew/sbin"<\n>    "/home/simon/repos/simon-cli"<\n>    ...$env.PATH<\n>]
+$env.OMARCHY_PATH = $"~/.local/share/omarchy" | path expand<\n>$env.PATH = [<\n>    ($env.OMARCHY_PATH | path join "bin")<\n>    "/usr/local/bin"<\n>    "/usr/bin"<\n>    "/bin"<\n>    "/usr/local/sbin"<\n>    "/usr/sbin"<\n>    "/sbin"<\n>    "/opt/homebrew/bin"<\n>    "/opt/homebrew/sbin"<\n>    "/home/simon/repos/simon-cli"<\n>    ...$env.PATH<\n>]
+nvim
+nu
+s i nushell
+nushell
+whoami
+$env
+ai
+z dotfiles
+z repos
+git clone git@github.com:simonbrundin/devenv.git
+z devenv
+nvim

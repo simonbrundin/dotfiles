@@ -1,12 +1,9 @@
 # Developer Environment Repo
-$env.devenv-repo = "/Users/simon/repos/devenv"
+$env.devenv-repo = "/home/simon/repos/devenv"
 # Dotfiles
-$env.dotfiles-path = $"($env.devenv-repo)/.config"
-$env.dot-nushell = $"($env.dotfiles-path)/nushell/https://www.youtube.com/watch?v=3szpSiGjBkQconfig.nu"
+$env.dotfiles-path = $"($env.HOME)/repos/dotfiles"
+$env.dot-nushell = $"($env.dotfiles-path)/nushell/.config/nushell/config.nu"
 $env.dot-brew = $"($env.dotfiles-path)/brew/Brewfile"
-$env.dot-karabiner = $"($env.dotfiles-path)/karabiner/karabiner.ts"
-$env.dot-aerospace = $"($env.dotfiles-path)/aerospace/aerospace.toml"
-$env.dot-devbox = $"($env.devenv-repo)/devbox.json" 
 $env.config.show_banner = false
 
 
@@ -19,24 +16,25 @@ $env.config = {
   }
 }
 
-# Path-tillägg
+# Sätt Omarchy-variabler
+$env.OMARCHY_PATH = $"~/.local/share/omarchy" | path expand
+
+# Uppdatera PATH
 $env.PATH = [
-    "/nix/var/nix/profiles/default/bin"
-    "/Users/simon/.local/share/devbox/global/default/.devbox/nix/profile/default/bin"
-    "/opt/homebrew/bin"
-    "/opt/homebrew/sbin"
-    "/Users/simon/repos/simon-cli"
+    ($env.OMARCHY_PATH | path join "bin")
     "/usr/local/bin"
     "/usr/bin"
-    "/usr/sbin"
     "/bin"
+    "/usr/local/sbin"
+    "/usr/sbin"
     "/sbin"
-    "/Users/simon/go/bin"
-    "/Users/simon/.bun/bin"
-    "/Users/simon/.local/bin"
-    "/Users/simon/.rd/bin/"
+    "/opt/homebrew/bin"
+    "/opt/homebrew/sbin"
+    "/home/simon/repos/simon-cli"
+    ...$env.PATH
 ]
-# $env.XDG_CONFIG_HOME = "/Users/simon/repos/devenv/.config"
+
+# $env.XDG_CONFIG_HOME = "/home/simon/repos/dotfiles"
 # Nvim som default editor
 $env.config.buffer_editor = "nvim"
 $env.EDITOR = "nvim"
@@ -44,7 +42,8 @@ $env.EDITOR = "nvim"
 # Set up Starship
 mkdir ($nu.data-dir | path join "vendor/autoload")
 starship init nu | save -f ($nu.data-dir | path join "vendor/autoload/starship.nu")
-#$env.STARSHIP_CONFIG = '/Users/simon/.config/starship.toml'
+source $"($nu.data-dir)/vendor/autoload/starship.nu"
+$env.STARSHIP_CONFIG = '/home/simon/.config/starship.toml'
 #alias config_starship = ^code $env.STARSHIP_CONFIG
 
 # ENV Variables
@@ -88,7 +87,7 @@ def --env y [...args] {
 }
 
 source $"($nu.cache-dir)/carapace.nu"
-source ~/.local/share/atuin/init.nu
+# source ~/.local/share/atuin/init.nu
 
 # Kör DevPod CLI via bash-login-shell
 # def devpod [...args] {
