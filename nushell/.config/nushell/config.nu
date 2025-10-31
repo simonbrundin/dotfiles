@@ -30,6 +30,7 @@ $env.PATH = [
     "/sbin"
     "/opt/homebrew/bin"
     "/opt/homebrew/sbin"
+    "/home/linuxbrew/.linuxbrew/bin"
     "/home/simon/repos/simon-cli"
     ...$env.PATH
 ]
@@ -51,6 +52,8 @@ $env.STARSHIP_CONFIG = '/home/simon/.config/starship.toml'
 
 alias s = simon
 alias dev = simon dev
+alias lg = lazygit
+alias n = nvim
 alias d = dagger
 alias td = simon talos dashboard
 alias kd = simon kubernetes dashboard

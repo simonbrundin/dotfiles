@@ -52,3 +52,63 @@ nvim
 simon setup mac
 simon bootstrap mac
 nvim
+n
+nvim
+config nu
+n
+ai
+simon ai
+shell
+simon ai
+nvim
+curl --proto '=https' --tlsv1.2 -LsSf https://setup.atuin.sh | sh
+which atuin
+ai
+env
+envs
+env
+$env
+n
+nvim
+config nu
+bash bootstrap.sh
+atuin
+bash bootstrap.sh
+hej
+atuin
+z boot
+bash bootstrap.sh
+ai
+bash bootstrap.sh
+$nev
+$env
+bash bootstrap.sh
+nu
+config nu
+nu
+config nu
+nu
+config env
+nu
+hej
+nu
+config nu
+nu
+config nu
+nu
+config nu
+z repos
+l
+ls
+ll
+git status
+lazygit
+z boot
+lg
+config nu
+lg
+z ..
+ls
+z devenv
+lg
+z dot
