@@ -51,3 +51,4 @@ curl -sL bootstrap.simonbrundin.com | bash
 nvim
 simon setup mac
 simon bootstrap mac
+nvim
