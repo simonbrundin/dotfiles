@@ -32,6 +32,7 @@ $env.PATH = [
     "/opt/homebrew/sbin"
     "/home/linuxbrew/.linuxbrew/bin"
     "/home/simon/repos/simon-cli"
+    "/home/simon/.cargo/bin"
     ...$env.PATH
 ]
 
@@ -54,6 +55,7 @@ alias s = simon
 alias dev = simon dev
 alias lg = lazygit
 alias n = nvim
+alias y = yazi
 alias d = dagger
 alias td = simon talos dashboard
 alias kd = simon kubernetes dashboard

@@ -3,9 +3,9 @@ Description=Kanata keyboard remapper
 After=graphical.target
 
 [Service]
-User=root
+User=simon
 Type=simple
-ExecStart=/home/linuxbrew/.linuxbrew/bin/kanata --cfg /home/simon/.config/kanata/kanata.kbd
+ExecStart=/home/simon/.cargo/bin/kanata --cfg /home/simon/.config/kanata/kanata.kbd
 Restart=always
 RestartSec=3
 Nice=-20

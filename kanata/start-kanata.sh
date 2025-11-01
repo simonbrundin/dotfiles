@@ -1,2 +1,2 @@
 #!/bin/bash
-sudo kanata -c ~/.config/kanata/kanata.kbd
+/home/simon/.cargo/bin/kanata -c ~/.config/kanata/kanata.kbd

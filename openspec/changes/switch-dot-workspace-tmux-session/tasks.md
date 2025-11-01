@@ -1,0 +1,5 @@
+- [ ] Install wtype for sending keystrokes to focused window.
+- [ ] Create a new script `switch_dotfiles.sh` that implements the logic: switch to workspace 1, check for alacritty in workspace 1, focus and switch tmux session or open new alacritty.
+- [ ] Update kanata.kbd 'dot' alias to call the new script.
+- [ ] Test the 'dot' key in tmuxsessions layer: ensure switches to workspace 1, focuses existing alacritty and switches session, or opens new if none.
+- [ ] Verify no new window opened when alacritty already exists in workspace 1.
