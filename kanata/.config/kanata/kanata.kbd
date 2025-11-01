@@ -5,6 +5,12 @@
 
 (defcfg
   process-unmapped-keys yes
+  concurrent-tap-hold yes
+)
+
+(defvar
+  tap-timeout 200
+  hold-timeout 150
 )
 
 (defsrc
@@ -15,8 +21,8 @@
          lctl  lmet  lalt                spc              ralt  rctl  rmet
 )
 
-(defalias f (tap-hold 200 200 f (layer-while-held arrows)))
-(defalias caps (tap-hold 200 200 esc (layer-while-held arrows)))
+(defalias f (tap-hold $tap-timeout $hold-timeout f (layer-while-held arrows)))
+(defalias caps (tap-hold $tap-timeout $hold-timeout esc (layer-while-held arrows)))
 
 (deflayer base
    grv   1     2     3     4     5     6     7     8     9     0     -     =     bspc
@@ -28,8 +34,8 @@
 
 (deflayer arrows
   _    _     _     _     _     _     _     _     _     _     _     _     _
-  _    _     _     _     _     _     _     up    _     _     _     _     _     _
-  _    _     _     _     _     _     left  down  right _     _     _     _
+  _    _     _     _     _     _     _     _     _     _     _     _     _     _
+  _    _     _     _     _     _     left  down  up    right _     _     _
   _    _     _     _     _     _     _     _     _     _     _     _
          _     _     _                    _                    _     _     _     _
 )
