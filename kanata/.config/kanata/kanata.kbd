@@ -5,14 +5,26 @@
 
 (defcfg
   process-unmapped-keys yes
+  log-layer-changes no
+  danger-enable-cmd yes
   concurrent-tap-hold yes
+
+  ;; When any non-chord activation happens, this timeout begins. Until this timeout expires
+  ;; all inputs will immediately skip chords processing and be processed by the active layer.
+  ;; chords-v2-min-idle 250
 )
 
+;; Variables
 (defvar
-  tap-timeout 200
-  hold-timeout 150
+ tap-higher 400
+ tap-time 300
+ hold-time 300
+ chord-time 60
+ subl-time 200
+ tmux-delay 40
 )
 
+;; Grundtangentbord med engelska keycodes
 (defsrc
   grv   1     2     3     4     5     6     7     8     9     0     -     =     bspc
   tab   q     w     e     r     t     y     u     i     o     p     [     ]     \
@@ -21,9 +33,9 @@
          lctl  lmet  lalt                spc              ralt  rctl  rmet
 )
 
-(defalias f (tap-hold $tap-timeout $hold-timeout f (layer-while-held arrows)))
+(defalias f (tap-hold $tap-time $hold-time f (layer-while-held arrows)))
 (defalias caps esc)
-(defalias lalt (tap-hold $tap-timeout $hold-timeout (macro lalt bspc) lctl))
+(defalias lalt (tap-hold $tap-time $hold-time (macro lalt bspc) lctl))
 
 (deflayer base
    lrld  1     2     3     4     5     6     7     8     9     0     -     =     bspc
