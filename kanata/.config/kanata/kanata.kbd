@@ -32,8 +32,6 @@
   mnavi (tap-hold $tap-time $hold-time s (layer-while-held arrow))
   ;; Arrow på f: Tap f, hold → arrow
   mf (tap-hold $tap-time $hold-time f (layer-while-held arrow))
-  ;; LAlt: Tap macro(lalt bspc)? Eller enkel – justera efter behov
-  mlalt lalt  ;; Enkel för nu, lägg till tap-hold om du vill
 )
 
 (deflayer base
@@ -41,7 +39,7 @@
   tab   q     w     e     r     t     y     u     i     o     p     [     ]     \
   @caps a     @mnavi d     @mf    g     h     j     k     l     ;     '     ret
   lsft  z     x     c     v     b     n     m     ,     .     /     rsft
-         lctl  lmet  @mlalt             spc              rmet  rctl  rmet
+          lctl  lmet  lctl               spc              rmet  rctl  rmet
 )
 
 (deflayer arrow
