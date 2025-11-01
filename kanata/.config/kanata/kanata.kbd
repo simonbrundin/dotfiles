@@ -30,6 +30,7 @@
   caps esc  ;; Caps → Esc
   meh (tap-hold $tap-time $hold-time ralt (layer-while-held meh))
   t (tap-hold $tap-time $hold-time t (layer-while-held tmux))
+  s (tap-hold $tap-time $hold-time s (layer-while-held tmux))
   sesh (tap-hold $tap-time $hold-time ralt (layer-while-held tmuxsessions))
   ;; Arrow på f: Tap f, hold → arrow
   nav (tap-hold $tap-time $hold-time f (layer-while-held arrow))
@@ -37,6 +38,7 @@
   grok (cmd hyprctl dispatch workspace 4 && omarchy-launch-webapp
 "https://grok.com")
   term (cmd uwsm-app -- alacritty)
+  lctl (tap-hold $tap-time $hold-time C-bspc lctl)
 )
 
 ;; Tmux Sessions --------------------------------------------------------------------------------
@@ -44,14 +46,15 @@
   dot (cmd /home/simon/repos/dotfiles/kanata/.config/kanata/switch-session.sh Dotfiles)
   k8s (cmd /home/simon/repos/dotfiles/kanata/.config/kanata/switch-session.sh Kubernetes)
   plan (cmd /home/simon/repos/dotfiles/kanata/.config/kanata/switch-session.sh Plan)
+  cli (cmd /home/simon/repos/dotfiles/kanata/.config/kanata/switch-session.sh simon-cli)
 )
 
 (deflayer base
   grv   1     2     3     4     5     6     7     8     9     0     -     =     bspc
   tab   q     w     e     r     @t    y     u     i     o     p     [     ]     \
-  @caps @app s     d     @nav  g     h     j     k     l     ;     '     ret
+  @caps @app  @s     d     @nav  g     h     j     k     l     ;     '     ret
   lsft  z     x     c     v     b     n     m     ,     .     /     rsft
-          lmet  lalt  lctl               spc              @meh  ralt  rmet
+          lmet  lalt  @lctl               spc              @meh  ralt  rmet
 )
 
 (deflayer arrow
@@ -90,7 +93,7 @@
   XX     XX     XX     XX     XX     XX     XX     XX     XX     XX     XX     XX     XX
   XX     XX     XX     XX     XX     (macro C-b (unicode $))     XX     XX     XX     XX     XX     @plan     XX     XX
   XX     XX     XX     (macro C-b s)     XX     XX     XX     (macro C-b p)  up    @k8s  (macro C-b n)     XX     XX
-  XX     XX     XX     @grok     XX     XX     XX     XX     XX     XX     @dot     XX     XX
+  XX     XX     XX     XX     @cli     XX     XX     XX     XX     XX     @dot     XX     XX
           XX     XX     XX                XX               XX     XX     XX
 )
 
