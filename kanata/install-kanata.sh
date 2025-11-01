@@ -28,12 +28,8 @@ if ! groups | grep -q "\binput\b"; then
     exit 0
 fi
 
-# Install udev rule for uinput
-echo "Installing udev rule for uinput..."
-sudo cp "$(dirname "$0")/etc/udev/rules.d/99-uinput.rules" /etc/udev/rules.d/
-sudo udevadm control --reload-rules
-sudo udevadm trigger
-sudo modprobe uinput
+# Udev rule already installed
+echo "Udev rule already installed, skipping..."
 
 # Create config directory
 mkdir -p "$HOME/.config/kanata"

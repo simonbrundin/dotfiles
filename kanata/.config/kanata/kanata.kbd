@@ -1,27 +1,19 @@
 ;; === SVENSKT TANGENTBORD (PASS-THROUGH) + HÖGER ALT → SUPER ===
 ;; US-nycklar i defsrc & deflayer → OS hanterar å ä ö ¨ etc.
 ;; Höger Alt (ralt) → rmet (höger Super)
-;; Hold f activates arrows for keys: i j k l
+;; Hold f/s activates arrows for keys: i j k l / h j k l
 
 (defcfg
   process-unmapped-keys yes
-  log-layer-changes no
+  log-layer-changes yes
   danger-enable-cmd yes
   concurrent-tap-hold yes
-
-  ;; When any non-chord activation happens, this timeout begins. Until this timeout expires
-  ;; all inputs will immediately skip chords processing and be processed by the active layer.
-  ;; chords-v2-min-idle 250
 )
 
 ;; Variables
 (defvar
- tap-higher 400
- tap-time 300
- hold-time 300
- chord-time 60
- subl-time 200
- tmux-delay 40
+  tap-time 300
+  hold-time 300
 )
 
 ;; Grundtangentbord med engelska keycodes
@@ -33,22 +25,29 @@
          lctl  lmet  lalt                spc              ralt  rctl  rmet
 )
 
-(defalias f (tap-hold $tap-time $hold-time f (layer-while-held arrows)))
-(defalias caps esc)
-(defalias lalt (tap-hold $tap-time $hold-time (macro lalt bspc) lctl))
-
-(deflayer base
-   lrld  1     2     3     4     5     6     7     8     9     0     -     =     bspc
-   tab   q     w     e     r     t     y     u     i     o     p     [     ]     \
-   esc   a     s     d     f     g     h     j     k     l     ;     '     ret
-  lsft  z     x     c     v     b     n     m     ,     .     /     rsft
-          lctl  lalt  lctl                spc              rmet  rctl  rmet   ;; ← HÖGER ALT → HÖGER SUPER (rmet)
+(defalias
+  ;; Caps → Esc
+  caps esc  ;; Caps → Esc
+  ;; Navi på s: Tap s, hold → arrow
+  mnavi (tap-hold $tap-time $hold-time s (layer-while-held arrow))
+  ;; Arrow på f: Tap f, hold → arrow
+  mf (tap-hold $tap-time $hold-time f (layer-while-held arrow))
+  ;; LAlt: Tap macro(lalt bspc)? Eller enkel – justera efter behov
+  mlalt lalt  ;; Enkel för nu, lägg till tap-hold om du vill
 )
 
-(deflayer arrows
-  _    _     _     _     _     _     _     _     _     _     _     _     _
-  _    _     _     _     _     _     _     _     _     _     _     _     _     _
-  _    _     _     _     _     _     left  down  up    right _     _     _
-  _    _     _     _     _     _     _     _     _     _     _     _
-         _     _     _                    _                    _     _     _     _
+(deflayer base
+  grv   1     2     3     4     5     6     7     8     9     0     -     =     bspc
+  tab   q     w     e     r     t     y     u     i     o     p     [     ]     \
+  @caps a     @mnavi d     @mf    g     h     j     k     l     ;     '     ret
+  lsft  z     x     c     v     b     n     m     ,     .     /     rsft
+         lctl  lmet  @mlalt             spc              rmet  rctl  rmet
+)
+
+(deflayer arrow
+  XX     XX     XX     XX     XX     XX     XX     XX     XX     XX     XX     XX     XX
+  XX     XX     XX     XX     XX     XX     XX     XX     XX     XX     XX     XX     XX     XX
+  XX     XX     XX     XX     XX     XX     XX     left  down  up    right XX     XX
+  XX     XX     XX     XX     XX     XX     XX     XX     XX     XX     XX     XX     XX
+          XX     XX     XX                XX               XX     XX     XX
 )
