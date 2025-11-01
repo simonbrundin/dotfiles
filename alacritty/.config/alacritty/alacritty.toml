@@ -17,7 +17,9 @@ decorations = "None"
 [keyboard]
 bindings = [
 { key = "Insert", mods = "Shift", action = "Paste" },
-{ key = "Insert", mods = "Control", action = "Copy" }
+{ key = "Insert", mods = "Control", action = "Copy" },
+# Ny mappning: Ctrl + Backspace skickar ^W (raderar föregående ord)
+    { key = "Back", mods = "Control", chars = "\u0017" }
 ]
 
 ################ ADD THIS PART #############
@@ -25,3 +27,8 @@ bindings = [
 program = "/home/linuxbrew/.linuxbrew/bin/nu"
 # args = ["-l"]
 ############################################
+
+
+
+
+
