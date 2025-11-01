@@ -27,7 +27,7 @@
 Alla mina dotfiles går att installera genom
 
 ```
-curl
+curl -sL bootstrap.simonbrundin.com | bash
 ```
 
 ## Setup
