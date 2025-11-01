@@ -47,6 +47,7 @@
   k8s (cmd /home/simon/repos/dotfiles/kanata/.config/kanata/switch-session.sh Kubernetes)
   plan (cmd /home/simon/repos/dotfiles/kanata/.config/kanata/switch-session.sh Plan)
   cli (cmd /home/simon/repos/dotfiles/kanata/.config/kanata/switch-session.sh simon-cli)
+  home (cmd /home/simon/repos/dotfiles/kanata/.config/kanata/switch-session.sh Home)
 )
 
 (deflayer base
@@ -92,7 +93,7 @@
 (deflayer tmuxsessions
   XX     XX     XX     XX     XX     XX     XX     XX     XX     XX     XX     XX     XX
   XX     XX     XX     XX     XX     (macro C-b (unicode $))     XX     XX     XX     XX     XX     @plan     XX     XX
-  XX     XX     XX     (macro C-b s)     XX     XX     XX     (macro C-b p)  up    @k8s  (macro C-b n)     XX     XX
+  XX     XX     XX     (macro C-b s)     XX     XX     @home     @home  up    @k8s  (macro C-b n)     XX     XX
   XX     XX     XX     XX     @cli     XX     XX     XX     XX     XX     @dot     XX     XX
           XX     XX     XX                XX               XX     XX     XX
 )
