@@ -2,7 +2,13 @@
 
 name: Home
 root: ~/
-
+windows:
+  - Dashboard:
+      layout: main-vertical
+      panes:
+        - btop
+        - clear ; fastfetch
+  - Terminal:
 # Optional tmux socket
 # socket_name: foo
 
@@ -44,14 +50,3 @@ root: ~/
 # Controls whether the tmux session should be attached to automatically. Defaults to true.
 # attach: false
 
-windows:
-  - Dashboard:
-      layout: main-vertical
-      # Synchronize all panes of this window, can be enabled before or after the pane commands run.
-      # 'before' represents legacy functionality and will be deprecated in a future release, in favour of 'after'
-      # synchronize: after
-      panes:
-        - btop
-        - clear ; fastfetch
-        -
-  - Terminal:
