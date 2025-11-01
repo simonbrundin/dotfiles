@@ -6,3 +6,4 @@ root: ~/repos/dotfiles
 windows:
   - NeoVim: nvim README.md
   - Terminal:
+  - LazyGit: lg
