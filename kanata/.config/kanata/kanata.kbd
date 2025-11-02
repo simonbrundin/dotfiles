@@ -37,6 +37,7 @@
   c (tap-hold $tap-time $hold-time c (macro M-c (cmd notify-send "Kopierat!")))
   y (tap-hold $tap-time $hold-time y (macro M-c (cmd notify-send "Kopierat!")))
   v (tap-hold $tap-time $hold-time v (macro M-v (cmd notify-send "Klistrat in!")))
+  p (tap-hold $tap-time $hold-time p (macro M-v (cmd notify-send "Klistrat in!")))
   sesh (tap-hold $tap-time $hold-time ralt (layer-while-held tmuxsessions))
   ;; Arrow på f: Tap f, hold → arrow
   nav (tap-hold $tap-time $hold-time f (layer-while-held arrow))
@@ -68,7 +69,7 @@
 )
 (deflayer base
   grv   1     2     3     4     5     6     7     8     9     0     -     =     bspc
-  tab   q     w     e     r     t    @y     u     i     o     p     [     ]     \
+  tab   q     w     e     r     t    @y     u     i     o     @p     [     ]     \
   @caps @app  @s     d     @nav  g     h     j     k     l     ;     '     ret
   lsft  z     x     @c     @v     b     n     m     ,     .     /     rsft
           lmet  lalt  @lctl               spc              @meh  ralt  rmet

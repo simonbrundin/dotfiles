@@ -2,8 +2,8 @@
 
 current=$(hyprctl activeworkspace -j | jq -r '.id')
 
-if [ "$current" -eq 1 ]; then
+if [ "$current" -eq 5 ]; then
     hyprctl dispatch workspace previous
 else
-    hyprctl dispatch workspace 1
+    hyprctl dispatch workspace 5
 fi
