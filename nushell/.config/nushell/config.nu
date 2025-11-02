@@ -54,6 +54,7 @@ $env.STARSHIP_CONFIG = '/home/simon/.config/starship.toml'
 
 alias s = simon
 alias dev = simon dev
+alias plan = nvim /home/simon/repos/plan/Innan-1.md
 alias lg = lazygit
 alias n = nvim
 alias y = yazi
