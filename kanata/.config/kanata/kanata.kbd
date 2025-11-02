@@ -19,8 +19,9 @@
 
 (defalias
   ;; Caps → Esc
-  caps esc  ;; Caps → Esc
-  meh (tap-hold $tap-time $hold-time ralt (layer-while-held app))
+  ;; caps esc  ;; Caps → Esc
+  caps (tap-hold $tap-time $hold-time esc lmet)
+  meh (tap-hold $tap-time $hold-time M-C-tab (layer-while-held app))
   ;; t (tap-hold $tap-time $hold-time t (layer-while-held tmux))
   s (tap-hold $tap-time $hold-time s (layer-while-held tmux))
   sesh (tap-hold $tap-time $hold-time ralt (layer-while-held tmuxsessions))
@@ -36,6 +37,8 @@
 (defalias
   term (cmd hyprctl dispatch workspace 1)
   web (cmd hyprctl dispatch workspace 2)
+  ai (cmd hyprctl dispatch workspace 3)
+  note (cmd hyprctl dispatch workspace 4)
 )
 
 
@@ -76,8 +79,8 @@
 (deflayer app
   XX     XX     XX     XX     XX     XX     XX     XX     XX     XX     XX     XX     XX
   XX     XX     XX     XX     XX     XX     XX     XX     XX     XX     XX     XX     XX     XX
-  XX     XX     XX     XX     XX     XX     XX     left   @term  @web    right XX     XX
-  XX     XX     XX     @grok     XX     XX     XX     XX     XX     XX     XX     XX     XX
+  XX     XX     @ai     XX     XX     XX     XX     left   @term  @web    right XX     XX
+  XX     XX     XX     @grok     XX     XX     XX     @note     XX     XX     XX     XX     XX
           XX     XX     XX                XX               XX     XX     XX
 )
 
