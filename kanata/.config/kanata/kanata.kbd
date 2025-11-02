@@ -16,19 +16,11 @@
   hold-time 300
 )
 
-;; Grundtangentbord med engelska keycodes
-(defsrc
-  grv   1     2     3     4     5     6     7     8     9     0     -     =     bspc
-  tab   q     w     e     r     t     y     u     i     o     p     [     ]     \
-  caps  a     s     d     f     g     h     j     k     l     ;     '     ret
-  lsft  z     x     c     v     b     n     m     ,     .     /     rsft
-         lctl  lmet  lalt                spc              ralt  rctl  rmet
-)
 
 (defalias
   ;; Caps → Esc
   caps esc  ;; Caps → Esc
-  meh (tap-hold $tap-time $hold-time ralt (layer-while-held meh))
+  meh (tap-hold $tap-time $hold-time ralt (layer-while-held app))
   ;; t (tap-hold $tap-time $hold-time t (layer-while-held tmux))
   s (tap-hold $tap-time $hold-time s (layer-while-held tmux))
   sesh (tap-hold $tap-time $hold-time ralt (layer-while-held tmuxsessions))
@@ -37,11 +29,16 @@
   app (tap-hold $tap-time $hold-time a (layer-while-held app))
   grok (cmd hyprctl dispatch workspace 4 && omarchy-launch-webapp
 "https://grok.com")
-  term (cmd uwsm-app -- alacritty)
   lctl (tap-hold $tap-time $hold-time C-bspc lctl)
 )
 
-;; Tmux Sessions --------------------------------------------------------------------------------
+;; Applications
+(defalias
+  term (cmd hyprctl dispatch workspace 1)
+)
+
+
+;; Tmux Sessions 
 (defalias
   dot (cmd /home/simon/repos/dotfiles/kanata/.config/kanata/switch-session.sh Dotfiles)
   k8s (cmd /home/simon/repos/dotfiles/kanata/.config/kanata/switch-session.sh Kubernetes)
@@ -51,6 +48,14 @@
   sall (macro (cmd hyprctl dispatch workspace 1) 50 C-u)
 )
 
+;; Grundtangentbord med engelska keycodes -------------------------------------------------------
+(defsrc
+  grv   1     2     3     4     5     6     7     8     9     0     -     =     bspc
+  tab   q     w     e     r     t     y     u     i     o     p     [     ]     \
+  caps  a     s     d     f     g     h     j     k     l     ;     '     ret
+  lsft  z     x     c     v     b     n     m     ,     .     /     rsft
+         lctl  lmet  lalt                spc              ralt  rctl  rmet
+)
 (deflayer base
   grv   1     2     3     4     5     6     7     8     9     0     -     =     bspc
   tab   q     w     e     r     t    y     u     i     o     p     [     ]     \
@@ -70,7 +75,7 @@
 (deflayer app
   XX     XX     XX     XX     XX     XX     XX     XX     XX     XX     XX     XX     XX
   XX     XX     XX     XX     XX     XX     XX     XX     XX     XX     XX     XX     XX     XX
-  XX     XX     XX     XX     XX     XX     XX     left  down  up    right XX     XX
+  XX     XX     XX     XX     XX     XX     XX     left   @term  up    right XX     XX
   XX     XX     XX     @grok     XX     XX     XX     XX     XX     XX     XX     XX     XX
           XX     XX     XX                XX               XX     XX     XX
 )
@@ -88,7 +93,7 @@
   XX     XX     XX     XX     XX     (macro C-b (unicode $))     XX     XX     XX     XX     XX     XX     XX     XX
   XX     XX     XX     (macro C-b s)     XX     XX     XX     (macro C-b p)  up    right  (macro C-b n)     XX     XX
   XX     XX     XX     @grok     XX     XX     XX     XX     XX     XX     XX     XX     XX
-          XX     XX     XX                XX               @sesh     XX     XX
+          XX     XX     XX                @sesh               @sesh     XX     XX
 )
 
 (deflayer tmuxsessions
