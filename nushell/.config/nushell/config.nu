@@ -26,6 +26,7 @@ $env.PATH = [
     "/usr/bin"
     "/bin"
     "/usr/local/sbin"
+    "/home/simon/bin"
     "/usr/sbin"
     "/sbin"
     "/opt/homebrew/bin"

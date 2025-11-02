@@ -16,12 +16,22 @@
   hold-time 300
 )
 
+;; Applications
+(defalias
+  term (cmd hyprctl dispatch workspace 1)
+  web (cmd hyprctl dispatch workspace 2)
+  ha (macro (cmd hyprctl dispatch workspace 2) (cmd xdg-open https://home.simonbrundin.com))
+  unifi (macro (cmd hyprctl dispatch workspace 10) (cmd xdg-open https://unifi.ui.com))
+  ai (cmd hyprctl dispatch workspace 3)
+  note (cmd hyprctl dispatch workspace 4)
+  aplan (cmd /home/simon/repos/dotfiles/kanata/.config/kanata/toggle-plan.sh)
+)
 
 (defalias
   ;; Caps → Esc
   ;; caps esc  ;; Caps → Esc
   caps (tap-hold $tap-time $hold-time esc lmet)
-  meh (tap-hold $tap-time $hold-time M-C-tab (layer-while-held app))
+  meh (tap-hold $tap-time $hold-time @aplan (layer-while-held app))
   ;; t (tap-hold $tap-time $hold-time t (layer-while-held tmux))
   s (tap-hold $tap-time $hold-time s (layer-while-held tmux))
   c (tap-hold $tap-time $hold-time c (macro M-c (cmd notify-send "Kopierat!")))
@@ -35,13 +45,6 @@
   lctl (tap-hold $tap-time $hold-time C-bspc lctl)
 )
 
-;; Applications
-(defalias
-  term (cmd hyprctl dispatch workspace 1)
-  web (cmd hyprctl dispatch workspace 2)
-  ai (cmd hyprctl dispatch workspace 3)
-  note (cmd hyprctl dispatch workspace 4)
-)
 
 
 ;; Tmux Sessions 
@@ -80,8 +83,8 @@
 
 (deflayer app
   XX     XX     XX     XX     XX     XX     XX     XX     XX     XX     XX     XX     XX
-  XX     XX     XX     XX     XX     XX     XX     XX     XX     XX     XX     XX     XX     XX
-  XX     XX     @ai     XX     XX     XX     XX     left   @term  @web    right XX     XX
+  XX     XX     XX     XX     XX     XX     XX     XX     @unifi     XX     XX     @aplan     XX     XX
+  XX     XX     @ai     XX     XX     XX     XX     @ha   @term  @web    right XX     XX
   XX     XX     XX     @grok     XX     XX     XX     @note     XX     XX     XX     XX     XX
           XX     XX     XX                XX               XX     XX     XX
 )
