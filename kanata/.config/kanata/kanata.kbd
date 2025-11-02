@@ -35,6 +35,7 @@
 ;; Applications
 (defalias
   term (cmd hyprctl dispatch workspace 1)
+  web (cmd hyprctl dispatch workspace 2)
 )
 
 
@@ -75,7 +76,7 @@
 (deflayer app
   XX     XX     XX     XX     XX     XX     XX     XX     XX     XX     XX     XX     XX
   XX     XX     XX     XX     XX     XX     XX     XX     XX     XX     XX     XX     XX     XX
-  XX     XX     XX     XX     XX     XX     XX     left   @term  up    right XX     XX
+  XX     XX     XX     XX     XX     XX     XX     left   @term  @web    right XX     XX
   XX     XX     XX     @grok     XX     XX     XX     XX     XX     XX     XX     XX     XX
           XX     XX     XX                XX               XX     XX     XX
 )
