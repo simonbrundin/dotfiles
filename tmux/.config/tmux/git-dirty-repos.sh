@@ -24,7 +24,8 @@ done
 
 # Output
 if [[ ${#dirty_repos[@]} -eq 0 ]]; then
-  echo "#[fg=#343246,bg=#1e1e2e]#[fg=#cdd6f4,bg=#343246] inga dirty #[fg=#343246,bg=#1e1e2e]"
+  echo
+  # echo "#[fg=#343246,bg=#1e1e2e]#[fg=#cdd6f4,bg=#343246] inga dirty #[fg=#343246,bg=#1e1e2e]"
 else
   output=""
   for name in "${dirty_repos[@]}"; do
