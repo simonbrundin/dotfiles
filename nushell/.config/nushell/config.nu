@@ -1,26 +1,38 @@
-# Developer Environment Repo
+# ~/.config/nushell/config.nu
+# Minimal, snabb, och beroende av bootstrap
+
+# ──────────────────────────────────────────────────────────────
+# 1. Miljövariabler & repo-sökvägar
+# ──────────────────────────────────────────────────────────────
+
+$env.STARSHIP_CONFIG = $"($env.HOME)/.config/starship.toml"
 $env.devenv-repo = "/home/simon/repos/devenv"
-# Dotfiles
 $env.dotfiles-path = $"($env.HOME)/repos/dotfiles"
 $env.dot-nushell = $"($env.dotfiles-path)/nushell/.config/nushell/config.nu"
 $env.dot-brew = $"($env.dotfiles-path)/brew/Brewfile"
-$env.config.show_banner = false
 
+# Omarchy
+$env.OMARCHY_PATH = $"($env.HOME)/.local/share/omarchy" | path expand
 
-
+# ──────────────────────────────────────────────────────────────
+# 2. Nushell-inställningar
+# ──────────────────────────────────────────────────────────────
 $env.config = {
-  edit_mode: "vi"
-  cursor_shape: {
-    vi_insert: "line"    # Vertikalt streck i insert mode
-    vi_normal: "block"   # Block i normal mode
-  }
+    show_banner: false
+    edit_mode: "vi"
+    cursor_shape: {
+        vi_insert: "line"
+        vi_normal: "block"
+    }
+    buffer_editor: "nvim"
 }
 
-# Sätt Omarchy-variabler
-$env.OMARCHY_PATH = $"~/.local/share/omarchy" | path expand
+$env.EDITOR = "nvim"
 
-# Uppdatera PATH
-$env.PATH = [
+# ──────────────────────────────────────────────────────────────
+# 3. PATH – smart och deduplicerad
+# ──────────────────────────────────────────────────────────────
+let custom_paths = [
     ($env.OMARCHY_PATH | path join "bin")
     "/usr/local/bin"
     "/usr/bin"
@@ -34,24 +46,13 @@ $env.PATH = [
     "/home/linuxbrew/.linuxbrew/bin"
     "/home/simon/repos/simon-cli"
     "/home/simon/.cargo/bin"
-    ...$env.PATH
 ]
 
-# $env.XDG_CONFIG_HOME = "/home/simon/repos/dotfiles"
-# Nvim som default editor
-$env.config.buffer_editor = "nvim"
-$env.EDITOR = "nvim"
+$env.PATH = ($custom_paths | append $env.PATH | uniq)
 
-# Set up Starship
-mkdir ($nu.data-dir | path join "vendor/autoload")
-starship init nu | save -f ($nu.data-dir | path join "vendor/autoload/starship.nu")
-source $"($nu.data-dir)/vendor/autoload/starship.nu"
-$env.STARSHIP_CONFIG = '/home/simon/.config/starship.toml'
-#alias config_starship = ^code $env.STARSHIP_CONFIG
-
-# ENV Variables
-
-
+# ──────────────────────────────────────────────────────────────
+# 5. Alias
+# ──────────────────────────────────────────────────────────────
 alias s = simon
 alias dev = simon dev
 alias plan = nvim /home/simon/repos/plan/Innan-1.md
@@ -63,43 +64,41 @@ alias td = simon talos dashboard
 alias kd = simon kubernetes dashboard
 alias k = ^kubectl
 alias t = ^talosctl
-# Se hälsan för alla Talos-noder
 alias th = simon talos health
 alias thc = talosctl health --control-plane-nodes 10.10.10.11,10.10.10.12,10.10.10.13
 alias ai = simon ai
-alias docker = nerdctl 
+alias docker = nerdctl
 alias cat = ^bat
-# Uppdatera konfiguration i Talos-noder
-alias ut = simon talos update config 
+alias ut = simon talos update config
 alias config_talos = ^code $env.TALOSCONFIG
 alias config_kube = ^code $env.KUBECONFIG
 
-
+# ──────────────────────────────────────────────────────────────
+# 6. Funktioner
+# ──────────────────────────────────────────────────────────────
 def ll [] {
     ls -l | select name size modified mode target
 }
 
-source ~/.zoxide.nu
-
-
-# Yazi - Flyttar till rätt katalog efter att ha kört yazi
+# Yazi med cd-efteråt
 def --env y [...args] {
-	let tmp = (mktemp -t "")
-	yazi ...$args --cwd-file $tmp
-	let cwd = (open $tmp)
-	if $cwd != "" and $cwd != $env.PWD {
-		cd $cwd
-	}
-	rm -fp $tmp
+    let tmp = (mktemp -t "")
+    yazi ...$args --cwd-file $tmp
+    let cwd = (open $tmp)
+    if $cwd != "" and $cwd != $env.PWD {
+        cd $cwd
+    }
+    rm -fp $tmp
 }
 
-source $"($nu.cache-dir)/carapace.nu"
-# source ~/.local/share/atuin/init.nu
+def e [] {
+    $env | fzf
+}
 
-# Kör DevPod CLI via bash-login-shell
-# def devpod [...args] {
-#   with-env { SHELL: "/bin/bash" } {
-#     # -l för login-shell så PATH initieras korrekt
-#     bash -lc $"devpod ($args | str join ' ')"
-#   }
-# }
+# ──────────────────────────────────────────────────────────────
+# 7. Externa init-filer
+# ──────────────────────────────────────────────────────────────
+source ~/.zoxide.nu
+source ~/.config/nushell/vendor/autoload/starship.nu
+# source $"($nu.cache-dir)/carapace.nu"
+# source ~/.local/share/atuin/init.nu  # Aktivera när atuin är klar
