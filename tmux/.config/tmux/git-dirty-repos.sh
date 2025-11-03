@@ -1,7 +1,7 @@
 #!/bin/bash
 
 REPOS_DIR="$HOME/repos"
-SEP=" #[fg=mauve]·#[default] "
+SEP=" "
 
 # Catppuccin Mocha färger (använd tmux-format)
 COLOR_DIRTY="#(#{E:@catppuccin_flavour} == 'mocha' && echo '#f38ba8' || echo '#ee99a0')"  # rosewater → red för dirty
@@ -24,13 +24,11 @@ done
 
 # Output
 if [[ ${#dirty_repos[@]} -eq 0 ]]; then
-  echo "#[fg=$COLOR_CLEAN]✔ inga dirty#[default]"
+  echo "#[fg=#343246,bg=#1e1e2e]#[fg=#cdd6f4,bg=#343246] inga dirty #[fg=#343246,bg=#1e1e2e]"
 else
   output=""
   for name in "${dirty_repos[@]}"; do
-    output+="#[fg=$COLOR_DIRTY]✗ $name#[default]$SEP"
+    output+="#[fg=#343246,bg=#1e1e2e]#[fg=#cdd6f4,bg=#343246] $name #[fg=#343246,bg=#1e1e2e] "
   done
-  # Ta bort sista separatorn
-  output=${output%$SEP}
   echo "$output"
 fi
