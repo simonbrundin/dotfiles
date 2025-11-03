@@ -26,6 +26,8 @@ else
     # Copy cmd-allowed kanata binary
     echo "Copying cmd-allowed kanata binary..."
     mkdir -p "$HOME/.local/bin"
+echo "Stopping kanata service if running..."
+systemctl --user stop kanata.service || true
     cp "/home/simon/repos/dotfiles/kanata_cmd_allowed" "$HOME/.local/bin/kanata"
     chmod +x "$HOME/.local/bin/kanata"
     echo "Kanata binary installed to $HOME/.local/bin/kanata"
