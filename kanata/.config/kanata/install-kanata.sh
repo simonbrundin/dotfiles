@@ -1,28 +1,57 @@
 #!/bin/bash
 
-# Kanata installation script
+# Kanata installation script (updated to use cmd-allowed version)
 
 set -e
 
 echo "Installing kanata configuration..."
 
-# Install kanata if not already installed
-if ! command -v kanata &> /dev/null; then
-    echo "Installing kanata..."
-    if command -v brew &> /dev/null; then
-        brew install kanata
-    else
-        echo "Please install kanata manually"
+# Check if user wants to build from source
+read -p "Do you want to build kanata from source with cmd enabled? (y/N): " -n 1 -r
+echo
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+    echo "Building kanata from source..."
+    if ! command -v cargo &> /dev/null; then
+        echo "Cargo not found. Please install Rust first."
         exit 1
     fi
+    rm -rf /tmp/kanata-build
+    git clone https://github.com/jtroo/kanata.git /tmp/kanata-build || { echo "Failed to clone repo"; exit 1; }
+    cd /tmp/kanata-build
+    cargo build --release --features cmd
+    mkdir -p "$HOME/.local/bin"
+    cp target/release/kanata "$HOME/.local/bin/kanata"
+    echo "Kanata built and installed to $HOME/.local/bin/kanata"
 else
-    echo "Kanata is already installed"
+    # Copy cmd-allowed kanata binary
+    echo "Copying cmd-allowed kanata binary..."
+    mkdir -p "$HOME/.local/bin"
+    cp "/home/simon/repos/dotfiles/kanata_cmd_allowed" "$HOME/.local/bin/kanata"
+    chmod +x "$HOME/.local/bin/kanata"
+    echo "Kanata binary installed to $HOME/.local/bin/kanata"
 fi
 
-# Check if user is in input group
+# Ensure ~/.local/bin is in PATH
+if ! echo "$PATH" | grep -q "$HOME/.local/bin"; then
+    echo "Adding ~/.local/bin to PATH..."
+    export PATH="$HOME/.local/bin:$PATH"
+    echo "NOTE: Add 'export PATH=\"$HOME/.local/bin:\$PATH\"' to your ~/.bashrc or ~/.zshrc"
+fi
+
+# Check if user is in input and uinput groups
+missing_groups=()
 if ! groups | grep -q "\binput\b"; then
-    echo "Adding $USER to input group for device access..."
-    sudo usermod -aG input "$USER"
+    missing_groups+=("input")
+fi
+if ! groups | grep -q "\buinput\b"; then
+    missing_groups+=("uinput")
+fi
+
+if [ ${#missing_groups[@]} -ne 0 ]; then
+    echo "Adding $USER to groups: ${missing_groups[*]} for device access..."
+    groups_str=$(IFS=,; echo "${missing_groups[*]}")
+    sudo usermod -aG "$groups_str" "$USER"
+    sudo udevadm control --reload-rules
     echo "IMPORTANT: You need to log out and back in for group changes to take effect!"
     echo "After logging back in, run this script again."
     exit 0
@@ -50,7 +79,7 @@ After=graphical-session.target
 [Service]
 Type=simple
 Environment=DISPLAY=:0
-ExecStart=/home/linuxbrew/.linuxbrew/bin/kanata -c $HOME/.config/kanata/kanata.kbd
+ExecStart=$HOME/.local/bin/kanata -c $HOME/.config/kanata/kanata.kbd
 Restart=always
 RestartSec=3
 
@@ -79,6 +108,7 @@ systemctl --user status kanata.service --no-pager
 
 echo ""
 echo "Installation complete!"
+echo "Kanata binary: $HOME/.local/bin/kanata"
 echo "Kanata configuration: $HOME/.config/kanata/kanata.kbd"
 echo "Service file: $HOME/.config/systemd/user/kanata.service"
 echo ""
