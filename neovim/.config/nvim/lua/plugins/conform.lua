@@ -48,6 +48,7 @@ return {
       -- "LSP: html, templ"
       -- "templ ready (templ) /Users/linkarzu/.local/share/neobean/mason/bin/templ"
       templ = { "templ" },
+      nu = { "nufmt" },
       -- php = { nil },
     },
   },
