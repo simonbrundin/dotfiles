@@ -80,16 +80,16 @@ def ll [] {
     ls -l | select name size modified mode target
 }
 
-# Yazi med cd-efteråt
-def --env y [...args] {
-    let tmp = (mktemp -t "")
-    yazi ...$args --cwd-file $tmp
-    let cwd = (open $tmp)
-    if $cwd != "" and $cwd != $env.PWD {
-        cd $cwd
-    }
-    rm -fp $tmp
-}
+# # Yazi med cd-efteråt
+# def --env y [...args] {
+#     let tmp = (mktemp -t "")
+#     yazi ...$args --cwd-file $tmp
+#     let cwd = (open $tmp)
+#     if $cwd != "" and $cwd != $env.PWD {
+#         cd $cwd
+#     }
+#     rm -fp $tmp
+# }
 
 def e [] {
     $env | fzf
