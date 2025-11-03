@@ -103,7 +103,7 @@
   XX     XX     XX     XX     XX     XX     XX     XX     XX     XX     XX     XX     XX
   XX     XX     XX     XX     XX     (macro C-b (unicode $))     XX     XX     XX     XX     XX     XX     XX     XX
   XX     XX     XX     (macro C-b s)     XX     XX     XX     (macro C-b p)  up    right  (macro C-b n)     XX     XX
-  XX     XX     XX     @grok     XX     XX     XX     XX     XX     XX     XX     XX     XX
+  XX     XX     XX     (macro C-b x)     XX     XX     XX     (macro C-b c)     XX     (macro C-b ,)      XX     XX     XX
           XX     XX     XX                @sesh               @sesh     XX     XX
 )
 
