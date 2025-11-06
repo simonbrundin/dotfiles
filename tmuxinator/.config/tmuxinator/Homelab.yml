@@ -1,0 +1,9 @@
+# /Users/simon/.config/ muxinator/Ekonomi.yml
+
+name: Homelab
+root: ~/repos/homelab
+
+windows:
+  - NeoVim: nvim
+  - Agent: simon ai
+  - Terminal:
