@@ -59,6 +59,11 @@
   sall (macro (cmd hyprctl dispatch workspace 1) 50 C-u)
 )
 
+;; Player
+(defalias
+  playnext (cmd playerctl next)
+)
+
 ;; Grundtangentbord med engelska keycodes -------------------------------------------------------
 (defsrc
   grv   1     2     3     4     5     6     7     8     9     0     -     =     bspc
@@ -79,7 +84,7 @@
   XX     XX     XX     XX     XX     XX     XX     XX     XX     XX     XX     XX     XX
   XX     XX     XX     XX     XX     XX     XX     XX     XX     XX     XX     XX     XX     XX
   XX     XX     XX     XX     C-d     XX     XX     left  down  up    right XX     XX
-  XX     XX     XX     XX     XX     XX     XX     XX     XX     XX     XX     XX     XX
+  XX     XX     XX     XX     XX     XX     XX     @playnext     XX     XX     XX     XX     XX
           XX     XX     XX                XX               XX     XX     XX
 )
 
