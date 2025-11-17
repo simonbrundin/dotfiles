@@ -1,6 +1,13 @@
 #!/bin/bash
 
-session_name=${1:-Dotfiles}
+# Take all arguments as session name, default to Dotfiles
+if [ $# -eq 0 ]; then
+  session_name="Dotfiles"
+else
+  # Replace + or _ with spaces to support names like "Simon+CLI" -> "Simon CLI"
+  session_name="${*//+/ }"
+  session_name="${session_name//_/ }"
+fi
 
 # Set environment
 export PATH=/usr/bin:/home/linuxbrew/.linuxbrew/bin:/usr/local/bin:$PATH
@@ -12,7 +19,17 @@ hyprctl dispatch workspace 1
 
 # Check if session exists, if not create it
 if ! tmux has-session -t "$session_name" 2>/dev/null; then
-  tmuxinator start "$session_name" -d
+  # Try to find the tmuxinator config file
+  # Convert to lowercase and replace spaces with hyphens for filename
+  tmuxinator_project=$(echo "$session_name" | tr '[:upper:]' '[:lower:]' | tr ' ' '-')
+
+  # Check if the tmuxinator project exists
+  if tmuxinator list | grep -q "^$tmuxinator_project$"; then
+    tmuxinator start "$tmuxinator_project" -d
+  else
+    # Fallback to original session name
+    tmuxinator start "$session_name" -d
+  fi
 fi
 
 # Get the Alacritty window on workspace 1
