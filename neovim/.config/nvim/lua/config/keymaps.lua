@@ -3,3 +3,6 @@
 -- Add any additional keymaps here
 
 vim.keymap.set("n", "<leader>kr", "<cmd>!simon kanata restart<cr>", { desc = "Restart Kanata" })
+
+-- Markera all text i dokumentet
+vim.keymap.set("n", "<leader>vv", "ggVG", { desc = "Select all text" })
