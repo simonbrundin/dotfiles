@@ -1,7 +1,7 @@
 #https://www.apotekhjartat.se/varumarken/teva/sumatriptan-teva-filmdragerad-tablett-50-mg-2-st n  /Users/simon/.config/tmuxinator/Config-Tmuxinator.yml
 
-name: Config - Tmuxinator
-root: ~/repos/dotfiles/tmuxinator/.config/tmuxinator
+name: Terminal
+root: ~/
 
 windows:
-  - Editor: nvim "Config - Tmuxinator.yml"
+  - Terminal:
