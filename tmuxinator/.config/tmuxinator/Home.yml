@@ -7,8 +7,8 @@ windows:
       layout: main-vertical
       panes:
         - btop
-        - clear ; fastfetch
   - Terminal:
+      - clear ; fastfetch
 # Optional tmux socket
 # socket_name: foo
 
