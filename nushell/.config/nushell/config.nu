@@ -39,6 +39,7 @@ let custom_paths = [
     "/bin"
     "/usr/local/sbin"
     "/home/simon/bin"
+    "/home/simon/.local/bin"
     "/usr/sbin"
     "/sbin"
     "/opt/homebrew/bin"
@@ -46,6 +47,7 @@ let custom_paths = [
     "/home/linuxbrew/.linuxbrew/bin"
     "/home/simon/repos/simon-cli"
     "/home/simon/.cargo/bin"
+    "/home/simon/.local/share/gem/ruby/3.4.0/bin"
 ]
 
 $env.PATH = ($custom_paths | append $env.PATH | uniq)
