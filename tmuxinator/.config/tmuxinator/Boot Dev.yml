@@ -1,0 +1,8 @@
+# /Users/simon/.config/tmuxinator/simon.yml
+
+name: Boot Dev
+root: ~/repos/boot-dev/
+
+windows:
+  - Editor: nvim
+  - Terminal:
