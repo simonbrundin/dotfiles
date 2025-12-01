@@ -46,6 +46,7 @@ let custom_paths = [
     "/opt/homebrew/sbin"
     "/home/linuxbrew/.linuxbrew/bin"
     "/home/simon/repos/simon-cli"
+    "/home/simon/go/bin"
     "/home/simon/.cargo/bin"
     "/home/simon/.local/share/gem/ruby/3.4.0/bin"
 ]
