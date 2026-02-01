@@ -5,4 +5,5 @@ root: ~/repos/simon-cli/
 
 windows:
   - Editor: nvim simon
+  - Agent: opencode
   - Terminal: simon

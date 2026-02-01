@@ -6,3 +6,4 @@ root: ~/repos/begbot/
 windows:
   - Editor: nvim
   - Agent: opencode
+  - Terminal:
