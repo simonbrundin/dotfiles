@@ -1,0 +1,1 @@
+/home/simon/repos/begbot/.opencode/commands/index-standards.md

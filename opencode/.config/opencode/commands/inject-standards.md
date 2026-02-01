@@ -1,0 +1,1 @@
+/home/simon/repos/begbot/.opencode/commands/inject-standards.md
