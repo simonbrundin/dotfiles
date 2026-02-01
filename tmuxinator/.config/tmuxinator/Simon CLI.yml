@@ -7,3 +7,4 @@ windows:
   - Editor: nvim simon
   - Agent: opencode
   - Terminal: simon
+  - LazyGit: lg
