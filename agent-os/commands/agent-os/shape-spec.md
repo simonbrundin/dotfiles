@@ -137,7 +137,7 @@ Here's the plan structure. Task 1 saves all our shaping work before implementati
 
 Create `agent-os/specs/{folder-name}/` with:
 
-- **plan.md** — This full plan
+- **plan.md** — This full plan (with status: pending in YAML frontmatter)
 - **shape.md** — Shaping notes (scope, decisions, context from our conversation)
 - **standards.md** — Relevant standards that apply to this work
 - **references.md** — Pointers to reference implementations studied
@@ -165,7 +165,59 @@ After Task 1 is confirmed, continue building out the remaining implementation ta
 
 Each task should be specific and actionable.
 
-### Step 9: Ready for Execution
+### Step 9: Generate plan.md Content
+
+When creating the plan.md file, use this template structure:
+
+```markdown
+---
+status: pending
+---
+
+# {Feature Name}
+
+## Problem Statement
+
+{Brief description of what we're solving}
+
+## Solution Overview
+
+{High-level approach}
+
+## Implementation Steps
+
+### Task 1: Save spec documentation
+**Status:** completed
+- [x] Create spec folder structure
+- [x] Write plan.md
+- [x] Write shape.md
+- [x] Write standards.md
+- [x] Write references.md
+
+### Task 2: {First implementation task}
+**Status:** pending
+- [ ] {Specific subtask}
+- [ ] {Specific subtask}
+
+### Task 3: {Next task}
+**Status:** pending
+- [ ] {Specific subtask}
+
+{Continue with additional tasks as needed}
+
+## Success Criteria
+
+- {Measurable outcome 1}
+- {Measurable outcome 2}
+
+## Notes
+
+{Additional context, risks, or considerations}
+```
+
+**Important:** Always start plan.md with the YAML frontmatter containing `status: pending`. This enables fast scanning by the `/work` command.
+
+### Step 10: Ready for Execution
 
 When the full plan is ready:
 
@@ -184,12 +236,34 @@ The spec folder will contain:
 
 ```
 agent-os/specs/{YYYY-MM-DD-HHMM-feature-slug}/
-├── plan.md           # The full plan
+├── plan.md           # The full plan (with status in YAML frontmatter)
 ├── shape.md          # Shaping decisions and context
 ├── standards.md      # Which standards apply and key points
 ├── references.md     # Pointers to similar code
 └── visuals/          # Mockups, screenshots (if any)
 ```
+
+### plan.md Format
+
+The plan.md file must start with YAML frontmatter containing a status field:
+
+```yaml
+---
+status: pending
+---
+
+# Feature Title
+
+## Problem Statement
+...
+```
+
+**Status values:**
+- `pending` — Not started (default for new specs)
+- `in_progress` — Currently being worked on
+- `completed` — Done, archived
+
+The status field enables fast scanning with tools like `rg` to find specs that need work.
 
 ## shape.md Content
 
