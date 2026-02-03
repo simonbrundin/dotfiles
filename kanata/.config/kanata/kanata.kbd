@@ -24,6 +24,7 @@
   unifi (macro (cmd hyprctl dispatch workspace 10) (cmd xdg-open https://unifi.ui.com))
   ai (cmd hyprctl dispatch workspace 3)
   note (cmd hyprctl dispatch workspace 4)
+  mooni (cmd hyprctl dispatch workspace 6)
   aplan (cmd /home/simon/repos/dotfiles/kanata/.config/kanata/toggle-plan.sh)
 )
 
@@ -93,8 +94,8 @@
 (deflayer app
   XX     XX     XX     XX     XX     XX     XX     XX     XX     XX     XX     XX     XX
   XX     XX     XX     XX     XX     XX     XX     XX     @unifi     XX     XX     @aplan     XX     XX
-  XX     XX     @ai     XX     XX     XX     XX     @ha   @term  @web    right XX     XX
-  XX     XX     XX     @grok     XX     XX     XX     @note     XX     XX     XX     XX     XX
+  XX     XX     @ai     XX     XX     XX     XX     @ha   @term  @web    @mooni XX     XX
+  XX     XX     XX     @grok     XX     XX     XX     @note     @mooni     XX     XX     XX     XX
           XX     XX     XX                XX               XX     XX     XX
 )
 
