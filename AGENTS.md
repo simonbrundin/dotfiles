@@ -153,3 +153,21 @@ Run OpenCode commands to access these features.
 - **kanata**: Keyboard remapping with cmd feature enabled
 - **1Password CLI**: Secret management integration
 - **stow**: Symlink-based dotfile deployment
+
+## Notifications
+
+When OpenCode needs user input OR finishes a task, ALWAYS send a system notification:
+
+### When Waiting for Input
+Before using the `question` tool or otherwise waiting for user response:
+```bash
+notify-send -u normal "OpenCode: Question" "OpenCode väntar på dig - kolla terminalen"
+```
+
+### When Task Completes
+After completing a task or finishing work:
+```bash
+notify-send -u low "OpenCode: Complete" "OpenCode är färdig"
+```
+
+This applies to ALL interactions - every question and every completion should trigger a notification so the user knows when to respond and when work is done.

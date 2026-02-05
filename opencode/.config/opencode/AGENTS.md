@@ -98,3 +98,21 @@ Efter varje korrigering från användaren:
 
 - **Minimal Impact**  
   Rör bara det som verkligen måste röras. Undvik att introducera nya buggar.
+
+## Notifications
+
+När OpenCode väntar på input ELLER är klar med en uppgift:
+
+### När du väntar på input
+Innan du använder `question`-verktyget eller väntar på användarens svar:
+```bash
+notify-send -u normal "OpenCode: Question" "OpenCode väntar på dig - kolla terminalen"
+```
+
+### När uppgiften är klar
+Efter att du har slutfört en uppgift eller är färdig med arbetet:
+```bash
+notify-send -u low "OpenCode: Complete" "OpenCode är färdig"
+```
+
+Detta gäller ALLA interaktioner - varje fråga och varje slutförande ska trigga en notifikation.
