@@ -6,9 +6,8 @@ set -e
 
 echo "Installing kanata configuration..."
 
-# Check if user wants to build from source
-read -p "Do you want to build kanata from source with cmd enabled? (y/N): " -n 1 -r
-echo
+# Use pre-installed binary by default (no interactive prompt)
+REPLY="n"
 if [[ $REPLY =~ ^[Yy]$ ]]; then
     echo "Building kanata from source..."
     if ! command -v cargo &> /dev/null; then
