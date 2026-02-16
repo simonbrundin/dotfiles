@@ -1,0 +1,2 @@
+time=2026-02-15T22:21:50.727+01:00 level=INFO msg="added sidecar entries to .gitignore" entries="[.sidecar/ .sidecar-agent .sidecar-task .sidecar-pr .sidecar-start.sh .sidecar-base .td-root]"
+time=2026-02-16T06:57:44.011+01:00 level=INFO msg="added sidecar entries to .gitignore" entries="[.sidecar/ .sidecar-agent .sidecar-task .sidecar-pr .sidecar-start.sh .sidecar-base .td-root]"

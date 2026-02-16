@@ -63,7 +63,6 @@ alias lg = lazygit
 alias n = nvim
 alias y = yazi
 alias d = dagger
-alias td = simon talos dashboard
 alias kd = simon kubernetes dashboard
 alias k = ^kubectl
 alias t = ^talosctl

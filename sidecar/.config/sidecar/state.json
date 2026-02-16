@@ -1,0 +1,37 @@
+{
+  "gitDiffMode": "unified",
+  "workspaceSidebarWidth": 40,
+  "fileBrowser": {
+    "/home/simon": {
+      "selectedFile": ".1password",
+      "activePane": "tree",
+      "showIgnored": true
+    },
+    "/home/simon/repos/dotfiles": {
+      "selectedFile": ".disabled",
+      "activePane": "tree",
+      "showIgnored": true
+    },
+    "/home/simon/repos/neuro": {
+      "selectedFile": ".sidecar",
+      "activePane": "tree",
+      "showIgnored": true
+    }
+  },
+  "workspace": {
+    "/home/simon/repos/dotfiles": {
+      "workspaceName": "dotfiles-test-first-todo-in-td"
+    },
+    "/home/simon/repos/neuro": {
+      "workspaceName": "neuro-snyggare-mail"
+    }
+  },
+  "activePlugin": {
+    "/home/simon": "td-monitor",
+    "/home/simon/repos/dotfiles": "td-monitor",
+    "/home/simon/repos/neuro": "workspace-manager"
+  },
+  "lastWorktreePath": {
+    "/home/simon/repos/neuro": "/home/simon/repos/neuro"
+  }
+}

@@ -1,1 +1,11 @@
 nushell/.config/nushell/history.txt
+.todos/
+
+# Sidecar worktree state files
+.sidecar/
+.sidecar-agent
+.sidecar-task
+.sidecar-pr
+.sidecar-start.sh
+.sidecar-base
+.td-root

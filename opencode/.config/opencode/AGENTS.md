@@ -99,6 +99,16 @@ Efter varje korrigering från användaren:
 - **Minimal Impact**  
   Rör bara det som verkligen måste röras. Undvik att introducera nya buggar.
 
+## Viktig Infrastruktur
+
+- **NeuroQuant Monitor**: Körs som cron-jobb på `pxe` var 5:e minut  
+  - SSH: `ssh pxe`  
+  - Logg: `~/repos/neuro/monitor.log`  
+  - Cron: `crontab -l` (se `*/5 * * * *`)  
+  - Kod: `~/repos/neuro/`
+
+- Lokal neuro-repo: `/home/simon/repos/neuro/`
+
 ## Notifications
 
 När OpenCode väntar på input ELLER är klar med en uppgift:
