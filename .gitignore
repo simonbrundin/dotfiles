@@ -9,3 +9,4 @@ nushell/.config/nushell/history.txt
 .sidecar-start.sh
 .sidecar-base
 .td-root
+.env

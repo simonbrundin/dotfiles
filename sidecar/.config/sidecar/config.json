@@ -35,6 +35,10 @@
       {
         "name": "Dotfiles",
         "path": "/home/simon/repos/dotfiles"
+      },
+      {
+        "name": "Begbot",
+        "path": "/home/simon/repos/begbot"
       }
     ]
   },

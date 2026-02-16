@@ -24,7 +24,7 @@ export PATH=$PATH:$HOME/.local/opt/go/bin
 alias simon='source /home/simon/repos/simon-cli/simon'
 
 # AI Agent configuration (used by 'simon ai')
-export AI_AGENT='opencode'
+export AI_AGENT='~/.config/opencode/opencode-secure'
 
 # Converted aliases from Nushell config.nu
 alias s='simon'
@@ -40,6 +40,7 @@ alias t='talosctl'
 alias th='simon talos health'
 alias thc='talosctl health --control-plane-nodes 10.10.10.11,10.10.10.12,10.10.10.13'
 alias ai='simon ai'
+alias oo='~/.config/opencode/opencode-secure'
 alias ld='lazydocker'
 alias cat='bat'
 alias ut='simon talos update config'

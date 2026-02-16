@@ -1,5 +1,10 @@
 # Workflow Orchestration
 
+## MANDATORY: Use td for Task Management
+
+You must run td usage --new-session at conversation start (or after /clear) to
+see current work. Use td usage -q for subsequent reads.
+
 ## 1. Plan Mode (Default för icke-triviala uppgifter)
 
 - Gäller allt som kräver **3+ steg** eller viktiga arkitektur-/designbeslut
@@ -101,10 +106,10 @@ Efter varje korrigering från användaren:
 
 ## Viktig Infrastruktur
 
-- **NeuroQuant Monitor**: Körs som cron-jobb på `pxe` var 5:e minut  
-  - SSH: `ssh pxe`  
-  - Logg: `~/repos/neuro/monitor.log`  
-  - Cron: `crontab -l` (se `*/5 * * * *`)  
+- **NeuroQuant Monitor**: Körs som cron-jobb på `pxe` var 5:e minut
+  - SSH: `ssh pxe`
+  - Logg: `~/repos/neuro/monitor.log`
+  - Cron: `crontab -l` (se `*/5 * * * *`)
   - Kod: `~/repos/neuro/`
 
 - Lokal neuro-repo: `/home/simon/repos/neuro/`
@@ -114,15 +119,20 @@ Efter varje korrigering från användaren:
 När OpenCode väntar på input ELLER är klar med en uppgift:
 
 ### När du väntar på input
+
 Innan du använder `question`-verktyget eller väntar på användarens svar:
+
 ```bash
 notify-send -u normal "OpenCode: Question" "OpenCode väntar på dig - kolla terminalen"
 ```
 
 ### När uppgiften är klar
+
 Efter att du har slutfört en uppgift eller är färdig med arbetet:
+
 ```bash
 notify-send -u low "OpenCode: Complete" "OpenCode är färdig"
 ```
 
-Detta gäller ALLA interaktioner - varje fråga och varje slutförande ska trigga en notifikation.
+Detta gäller ALLA interaktioner - varje fråga och varje slutförande ska trigga
+en notifikation.

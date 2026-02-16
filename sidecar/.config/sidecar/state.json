@@ -13,25 +13,30 @@
       "showIgnored": true
     },
     "/home/simon/repos/neuro": {
-      "selectedFile": ".sidecar",
+      "selectedFile": ".git",
       "activePane": "tree",
       "showIgnored": true
     }
   },
   "workspace": {
+    "/home/simon/repos/begbot": {
+      "workspaceName": "begbot-Värde-momentum"
+    },
     "/home/simon/repos/dotfiles": {
       "workspaceName": "dotfiles-test-first-todo-in-td"
     },
     "/home/simon/repos/neuro": {
-      "workspaceName": "neuro-snyggare-mail"
+      "workspaceName": "neuro-fix/wait-for-correct-portfolio"
     }
   },
   "activePlugin": {
     "/home/simon": "td-monitor",
-    "/home/simon/repos/dotfiles": "td-monitor",
+    "/home/simon/repos/dotfiles": "workspace-manager",
     "/home/simon/repos/neuro": "workspace-manager"
   },
   "lastWorktreePath": {
+    "/home/simon/repos/begbot": "/home/simon/repos/begbot",
+    "/home/simon/repos/dotfiles": "/home/simon/repos/dotfiles-test-first-todo-in-td",
     "/home/simon/repos/neuro": "/home/simon/repos/neuro"
   }
 }

@@ -52,6 +52,7 @@ dotfiles/
 This is a dotfiles repository - no traditional build system. However:
 
 ### Stow (Symlink Management)
+
 ```bash
 # Dry-run to see what would be symlinked
 stow -nvt ~ */
@@ -64,6 +65,7 @@ stow -vt ~ */ -D
 ```
 
 ### Shell Script Validation
+
 ```bash
 # Check shell scripts for syntax errors
 bash -n /path/to/script.sh
@@ -73,6 +75,7 @@ shellcheck /path/to/script.sh
 ```
 
 ### Neovim Lua Validation
+
 ```bash
 # Check lua syntax (from neovim directory)
 luac -p lua/config/*.lua
@@ -82,6 +85,7 @@ luacheck lua/
 ```
 
 ### TOML Validation
+
 ```bash
 # Validate TOML files
 toml-validate config.toml
@@ -90,6 +94,7 @@ toml-validate config.toml
 ## Code Style Guidelines
 
 ### Shell Scripts (Bash)
+
 - Use `#!/bin/bash` shebang
 - Use `set -e` for error handling
 - Use `[[ ]]` for conditionals (not `[ ]`)
@@ -100,6 +105,7 @@ toml-validate config.toml
 - Use `local` for function variables
 
 ### Lua (Neovim Configuration)
+
 - Follow stylua.toml: 2-space indent, 120 column width
 - Use `snake_case` for variables and functions
 - Use `local` scope by default
@@ -107,11 +113,13 @@ toml-validate config.toml
 - Use descriptive module names: `lua/config/options.lua`
 
 ### TOML Configuration
+
 - Use lowercase with underscores: `indent_width = 2`
 - Group related settings together
 - Add comments for non-obvious settings
 
 ### General
+
 - Minimal comments unless explaining complex logic
 - Consistent naming conventions per file type
 - Keep files focused and modular
@@ -164,13 +172,17 @@ Run OpenCode commands to access these features.
 When OpenCode needs user input OR finishes a task, ALWAYS send a system notification:
 
 ### When Waiting for Input
+
 Before using the `question` tool or otherwise waiting for user response:
+
 ```bash
 notify-send -u normal "OpenCode: Question" "OpenCode väntar på dig - kolla terminalen"
 ```
 
 ### When Task Completes
+
 After completing a task or finishing work:
+
 ```bash
 notify-send -u low "OpenCode: Complete" "OpenCode är färdig"
 ```

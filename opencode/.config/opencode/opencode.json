@@ -3,19 +3,34 @@
   "permission": {
     "*": "allow",
     "bash": {
+      "*": "allow",
       "rm": "ask",
-      "*": "allow"
+      "rm -rf": "ask"
     }
   },
   "mcp": {
     "github": {
-      "type": "remote",
-      "url": "https://api.githubcopilot.com/mcp/",
-      "enabled": true,
-      "oauth": false,
-      "headers": {
-        "Authorization": "Bearer {env:GITHUB_PAT}"
-      }
+      "type": "local",
+      "command": ["npx", "-y", "@modelcontextprotocol/server-github"],
+      "enabled": true
+    },
+    "memory": {
+      "type": "local",
+      "command": ["npx", "-y", "@modelcontextprotocol/server-memory"],
+      "enabled": true
+    },
+    "context7": {
+      "type": "local",
+      "command": ["npx", "-y", "@upstash/context7-mcp"],
+      "enabled": true
+    },
+    "taskmaster-ai": {
+      "type": "local",
+      "command": ["npx", "-y", "task-master-ai"],
+      "environment": {
+        "OPENROUTER_API_KEY": "{env:OPENROUTER_API_KEY}"
+      },
+      "enabled": true
     }
   }
 }
