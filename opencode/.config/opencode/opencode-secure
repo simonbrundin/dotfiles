@@ -5,8 +5,9 @@
 ENV_FILE="$HOME/repos/dotfiles/opencode/.config/opencode/.env"
 
 if [[ -f "$ENV_FILE" ]]; then
-  OP_OUTPUT=$(op run --quiet --env-file="$ENV_FILE" -- env 2>/dev/null)
-  eval "$OP_OUTPUT"
+  export GITHUB_TOKEN="$(op run --no-masking --env-file="$ENV_FILE" -- printenv GITHUB_TOKEN 2>/dev/null)"
+  export GITHUB_PERSONAL_ACCESS_TOKEN="$GITHUB_TOKEN"
+  export OPENROUTER_API_KEY="$(op run --no-masking --env-file="$ENV_FILE" -- printenv OPENROUTER_API_KEY 2>/dev/null)"
   exec opencode "$@"
 else
   echo "Error: $ENV_FILE not found"

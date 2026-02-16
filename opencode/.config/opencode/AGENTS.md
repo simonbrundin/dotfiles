@@ -1,23 +1,83 @@
 # Workflow Orchestration
 
-## MANDATORY: Use td for Task Management
+## Memory
 
-You must run td usage --new-session at conversation start (or after /clear) to
-see current work. Use td usage -q for subsequent reads.
+Retrieve and process all information from the `memory` MCP knowledge graph to
+guide our session.
 
-## 1. Plan Mode (Default för icke-triviala uppgifter)
+## Core Principles
 
-- Gäller allt som kräver **3+ steg** eller viktiga arkitektur-/designbeslut
-- Om något börjar gå snett → **STOPPA omedelbart**, gör om planen – fortsätt
-  **inte** bara att köra på
-- Använd plan-läget även för **verifieringssteg** – inte bara för själva
-  byggandet
-- Skriv **detaljerade specs** och verifieringskriterier **i förväg** för att
-  minska oklarheter
+- Always follow Test-Driven Development (TDD): Write tests FIRST, then minimal
+  code to make them pass, then refactor.
+- Aim for ≥ 80% code coverage (ideally 90%+). Never commit without tests
+  covering happy path, errors, edge cases.
+- Use structured logging (zap or similar), clear error handling (errors.Is/As),
+  context-aware functions.
 
-## 2. Subagent-strategi
+- Keep code clean, idiomatic Go: small functions, clear names, no magic
+  numbers/strings.
+- Commit messages: Conventional Commits (feat:, fix:, chore:, refator:, test:,
+  docs: etc.)
+- Branch names: feature/<short-description>, bugfix/<issue-number>-<desc>,
+  chore/<desc>
 
-- Använd subagenter **generöst** för att hålla huvudkontexten ren och liten
+## Key Triggers & Magic Phrases
+
+- When I say "Get PRDs" → List all open GitHub issues with label "prd"
+- When I say "Show the details of X" → Fetch and display full PRD from issue #X
+- When I say "Start working on the PRD" (or "implement", "go") →
+  1. Set first pending task/subtask to "in-progress" (via Taskmaster)
+  2. Work TDD-style on one subtask at a time
+  3. Run tests locally after each change
+  4. Ask for feedback if stuck / tests fail
+- When I say "We're done" (or "we are done", "done here") → FULL DEPLOY
+  SEQUENCE:
+  1. Verify all tasks complete, tests pass, coverage OK
+  2. Stage all changed files
+  3. Create branch if none exists (naming: feature/<prd-slug>-auto or similar)
+  4. Commit with Conventional Commit message + PRD reference
+  5. Push to remote
+  6. Create Pull Request with:
+     - Good title (e.g. "feat: auto-set video language to English")
+
+     - Detailed body (changes, tests added, PRD link)
+
+  7. Trigger AI code review (multiple agents if possible)
+  8. Present review feedback → apply fixes if I approve
+  9. Merge PR (squash or merge commit)
+  10. Delete local + remote branch
+  11. Clean temp files
+
+  12. Let GitHub Actions handle: build → test → release (tag) → deploy
+
+- When I say "memorize that [something]" → Store it permanently in memory MCP
+
+## PRD & Task Handling Rules
+
+- Use Taskmaster MCP to create/break down PRDs into tasks/subtasks
+
+- Never parse or start implementing a PRD unless I explicitly say "Start working
+  on the PRD"
+- When creating PRD: Make it detailed, user-story style, acceptance criteria,
+  tasks ~20, subtasks ~80-100 for medium features
+
+- Always reference the GitHub issue/PR number in commits/PRs
+
+## Testing & Quality Rules
+
+- Write table-driven tests for CLI commands (flags, args, output, errors)
+- Mock external dependencies (YouTube API, HTTP etc.) using httptest or similar
+- Cover: valid input, invalid flags, API errors, rate limits, auth failures
+- Use testify/assert/require for assertions
+
+## Other Rules
+
+- Always use latest docs via Context7 MCP – never rely on outdated knowledge
+- Fork-aware: Work ONLY in my fork (update memory if needed: replace vfarcic
+  with my username)
+- If something is unclear → ask me before proceeding
+- Be verbose in explanations when I ask "why" or "explain"
+
 - Offload följande till subagenter:
   - Forskning / insamling av information
   - Utforskning / alternativa tillvägagångssätt
@@ -104,19 +164,7 @@ Efter varje korrigering från användaren:
 - **Minimal Impact**  
   Rör bara det som verkligen måste röras. Undvik att introducera nya buggar.
 
-## Viktig Infrastruktur
-
-- **NeuroQuant Monitor**: Körs som cron-jobb på `pxe` var 5:e minut
-  - SSH: `ssh pxe`
-  - Logg: `~/repos/neuro/monitor.log`
-  - Cron: `crontab -l` (se `*/5 * * * *`)
-  - Kod: `~/repos/neuro/`
-
-- Lokal neuro-repo: `/home/simon/repos/neuro/`
-
 ## Notifications
-
-När OpenCode väntar på input ELLER är klar med en uppgift:
 
 ### När du väntar på input
 
@@ -135,4 +183,5 @@ notify-send -u low "OpenCode: Complete" "OpenCode är färdig"
 ```
 
 Detta gäller ALLA interaktioner - varje fråga och varje slutförande ska trigga
-en notifikation.
+en notifikation. Detta gäller ALLA interaktioner - varje fråga och varje
+slutförande ska trigga en notifikation.

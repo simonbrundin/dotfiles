@@ -16,6 +16,7 @@ curl -s "https://openrouter.ai/api/v1/models" | jq -r '.data[] | select(.pricing
 ## Step 2: Filter for Models Suitable for Coding and Infrastructure
 
 Focus on models that excel at:
+
 - Code generation and completion
 - Infrastructure as code (IaC)
 - Debugging and troubleshooting
@@ -23,6 +24,7 @@ Focus on models that excel at:
 - Cloud and DevOps tasks
 
 ### Key Criteria for Selection:
+
 - Large context windows (100k+ tokens preferred)
 - Strong reasoning capabilities
 - Good performance for technical tasks
@@ -34,18 +36,21 @@ Focus on models that excel at:
 Based on analysis of free models, the top recommendations for coding and infrastructure are:
 
 ### 1. **Qwen: Qwen3 Coder 480B A35B** (qwen/qwen3-coder:free)
+
 - **Context:** 262,000 tokens
 - **Provider:** Qwen (Alibaba)
 - **Best for:** Large-scale code generation, complex infrastructure as code
 - **Strengths:** Massive context window, specialized for coding tasks, handles large codebases well
 
 ### 2. **StepFun: Step 3.5 Flash** (stepfun/step-3.5-flash:free)
-- **Context:** 256,000 tokens  
+
+- **Context:** 256,000 tokens
 - **Provider:** StepFun
 - **Best for:** General coding, debugging, infrastructure automation
 - **Strengths:** Sparse MoE architecture for efficiency, excellent reasoning capabilities
 
 ### 3. **NVIDIA: Nemotron 3 Nano 30B A3B** (nvidia/nemotron-3-nano-30b-a3b:free)
+
 - **Context:** 256,000 tokens
 - **Provider:** NVIDIA
 - **Best for:** System-level programming, infrastructure management
@@ -65,7 +70,7 @@ Top 3 Free Models for Coding & Infrastructure:
 
 2. **StepFun: Step 3.5 Flash**
    - Context: 256K tokens
-   - Best for: General coding, debugging, infrastructure automation  
+   - Best for: General coding, debugging, infrastructure automation
    - Provider: StepFun
 
 3. **NVIDIA: Nemotron 3 Nano 30B A3B**
@@ -79,17 +84,21 @@ Which model would you like to use?
 ## Step 5: Additional Information
 
 ### Other Notable Free Models:
+
 - **Free Models Router** (openrouter/free): Router that selects from available free models
 - **Arcee: Trinity Large Preview** (131K context): Good for complex reasoning tasks
 - **OpenAI: gpt-oss-120b** (131K context): Open-source variant from OpenAI
 
 ### Provider Status Notes:
+
 - All listed models currently have active providers
 - Models with larger context windows are generally better for infrastructure work
 - Specialized coder models perform better for specific programming tasks
 
 ### Usage Considerations:
+
 - Free models may have rate limits
 - Performance varies by task type
 - Always test with specific use cases
 - Monitor for provider availability changes
+

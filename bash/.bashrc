@@ -66,3 +66,9 @@ function y() {
         rm -f -- "$tmp"
     fi
 }
+
+# Task Master aliases added on 2/16/2026
+alias tm='task-master'
+alias taskmaster='task-master'
+alias hamster='task-master'
+alias ham='task-master'

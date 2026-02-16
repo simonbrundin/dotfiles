@@ -1,0 +1,29 @@
+{
+  "version": "1.0",
+  "tasks": [
+    {
+      "id": "1",
+      "title": "Configure Plan agent permissions",
+      "description": "Configure the Plan agent with appropriate read-only permissions in OpenCode config",
+      "status": "pending",
+      "priority": "medium",
+      "tags": ["opencode", "agents", "configuration"]
+    },
+    {
+      "id": "2",
+      "title": "Configure Build agent permissions",
+      "description": "Configure the Build agent with appropriate permissions in OpenCode config",
+      "status": "pending",
+      "priority": "medium",
+      "tags": ["opencode", "agents", "configuration"]
+    },
+    {
+      "id": "3",
+      "title": "Verify agent configuration works",
+      "description": "Test that the agent configuration works correctly in OpenCode",
+      "status": "pending",
+      "priority": "medium",
+      "tags": ["opencode", "agents", "testing"]
+    }
+  ]
+}
