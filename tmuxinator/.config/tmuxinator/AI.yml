@@ -4,5 +4,7 @@ name: AI
 root: ~/repos/ai
 
 windows:
+  - TUI: simon ai tui
+  - Sidecar: sidecar
   - Editor: nvim
   - Agent: ai

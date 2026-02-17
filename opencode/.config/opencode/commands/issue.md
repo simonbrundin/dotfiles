@@ -54,17 +54,12 @@ eller krav jag bör känna till?”
 - ADR-XXX
 - Figma: ...
 
-## Prioritet
-
-- Fråga om issue har en hög, mellan eller låg prioriter och sätt label därefter.
-  prio:high, prio:medium, prio:low
-
 ## Typ
 
 Definera om det är en feat/fix/refactor etc
 
 Skapa issuen med gh CLI:
-!`gh issue create --title "TITEL_HÄR" --body "BODY_HÄR" --label "PRIO_HÄR,TYP_HÄR,time-estimate:M" --assignee "@me" 2>&1`
+!`gh issue create --title "TITEL_HÄR" --body "BODY_HÄR" --label "TYP_HÄR,time-estimate:M" --assignee "@me" 2>&1`
 
 Kopiera exakt kommandot du skulle kör exekvering (fråga om OK om osäker).
 exekvering (fråga om OK om

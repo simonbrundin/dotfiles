@@ -32,24 +32,22 @@ if ! tmux has-session -t "$session_name" 2>/dev/null; then
   fi
 fi
 
-# Get the Alacritty window on workspace 1
-alacritty_addr=$(hyprctl clients -j | jq -r '.[] | select(.workspace.id == 1 and .class == "Alacritty") | .address' | head -1)
+# Switch to workspace 1
+hyprctl dispatch workspace 1
 
-if [ -n "$alacritty_addr" ]; then
-  # Focus the existing window and switch session
-  hyprctl dispatch focuswindow address:$alacritty_addr
-  # Send the tmux switch command to the terminal
-  tmux switch-client -t "$session_name" 2>/dev/null || {
-    # If no client is attached, attach to it
-    alacritty_pid=$(hyprctl clients -j | jq -r ".[] | select(.address == \"$alacritty_addr\") | .pid")
-    if [ -n "$alacritty_pid" ]; then
-      tmux_pid=$(pgrep -P "$alacritty_pid" tmux | head -1)
-      if [ -n "$tmux_pid" ]; then
-        tmux -S /tmp/tmux-$(id -u)/default switch-client -t "$session_name"
-      fi
-    fi
-  }
+# Get the Ghostty window on workspace 1
+ghostty_addr=$(hyprctl clients -j | jq -r '.[] | select(.workspace.id == 1 and .class == "com.mitchellh.ghostty") | .address' | head -1)
+
+if [ -n "$ghostty_addr" ]; then
+  # Try to switch tmux session using switch-client
+  if tmux switch-client -t "$session_name" 2>/dev/null; then
+    # Successfully switched, just focus the window
+    hyprctl dispatch focuswindow address:$ghostty_addr
+  else
+    # No client attached - create new window with session
+    uwsm-app -- ghostty +new-window -e tmuxinator start "$session_name" -d &
+  fi
 else
-  # No Alacritty window found, create one
-  uwsm-app -- alacritty -e tmuxinator start "$session_name" &
+  # No Ghostty window found, create one with the session
+  uwsm-app -- ghostty +new-window -e tmuxinator start "$session_name" -d &
 fi

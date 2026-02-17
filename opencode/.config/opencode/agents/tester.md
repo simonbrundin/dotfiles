@@ -240,3 +240,117 @@ När tester föreslås, ge:
 3. Kort förklaring av testtäckning
 4. Anteckningar om edge cases som täcks
 5. Eventuella tags för testorganisation
+
+## Anti-patterns att undvika
+
+Läs: https://cucumber.io/docs/guides/anti-patterns
+
+### Feature-coupled step definitions (UNDVIK!)
+
+**Fel:**
+
+```
+features/
+├── edit_work_experience.feature
+├── edit_languages.feature
+└── steps/
+    ├── edit_work_experience_steps.go   # ← Kopplat till specifik feature
+    ├── edit_languages_steps.go
+    └── edit_education_steps.go
+```
+
+**Rätt - Organisera per domänkoncept:**
+
+```
+features/
+├── edit_work_experience.feature
+├── edit_languages.feature
+└── steps/
+    ├── employee_steps.go    # ← Domän-baserat, återanvändbart
+    ├── cv_steps.go
+    └── common_steps.go
+```
+
+### Konjunktionssteg (UNDVIK!)
+
+**Fel:**
+
+```gherkin
+Given I have shades and a brand new Mustang
+```
+
+**Rätt:**
+
+```gherkin
+Given I have shades
+And I have a brand new Mustang
+```
+
+## Godog-specifikt (Go)
+
+### Korrekt projektstruktur
+
+```
+projekt/
+├── tests/
+│   ├── feature1.feature
+│   ├── feature2.feature
+│   ├── godog_runner_test.go    # Test runner
+│   └── steps/
+│       ├── github_steps.go     # Domän: GitHub
+│       ├── agent_steps.go      # Domän: Agenter
+│       └── helpers.go          # Delade funktioner
+├── internal/
+└── go.mod
+```
+
+### Korrekt BeforeScenario-användning
+
+```go
+func InitializeGitHubScenario(ctx *godog.ScenarioContext) {
+    state := &GitHubState{}
+
+    // OBS! Inget error-return, bara func(sc *godog.Scenario)
+    ctx.BeforeScenario(func(sc *godog.Scenario) {
+        state = &GitHubState{}  // Reset state mellan scenarion
+    })
+
+    // Steg-definitioner...
+}
+```
+
+### Testkörning (Go)
+
+```bash
+# Kör via go test
+go test -v ./tests/
+
+# Eller med godog CLI
+go run github.com/cucumber/godog/cmd/godog@latest run tests/
+```
+
+### State-hantering
+
+Använd domän-specifika state-strukturer istället för globala variabler:
+
+```go
+type GitHubState struct {
+    Issues         []Issue
+    FilteredIssues []Issue
+    Err            error
+    Repo           string
+}
+
+type AgentState struct {
+    Agents []Agent
+    Err    error
+}
+```
+
+## Erfarenheter från session
+
+1. **Lägg tester i /tests** - inte i /internal eller andra platser
+2. **Domän-baserade steg-filer** - organisera efter koncept, inte feature
+3. **Kör testerna** - verifiera att de failar (TDD) innan implementation
+4. **Hantera varierande data tables** - kolla antal kolumner innan åtkomst
+5. **Initiera state i BeforeScenario** - inte globala variabler

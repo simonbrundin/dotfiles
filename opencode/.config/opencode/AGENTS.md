@@ -177,6 +177,17 @@ Efter varje korrigering från användaren:
 - **Minimal Impact**  
   Rör bara det som verkligen måste röras. Undvik att introducera nya buggar.
 
+- **Never Ignore Errors**  
+  Använd ALDRIG `_` för att ignorera fel vid I/O, CLI-kommandon eller API-anrop.  
+  Fel ska alltid hanteras och visas till användaren med användarvänliga meddelanden.
+
+- **Avoid Variable Shadowing**  
+  Använd INTE variabelnamn som skuggar package-namn (t.ex. `errors`, `fmt`, `json`).  
+  Använd beskrivande namn som `repoErrors`, `fetchErr` etc.
+
+- **Extract Magic Strings**  
+  Extrahera magic strings till namngivna konstanter för bättre läsbarhet och underhåll.
+
 ## Notifications
 
 ### När du väntar på input

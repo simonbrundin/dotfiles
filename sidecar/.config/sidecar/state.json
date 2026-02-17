@@ -7,6 +7,17 @@
       "activePane": "tree",
       "showIgnored": true
     },
+    "/home/simon/repos/ai": {
+      "selectedFile": ".git",
+      "activePane": "tree",
+      "previewFile": ".todos/command_usage.jsonl",
+      "showIgnored": true,
+      "tabs": [
+        {
+          "path": ".todos/command_usage.jsonl"
+        }
+      ]
+    },
     "/home/simon/repos/dotfiles": {
       "selectedFile": ".disabled",
       "activePane": "tree",
@@ -19,6 +30,9 @@
     }
   },
   "workspace": {
+    "/home/simon/repos/ai": {
+      "workspaceName": "ai-commit"
+    },
     "/home/simon/repos/begbot": {
       "workspaceName": "begbot-Värde-momentum"
     },
@@ -31,6 +45,7 @@
   },
   "activePlugin": {
     "/home/simon": "td-monitor",
+    "/home/simon/repos/ai": "td-monitor",
     "/home/simon/repos/dotfiles": "workspace-manager",
     "/home/simon/repos/neuro": "workspace-manager"
   },
