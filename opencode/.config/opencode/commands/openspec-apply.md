@@ -1,1 +1,0 @@
-/home/simon/repos/dotfiles/.opencode/command/openspec-apply.md

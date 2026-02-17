@@ -1,79 +1,71 @@
 ---
-description: Create a new PRD issue in GitHub and set up tasks with Taskmaster
+description: Skapa en ny GitHub issue med standardmallen
 agent: plan
 ---
 
-Create a new Product Requirements Document (PRD) by creating a GitHub issue with
-label "prd" and setting up tasks using Taskmaster.
+# Skapa ny Issue i GitHub
 
-## Step 1: Gather Issue Information
+Du är expert på att formulera tydliga GitHub issues.
 
-```bash
-notify-send -u normal "OpenCode: Question" "OpenCode väntar på dig - kolla terminalen"
-```
+Använd alltid följande struktur (anpassa efter beskrivning i $ARGUMENTS):
 
-Ask the user for:
+Fråga dig fram till allt du behöver ha svar på.
 
-1. **Issue title** - A concise title for the feature/PRD
-2. **Description** - Detailed description of the feature including:
+Titel: Kort & självförklarande – Vad ska uppnås? (The Why + What)
 
-- Problem statement
-- Expected behavior
-- Acceptance criteria Acceptance criteria
-- Any technical constraints or requirements
+Beskrivning:
 
-## Step 2: Create GitHub Issue
+## Vad ska uppnås?
 
-Use the `github_create_issue` tool to create the issue with:
+Förstå omfattningen. Ställ 1–2 förtydligande frågor om omfattningen känns
+otydlig:
 
-- **title**: The issue title from Step 1
-- **body**: The detailed description from Step 1
-- **labels**: `["prd"]`
-- **owner**: The owner part of the repository
-- **repo**: The repo part of the repository
+”Är det här en ny funktion eller en ändring i befintlig funktionalitet?” ”Vad är
+det förväntade resultatet när detta är klart?” ”Finns det några begränsningar
+eller krav jag bör känna till?”
 
-## Step 3: Initialize Taskmaster (if needed)
+## Acceptance criteria
 
-Check if `.taskmaster` directory exists in the project. If not, inform the user
-they need to initialize Taskmaster first with `taskmaster init`.
+- [ ] Punkt 1
+- [ ] Punkt 2 ...
 
-## Step 4: Create PRD Tasks
+## Edge cases & icke-funktionella krav
 
-Use `taskmaster-ai_parse_prd` to generate tasks from the issue:
+- [ ] Punkt 2 ...
 
-- **input**: Path to a temporary file containing the issue description formatted
-  as PRD
-- **projectRoot**: The absolute path to the project directory
-- **numTasks**: "10" (or appropriate number based on complexity)
-- **force**: true
+- Felhantering: ...
+- Prestanda: ...
+- Säkerhet: ...
+- Kompatibilitet: ...
 
-First, create a temporary PRD file with the issue content:
+## Teknisk kontext / begränsningar
 
-# PRD: {issue_title}
+- Redan existerande: ...
 
-## Problem
+- Får INTE: ...
 
-{description}
+## Hur jag tänkt (valfritt)
 
-## Solution
+...
 
-## Acceptance Criteria
+## Relaterat
 
-{user_provided_criteria}
+- #XX
+- ADR-XXX
+- Figma: ...
 
-````
+## Prioritet
 
-Then call `taskmaster-ai_parse_prd` with the path to this file.
+- Fråga om issue har en hög, mellan eller låg prioriter och sätt label därefter.
+  prio:high, prio:medium, prio:low
 
+## Typ
 
-Trigger notification:
+Definera om det är en feat/fix/refactor etc
 
-```bash
-notify-send -u low "OpenCode: Complete" "OpenCode är färdig"
+Skapa issuen med gh CLI:
+!`gh issue create --title "TITEL_HÄR" --body "BODY_HÄR" --label "PRIO_HÄR,TYP_HÄR,time-estimate:M" --assignee "@me" 2>&1`
 
-Present the result to the user:
-
-- GitHub issue URL
-- Number of tasks created
-- Next steps (e.g., "Say 'Start working on the PRD' when ready to implement")
-````
+Kopiera exakt kommandot du skulle kör exekvering (fråga om OK om osäker).
+exekvering (fråga om OK om
+osäker).` Kopiera exakt kommandot du skulle kör exekvering (fråga om OK om osäker). exekvering (fråga om OK om osäker).`

@@ -1,5 +1,14 @@
 # Workflow Orchestration
 
+## Coding Workflow
+
+1. Skapa Issue i GitHub
+2. Skriv tester
+3. Implement med TDD
+4. Refactor
+5. Dokumentera
+6. PR
+
 ## Memory
 
 Retrieve and process all information from the `memory` MCP knowledge graph to
@@ -69,6 +78,10 @@ guide our session.
 - Mock external dependencies (YouTube API, HTTP etc.) using httptest or similar
 - Cover: valid input, invalid flags, API errors, rate limits, auth failures
 - Use testify/assert/require for assertions
+
+## GitHub
+
+- Username: simonbrundin
 
 ## Other Rules
 
