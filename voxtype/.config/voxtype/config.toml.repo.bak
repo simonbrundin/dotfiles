@@ -1,0 +1,30 @@
+# Voxtype configuration - managed by dotfiles/stow
+# Copy this to ~/.config/voxtype/config.toml when stowed
+
+[general]
+# UI theme: "dark" or "light"
+theme = "dark"
+# Default language/locale used for UI and recognition
+language = "sv"
+
+[input]
+# Which input backend to use (example values: "pulse", "alsa", "auto")
+backend = "auto"
+# Microphone device name or index (leave empty to use system default)
+device = ""
+
+[speech]
+# Enable text-to-speech feedback
+enabled = true
+# Voice identifier (depends on installed TTS voices)
+voice = "default"
+# Playback rate (1.0 = normal)
+rate = 1.0
+
+[hotkeys]
+# Hotkey to toggle listening (examples: "Ctrl+Alt+V", "Super+V")
+toggle_listen = "Ctrl+Alt+V"
+
+[logging]
+# log level: trace, debug, info, warn, error
+level = "info"
