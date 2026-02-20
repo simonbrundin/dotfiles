@@ -47,6 +47,15 @@ alias ut='simon talos update config'
 alias config_talos='code $TALOSCONFIG'
 alias config_kube='code $KUBECONFIG'
 
+# OpenCode wrapper: cleanup orphaned LSP processes before starting
+opencode() {
+    pkill -f "opencode.*typescript-language-server" 2>/dev/null
+    pkill -f "opencode.*vue-language-server" 2>/dev/null
+    pkill -f "opencode.*yaml-language-server" 2>/dev/null
+    pkill -f "opencode.*eslintServer" 2>/dev/null
+    command opencode "$@"
+}
+
 # Converted functions from Nushell config.nu
 ll() {
     ls -l

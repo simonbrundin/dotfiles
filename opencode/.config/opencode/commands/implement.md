@@ -9,6 +9,9 @@ issues i github i repot och frågar vilket jag vill arbeta med.
 Issue #$ARGUMENTS (eller aktuell kontext alternativt fråga efter vilken issue du
 vill implementera).
 
+1. Sätt label `implementation` på issue:
+   !`gh issue edit #$ARGUMENTS --add-label implementation --repo simonbrundin/ai`
+
 ## TDD-arbetsflöde: Red → Green → Refactor
 
 Följ detta strikt för varje funktion/endpoint:

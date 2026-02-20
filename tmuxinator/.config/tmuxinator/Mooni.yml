@@ -1,0 +1,7 @@
+#https://www.apotekhjartat.se/varumarken/teva/sumatriptan-teva-filmdragerad-tablett-50-mg-2-st n  /Users/simon/.config/tmuxinator/Config-Tmuxinator.yml
+
+name: Mooni
+root: ~/
+
+windows:
+  - SSH: ssh mooni

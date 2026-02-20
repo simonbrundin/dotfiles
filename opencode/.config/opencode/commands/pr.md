@@ -5,7 +5,10 @@ agent: build
 
 För issue #$ARGUMENTS:
 
-1. Se till att tester är gröna
+1. Sätt label `pr` på issue:
+   !`gh issue edit #$ARGUMENTS --add-label pr --repo simonbrundin/ai`
+
+2. Se till att tester är gröna
 2. Skapa branch om ingen finn
 3. Skapa PR:
    !`gh pr create --title "Titel från issue" --body "Closes #$ARGUMENTS\n\n## Verifiering\n[curl-exempel eller steg]\n..." 2>&1`

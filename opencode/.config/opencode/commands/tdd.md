@@ -6,6 +6,9 @@ agent: tester
 Läs issue #$ARGUMENTS (eller fråga vilken issue som ska arbetas med genom
 github_list_issues från github mcp servern).
 
+1. Sätt label `tester` på issue:
+   !`gh issue edit #$ARGUMENTS --add-label tester --repo simonbrundin/ai`
+
 Baserat på acceptance criteria + edge cases från issuen:
 
 1. Skriv tester i tests/ (happy path + minst 2–3 edge cases).
