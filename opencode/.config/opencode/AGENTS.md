@@ -61,19 +61,6 @@ guide our session.
 
 - When I say "memorize that [something]" → Store it permanently in memory MCP
 
-## PRD & Task Handling Rules
-
-- Use Taskmaster MCP to create/break down PRDs into tasks/subtasks
-
-- Never parse or start implementing a PRD unless I explicitly say "Start working
-  on the PRD"
-- When creating PRD: Make it detailed, user-story style, acceptance criteria,
-  tasks ~20, subtasks ~80-100 for medium features
-
-- Always reference the GitHub issue/PR number in commits/PRs
-
-## Testing & Quality Rules
-
 - Write table-driven tests for CLI commands (flags, args, output, errors)
 - Mock external dependencies (YouTube API, HTTP etc.) using httptest or similar
 - Cover: valid input, invalid flags, API errors, rate limits, auth failures
@@ -178,15 +165,19 @@ Efter varje korrigering från användaren:
   Rör bara det som verkligen måste röras. Undvik att introducera nya buggar.
 
 - **Never Ignore Errors**  
-  Använd ALDRIG `_` för att ignorera fel vid I/O, CLI-kommandon eller API-anrop.  
-  Fel ska alltid hanteras och visas till användaren med användarvänliga meddelanden.
+  Använd ALDRIG `_` för att ignorera fel vid I/O, CLI-kommandon eller
+  API-anrop.  
+  Fel ska alltid hanteras och visas till användaren med användarvänliga
+  meddelanden.
 
 - **Avoid Variable Shadowing**  
-  Använd INTE variabelnamn som skuggar package-namn (t.ex. `errors`, `fmt`, `json`).  
+  Använd INTE variabelnamn som skuggar package-namn (t.ex. `errors`, `fmt`,
+  `json`).  
   Använd beskrivande namn som `repoErrors`, `fetchErr` etc.
 
 - **Extract Magic Strings**  
-  Extrahera magic strings till namngivna konstanter för bättre läsbarhet och underhåll.
+  Extrahera magic strings till namngivna konstanter för bättre läsbarhet och
+  underhåll.
 
 ## Notifications
 
