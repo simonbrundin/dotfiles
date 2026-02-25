@@ -57,9 +57,9 @@ opencode() {
 }
 
 # Converted functions from Nushell config.nu
-ll() {
-    ls -l
-}
+# ll() {
+#     ls -l
+# }
 
 e() {
     env | fzf
@@ -81,3 +81,8 @@ alias tm='task-master'
 alias taskmaster='task-master'
 alias hamster='task-master'
 alias ham='task-master'
+
+# Eza aliases
+alias ls="eza --icons"
+alias ll="eza -la --icons --git"
+alias lt="eza --tree --level=2 --icons"
