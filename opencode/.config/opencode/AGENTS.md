@@ -72,6 +72,7 @@ guide our session.
 
 ## Other Rules
 
+- **Svara alltid på svenska** - oavsett om frågan är på engelska eller svenska
 - Always use latest docs via Context7 MCP – never rely on outdated knowledge
 - Fork-aware: Work ONLY in my fork (update memory if needed: replace vfarcic
   with my username)
