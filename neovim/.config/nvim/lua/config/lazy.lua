@@ -33,7 +33,19 @@ require("lazy").setup({
         provider = "claude",
         -- Use native input provider by default to avoid snacks.nvim callback issues
         input = {
-          provider = "native",
+          -- Use a function provider that directly calls vim.ui.input to avoid
+          -- the plugin's bundled native provider which calls vim.ui.select
+          -- incorrectly.
+          provider = function(input)
+            local opts = { prompt = input.title, default = input.default }
+            if input.conceal then
+              vim.notify_once(
+                "Native input provider doesn't support concealed input. Consider using 'dressing' or 'snacks' provider for password input.",
+                vim.log.levels.WARN
+              )
+            end
+            vim.ui.input(opts, input.on_submit)
+          end,
         },
       },
       dependencies = {
