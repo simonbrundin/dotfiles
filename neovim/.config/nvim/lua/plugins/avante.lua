@@ -1,6 +1,6 @@
 return {
-  -- disabled until we resolve the correct upstream repo / auth issues
-  enabled = false,
+  -- enable avante (was previously disabled)
+  enabled = true,
   -- avante UI for LLMs
   "gbrlsnchs/avante.nvim",
   -- load at startup so dependencies are available when avante.setup runs
