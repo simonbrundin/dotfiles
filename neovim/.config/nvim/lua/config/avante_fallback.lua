@@ -20,23 +20,33 @@ local function make_rhs(cmd, friendly)
 end
 
 -- Install safe mappings at startup
-vim.schedule(function()
-  -- Normal mappings
-  vim.keymap.set("n", "<leader>aa", make_rhs("AvanteAsk", "Avante: Ask"), { desc = "Avante: Ask", silent = true })
-  vim.keymap.set("n", "<leader>ae", make_rhs("AvanteEdit", "Avante: Edit"), { desc = "Avante: Edit", silent = true })
-  vim.keymap.set("n", "<leader>at", make_rhs("AvanteToggle", "Avante: Toggle"), { desc = "Avante: Toggle", silent = true })
-  vim.keymap.set("n", "<leader>ar", make_rhs("AvanteRefresh", "Avante: Refresh"), { desc = "Avante: Refresh", silent = true })
+-- Defer mapping until VimEnter so that user-defined <leader> is set by other configs
+vim.api.nvim_create_autocmd("VimEnter", {
+  once = true,
+  callback = function()
+    -- clear possibly stale mappings to avoid conflicts
+    pcall(vim.keymap.del, "n", "<leader>aa")
+    pcall(vim.keymap.del, "n", "<leader>ae")
+    pcall(vim.keymap.del, "n", "<leader>at")
+    pcall(vim.keymap.del, "n", "<leader>ar")
+    pcall(vim.keymap.del, "v", "<leader>ae")
 
-  -- Visual mapping: run AvanteEdit with the visual selection as range if available
-  vim.keymap.set("v", "<leader>ae", function()
-    local ok, _ = pcall(require, "avante")
-    if ok then
-      -- Explicitly run the command with the visual range marks
-      pcall(vim.cmd, "'<,'>AvanteEdit")
-    else
-      vim.notify("Avante.nvim är inte installerat eller åtkomst saknas.", vim.log.levels.WARN)
-    end
-  end, { desc = "Avante: Edit (visual)", silent = true })
-end)
+    -- Normal mappings
+    vim.keymap.set("n", "<leader>aa", make_rhs("AvanteAsk", "Avante: Ask"), { desc = "Avante: Ask", silent = true })
+    vim.keymap.set("n", "<leader>ae", make_rhs("AvanteEdit", "Avante: Edit"), { desc = "Avante: Edit", silent = true })
+    vim.keymap.set("n", "<leader>at", make_rhs("AvanteToggle", "Avante: Toggle"), { desc = "Avante: Toggle", silent = true })
+    vim.keymap.set("n", "<leader>ar", make_rhs("AvanteRefresh", "Avante: Refresh"), { desc = "Avante: Refresh", silent = true })
+
+    -- Visual mapping: run AvanteEdit with the visual selection as range if available
+    vim.keymap.set("v", "<leader>ae", function()
+      local ok, _ = pcall(require, "avante")
+      if ok then
+        pcall(vim.cmd, "'<,'>AvanteEdit")
+      else
+        vim.notify("Avante.nvim är inte installerat eller åtkomst saknas.", vim.log.levels.WARN)
+      end
+    end, { desc = "Avante: Edit (visual)", silent = true })
+  end,
+})
 
 return {}
