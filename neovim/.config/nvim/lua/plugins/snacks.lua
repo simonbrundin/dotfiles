@@ -8,14 +8,14 @@ return {
     dashboard = { enabled = true },
     explorer = { enabled = true },
     indent = { enabled = true },
-    input = { enabled = true },
+    input = { enabled = false },
     notifier = {
       enabled = true,
       timeout = 3000,
     },
-    picker = {
-      enabled = true,
-      sources = {
+      picker = {
+        enabled = false,
+        sources = {
         explorer = {
           hidden = true,
           gitignore = false,
