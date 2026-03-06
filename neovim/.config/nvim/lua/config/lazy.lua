@@ -53,3 +53,12 @@ require("lazy").setup({
     },
   },
 })
+
+-- Ensure avante fallback mappings are loaded even when the avante plugin
+-- is disabled or fails to install. This makes <leader>ae in visual mode
+-- safe and provides a helpful notification instead of errors.
+pcall(function()
+  vim.schedule(function()
+    pcall(require, "config.avante_fallback")
+  end)
+end)
