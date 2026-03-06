@@ -3,10 +3,11 @@
 
 local function make_rhs(cmd, friendly)
   return function()
-    local ok = pcall(require, "avante")
+    local ok, _ = pcall(require, "avante")
     if ok then
       -- If avante is available, run the command
-      vim.cmd(cmd)
+      -- Use direct Ex command (no leading ':' needed for vim.cmd)
+      pcall(vim.cmd, cmd)
     else
       vim.notify(
         "Avante.nvim är inte installerat eller åtkomst saknas.\n" ..
@@ -26,11 +27,12 @@ vim.schedule(function()
   vim.keymap.set("n", "<leader>at", make_rhs("AvanteToggle", "Avante: Toggle"), { desc = "Avante: Toggle", silent = true })
   vim.keymap.set("n", "<leader>ar", make_rhs("AvanteRefresh", "Avante: Refresh"), { desc = "Avante: Refresh", silent = true })
 
-  -- Visual mapping needs to preserve the <C-u> used by the original mapping
+  -- Visual mapping: run AvanteEdit with the visual selection as range if available
   vim.keymap.set("v", "<leader>ae", function()
-    local ok = pcall(require, "avante")
+    local ok, _ = pcall(require, "avante")
     if ok then
-      vim.cmd(":<C-u>AvanteEdit\r")
+      -- Explicitly run the command with the visual range marks
+      pcall(vim.cmd, "'<,'>AvanteEdit")
     else
       vim.notify("Avante.nvim är inte installerat eller åtkomst saknas.", vim.log.levels.WARN)
     end
