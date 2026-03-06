@@ -31,6 +31,10 @@ require("lazy").setup({
       opts = {
         -- minimal example opts; users should set provider and keys via env
         provider = "claude",
+        -- Use native input provider by default to avoid snacks.nvim callback issues
+        input = {
+          provider = "native",
+        },
       },
       dependencies = {
         "nvim-lua/plenary.nvim",
