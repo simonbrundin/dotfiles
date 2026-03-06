@@ -21,7 +21,8 @@ require("lazy").setup({
     -- Explicitly disable avante upstream plugin to avoid Lazy attempting to clone it
     -- (we provide a local fallback mapping instead). This override runs before
     -- importing the LazyVim extras so the plugin isn't installed.
-    { "gbrlsnchs/avante.nvim", enabled = false },
+    -- Enable avante.nvim plugin (will be installed by Lazy)
+    { "gbrlsnchs/avante.nvim", enabled = true },
     -- avante upstream extra deliberately omitted to avoid Lazy attempting to
     -- clone/load an external repo. We provide a local fallback so mappings
     -- remain available even when the plugin is absent.
