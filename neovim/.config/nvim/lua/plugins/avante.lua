@@ -77,6 +77,11 @@ return {
       vim.keymap.set("n", "<leader>at", function()
         vim.cmd("AvanteToggle")
       end, { desc = "Avante: Toggle sidebar", silent = true })
+
+      -- Also load fallback mappings that safely notify when avante isn't installed
+      pcall(function()
+        require("config.avante_fallback")
+      end)
     end)
   end,
 }
