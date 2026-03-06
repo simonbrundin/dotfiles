@@ -1,0 +1,67 @@
+#!/bin/bash
+set -euo pipefail
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+CMD_DIR="$(realpath "$SCRIPT_DIR/../commands")"
+
+notify-send -u normal "OpenCode: Question" "OpenCode väntar på dig - skapa nytt kommando"
+
+read -r -p "Namn på kommando (t.ex. my_command): " name
+read -r -p "Kort beskrivning: " desc
+read -r -p "Agent (t.ex. build): " agent
+read -r -p "Argument (t.ex. ISSUE_NUMBER eller tom): " args
+
+file_name="$(echo "$name" | tr '[:upper:]' '[:lower:]' | sed -E 's/[^a-z0-9_]/_/g').md"
+target="$CMD_DIR/$file_name"
+
+if [[ -e "$target" ]]; then
+  echo "Fel: filen finns redan: $target" >&2
+  exit 1
+fi
+
+tmp_file="$(mktemp)"
+
+if [[ -n "$args" ]]; then
+  cat > "$tmp_file" <<EOF
+---
+description: $desc
+agent: $agent
+---
+
+#$name #$args
+
+Beskrivning:
+$desc
+
+Argument: $args
+
+EOF
+else
+  cat > "$tmp_file" <<EOF
+---
+description: $desc
+agent: $agent
+---
+
+#$name
+
+Beskrivning:
+$desc
+
+EOF
+fi
+
+echo "====== Diff (förhandsgranskning) ======"
+diff --unified /dev/null "$tmp_file" || true
+echo "======================================"
+
+read -r -p "Skriv filen? (y/N) " confirm
+
+if [[ "$confirm" =~ ^[Yy]$ ]]; then
+  mv "$tmp_file" "$target"
+  notify-send -u low "OpenCode: Complete" "Skapade $target"
+  echo "Skapad: $target"
+else
+  rm -f "$tmp_file"
+  echo "Avbröts"
+fi

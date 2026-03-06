@@ -86,3 +86,7 @@ alias ham='task-master'
 alias ls="eza --icons"
 alias ll="eza -la --icons --git"
 alias lt="eza --tree --level=2 --icons"
+
+if command -v wt >/dev/null 2>&1; then eval "$(command wt config shell init bash)"; fi
+
+. "$HOME/.local/share/../bin/env"

@@ -180,6 +180,12 @@ Efter varje korrigering från användaren:
   Extrahera magic strings till namngivna konstanter för bättre läsbarhet och
   underhåll.
 
+## Testbarhet
+
+- Gör funktioner testbara: Bryt ut affärslogik från HTTP-handlers
+- Använd httptest för att testa HTTP-handlers utan riktiga nätverksanrop
+- Testa alltid efter refaktorering — gröna tester = ingen regression
+
 ## Notifications
 
 ### När du väntar på input
