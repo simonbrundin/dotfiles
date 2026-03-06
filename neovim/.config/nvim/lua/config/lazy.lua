@@ -15,15 +15,16 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-    spec = {
-      -- add LazyVim and import its plugins
-      { "LazyVim/LazyVim", import = "lazyvim.plugins" },
-      -- Explicitly disable avante upstream plugin to avoid Lazy attempting to clone it
-      -- (we provide a local fallback mapping instead). This override runs before
-      -- importing the LazyVim extras so the plugin isn't installed.
-      { "gbrlsnchs/avante.nvim", enabled = false },
-      -- import avante extra
-      { import = "lazyvim.plugins.extras.ai.avante" },
+  spec = {
+    -- add LazyVim and import its plugins
+    { "LazyVim/LazyVim", import = "lazyvim.plugins" },
+    -- Explicitly disable avante upstream plugin to avoid Lazy attempting to clone it
+    -- (we provide a local fallback mapping instead). This override runs before
+    -- importing the LazyVim extras so the plugin isn't installed.
+    { "gbrlsnchs/avante.nvim", enabled = false },
+    -- avante upstream extra deliberately omitted to avoid Lazy attempting to
+    -- clone/load an external repo. We provide a local fallback so mappings
+    -- remain available even when the plugin is absent.
     -- import/override with your plugins
     { import = "plugins" },
   },
