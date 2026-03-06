@@ -1,8 +1,9 @@
 return {
-  -- enable avante and prefer SSH clone to avoid HTTPS auth prompts
-  enabled = true,
-  -- use SSH URL so git won't prompt for username/password when cloning
-  "git@github.com:gbrlsnchs/avante.nvim.git",
+  -- disabled: upstream repo cloning fails in this environment (auth / repo access)
+  -- Re-enable after verifying repository exists and SSH keys are configured
+  enabled = false,
+  -- upstream plugin repository
+  "gbrlsnchs/avante.nvim",
   -- load at startup so dependencies are available when avante.setup runs
   lazy = false,
   dependencies = {
