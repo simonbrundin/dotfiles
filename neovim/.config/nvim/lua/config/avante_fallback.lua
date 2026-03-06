@@ -46,6 +46,40 @@ vim.api.nvim_create_autocmd("VimEnter", {
         vim.notify("Avante.nvim är inte installerat eller åtkomst saknas.", vim.log.levels.WARN)
       end
     end, { desc = "Avante: Edit (visual)", silent = true })
+
+    -- Diagnostic: write mapping state to log for debugging
+    pcall(function()
+      local home = os.getenv("HOME") or "."
+      local cache_dir = home .. "/.cache/nvim"
+      os.execute("mkdir -p " .. cache_dir)
+      local log_path = cache_dir .. "/avante_mapping_debug.log"
+      local f, err = io.open(log_path, "a")
+      if not f then
+        return
+      end
+      local sep = string.rep("=", 60)
+      f:write(sep .. "\n")
+      f:write(os.date("%Y-%m-%d %H:%M:%S") .. " - VimEnter mapping debug\n")
+      f:write("vim.g.mapleader = " .. tostring(vim.g.mapleader) .. "\n")
+      local nmap = vim.fn.maparg("<leader>ae", "n")
+      local vmap = vim.fn.maparg("<leader>ae", "v")
+      f:write("maparg (n, '<leader>ae'): " .. tostring(nmap) .. "\n")
+      f:write("maparg (v, '<leader>ae'): " .. tostring(vmap) .. "\n")
+      f:write("nmap list entries for lhs '<leader>ae':\n")
+      for _, m in ipairs(vim.api.nvim_get_keymap('n')) do
+        if m.lhs == '<leader>ae' then
+          f:write(vim.inspect(m) .. "\n")
+        end
+      end
+      f:write("vmap list entries for lhs '<leader>ae':\n")
+      for _, m in ipairs(vim.api.nvim_get_keymap('v')) do
+        if m.lhs == '<leader>ae' then
+          f:write(vim.inspect(m) .. "\n")
+        end
+      end
+      f:write(sep .. "\n\n")
+      f:close()
+    end)
   end,
 })
 
