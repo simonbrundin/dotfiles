@@ -21,8 +21,26 @@ require("lazy").setup({
     -- Explicitly disable avante upstream plugin to avoid Lazy attempting to clone it
     -- (we provide a local fallback mapping instead). This override runs before
     -- importing the LazyVim extras so the plugin isn't installed.
-    -- Enable avante.nvim plugin (will be installed by Lazy)
-    { "gbrlsnchs/avante.nvim", enabled = true },
+    -- Avante.nvim (yetone) with build step and dependencies
+    {
+      "yetone/avante.nvim",
+      branch = "main",
+      build = "make",
+      event = "VeryLazy",
+      version = false,
+      opts = {
+        -- minimal example opts; users should set provider and keys via env
+        provider = "claude",
+      },
+      dependencies = {
+        "nvim-lua/plenary.nvim",
+        "MunifTanjim/nui.nvim",
+        "MeanderingProgrammer/render-markdown.nvim",
+        -- optional providers you may want to add
+        "hrsh7th/nvim-cmp",
+        "nvim-tree/nvim-web-devicons",
+      },
+    },
     -- avante upstream extra deliberately omitted to avoid Lazy attempting to
     -- clone/load an external repo. We provide a local fallback so mappings
     -- remain available even when the plugin is absent.
