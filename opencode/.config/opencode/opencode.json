@@ -11,7 +11,11 @@
   "mcp": {
     "github": {
       "type": "local",
-      "command": ["npx", "-y", "@modelcontextprotocol/server-github"],
+      "command": [
+        "npx",
+        "-y",
+        "@modelcontextprotocol/server-github"
+      ],
       "environment": {
         "GITHUB_PERSONAL_ACCESS_TOKEN": "{env:GITHUB_TOKEN}"
       },
@@ -19,20 +23,37 @@
     },
     "memory": {
       "type": "local",
-      "command": ["npx", "-y", "@modelcontextprotocol/server-memory"],
+      "command": [
+        "npx",
+        "-y",
+        "@modelcontextprotocol/server-memory"
+      ],
       "enabled": true
     },
     "context7": {
       "type": "local",
-      "command": ["npx", "-y", "@upstash/context7-mcp"],
+      "command": [
+        "npx",
+        "-y",
+        "@upstash/context7-mcp"
+      ],
       "enabled": true
     },
     "taskmaster-ai": {
       "type": "local",
-      "command": ["npx", "-y", "task-master-ai"],
+      "command": [
+        "npx",
+        "-y",
+        "task-master-ai"
+      ],
       "environment": {
         "OPENROUTER_API_KEY": "{env:OPENROUTER_API_KEY}"
       },
+      "enabled": true
+    },
+    "nuxt-ui": {
+      "type": "remote",
+      "url": "https://ui.nuxt.com/mcp",
       "enabled": true
     }
   }
