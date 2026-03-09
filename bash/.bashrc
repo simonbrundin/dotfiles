@@ -20,6 +20,9 @@ export PATH="$PATH:/home/simon/.local/bin"
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
 export PATH=$PATH:$HOME/.local/opt/go/bin
 
+# Bun global bin
+export PATH="/home/simon/.cache/.bun/bin:$PATH"
+
 # Alias for simon CLI to source and set environment variables
 alias simon='source /home/simon/repos/simon-cli/simon'
 
