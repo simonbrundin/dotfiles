@@ -1,76 +1,16 @@
-# Workflow Orchestration
+# Information för agenter
 
-## Coding Workflow
+## Hämta projektinformation
 
-1. Skapa Issue i GitHub
-2. Skriv tester
-3. Implement med TDD
-4. Refactor
-5. Dokumentera
-6. PR
+Läs in dessa projektspecifika filer från repot du körs ifrån
 
-## Memory
-
-Retrieve and process all information from the `memory` MCP knowledge graph to
-guide our session.
-
-## Core Principles
-
-- Always follow Test-Driven Development (TDD): Write tests FIRST, then minimal
-  code to make them pass, then refactor.
-- Aim for ≥ 80% code coverage (ideally 90%+). Never commit without tests
-  covering happy path, errors, edge cases.
-- Use structured logging (zap or similar), clear error handling (errors.Is/As),
-  context-aware functions.
-
-- Keep code clean, idiomatic Go: small functions, clear names, no magic
-  numbers/strings.
-- Commit messages: Conventional Commits (feat:, fix:, chore:, refator:, test:,
-  docs: etc.)
-- Branch names: feature/<short-description>, bugfix/<issue-number>-<desc>,
-  chore/<desc>
-
-## Key Triggers & Magic Phrases
-
-- When I say "Get PRDs" → List all open GitHub issues with label "prd"
-- When I say "Show the details of X" → Fetch and display full PRD from issue #X
-- When I say "Start working on the PRD" (or "implement", "go") →
-  1. Set first pending task/subtask to "in-progress" (via Taskmaster)
-  2. Work TDD-style on one subtask at a time
-  3. Run tests locally after each change
-  4. Ask for feedback if stuck / tests fail
-- When I say "We're done" (or "we are done", "done here") → FULL DEPLOY
-  SEQUENCE:
-  1. Verify all tasks complete, tests pass, coverage OK
-  2. Stage all changed files
-  3. Create branch if none exists (naming: feature/<prd-slug>-auto or similar)
-  4. Commit with Conventional Commit message + PRD reference
-  5. Push to remote
-  6. Create Pull Request with:
-     - Good title (e.g. "feat: auto-set video language to English")
-
-     - Detailed body (changes, tests added, PRD link)
-
-  7. Trigger AI code review (multiple agents if possible)
-  8. Present review feedback → apply fixes if I approve
-  9. Merge PR (squash or merge commit)
-  10. Delete local + remote branch
-  11. Clean temp files
-
-  12. Let GitHub Actions handle: build → test → release (tag) → deploy
-
-- When I say "memorize that [something]" → Store it permanently in memory MCP
-
-- Write table-driven tests for CLI commands (flags, args, output, errors)
-- Mock external dependencies (YouTube API, HTTP etc.) using httptest or similar
-- Cover: valid input, invalid flags, API errors, rate limits, auth failures
-- Use testify/assert/require for assertions
+- `.agent/AGENTS.md`
 
 ## GitHub
 
 - Username: simonbrundin
 
-## Other Rules
+## Regler
 
 - **Svara alltid på svenska** - oavsett om frågan är på engelska eller svenska
 - Always use latest docs via Context7 MCP – never rely on outdated knowledge
@@ -206,4 +146,5 @@ notify-send -u low "OpenCode: Complete" "OpenCode är färdig"
 
 Detta gäller ALLA interaktioner - varje fråga och varje slutförande ska trigga
 en notifikation. Detta gäller ALLA interaktioner - varje fråga och varje
-slutförande ska trigga en notifikation.
+slutförande ska trigga en notifikation. slutförande ska trigga en notifikation.
+slutförande ska trigga en notifikation. slutförande ska trigga en notifikation.
