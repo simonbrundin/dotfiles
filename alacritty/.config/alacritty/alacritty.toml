@@ -32,3 +32,6 @@ program = "/home/linuxbrew/.linuxbrew/bin/nu"
 
 
 
+
+[terminal]
+osc52 = "CopyPaste"
