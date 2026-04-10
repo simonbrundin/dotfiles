@@ -5,6 +5,6 @@ root: ~/repos/simon-cli/
 
 windows:
   - Editor: nvim simon
-  - Agent: opencode
+  - Agent: simon ai
   - Terminal: simon
   - LazyGit: lg
