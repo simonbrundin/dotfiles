@@ -1,6 +1,5 @@
 {
   "ExtensionInstallForcelist": [
-        "nffaoalbilbmmfgbnbgppjihopabppdk;https://clients2.google.com/service/update2/crx" // Video Speed Controller
+    "nffaoalbilbmmfgbnbgppjihopabppdk;https://clients2.google.com/service/update2/crx" // Video Speed Controller
   ]
 }
-

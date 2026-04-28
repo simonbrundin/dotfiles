@@ -29,8 +29,15 @@ require("lazy").setup({
       event = "VeryLazy",
       version = false,
       opts = {
-        -- minimal example opts; users should set provider and keys via env
         provider = "claude",
+        providers = {
+          minimax = {
+            __inherited_from = "openai",
+            endpoint = "https://api.minimax.io/v1",
+            model = "MiniMax-M2.7",
+            api_key_name = "MINIMAX_API_KEY",
+          },
+        },
         -- Use native input provider by default to avoid snacks.nvim callback issues
         input = {
           -- Use a function provider that directly calls vim.ui.input to avoid

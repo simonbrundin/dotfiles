@@ -42,7 +42,7 @@
   sesh (tap-hold $tap-time $hold-time ralt (layer-while-held tmuxsessions))
   ;; Arrow på f: Tap f, hold → arrow
   nav (tap-hold $tap-time $hold-time f (layer-while-held arrow))
-  app (tap-hold $tap-time $hold-time a (layer-while-held app))
+  audio (tap-hold $tap-time $hold-time a (layer-while-held audio))
   grok (cmd hyprctl dispatch workspace 4 && omarchy-launch-webapp
 "https://grok.com")
   lctl (tap-hold $tap-time $hold-time C-bspc lctl)
@@ -67,6 +67,9 @@
 ;; Player
 (defalias
   playnext (cmd playerctl next)
+  spotify-next (cmd /home/simon/repos/dotfiles/kanata/.config/kanata/spotify-ctl.sh next)
+  spotify-prev (cmd /home/simon/repos/dotfiles/kanata/.config/kanata/spotify-ctl.sh prev)
+  spotify-play (cmd /home/simon/repos/dotfiles/kanata/.config/kanata/spotify-ctl.sh play)
 )
 
 ;; Grundtangentbord med engelska keycodes -------------------------------------------------------
@@ -80,7 +83,7 @@
 (deflayer base
   grv   1     2     3     4     5     6     7     8     9     0     -     =     bspc
   tab   q     w     e     r     t    @y     u     i     o     @p     [     ]     \
-  @caps @app  @s     d     @nav  g     h     j     k     l     ;     '     ret
+  @caps @audio @s     d     @nav  g     h     j     k     l     ;     '     ret
   lsft  z     x     @c     @v     b     n     m     ,     .     /     rsft
           lmet  lalt  @lctl               spc              @meh  ralt  rmet
 )
@@ -123,6 +126,14 @@
   XX     XX     @sai     (macro C-b s)     XX     XX     @home     @home  up    @k8s    C-u     @sall     XX
   XX     XX     XX     XX     @cli     XX     @bdev     XX     @match     (macro C-b t)     @dot     XX     XX
           XX     XX     XX                XX               XX     XX     XX
+)
+
+(deflayer audio
+  XX     XX     XX     XX     XX     XX     XX     XX     XX     XX     XX     XX     XX
+  XX     XX     XX     XX     XX     XX     XX     XX     XX     XX     XX     XX     XX     XX
+  XX     XX     XX     XX     XX     XX     @spotify-prev  @spotify-play  XX  @spotify-next  XX     XX     XX
+  XX     XX     XX     XX     XX     XX     XX           XX           XX     XX     XX     XX     XX
+          XX     XX     XX                spc               XX     XX     XX
 )
 
 

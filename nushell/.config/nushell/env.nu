@@ -3,6 +3,7 @@ $env.VAULT_ADDR = 'https://vault.simonbrundin.com'
 $env.KUBECONFIG = "/home/simon/.tsh/keys/teleport.simonbrundin.com/admin-kube/teleport.simonbrundin.com/localproxy-8443-kubeconfig"
 # $env.KUBECONFIG = '/home/simon/repos/infrastructure/talos/kubeconfig'
 $env.AI_AGENT = '~/.config/opencode/opencode-secure'
+$env.MINIMAX_API_KEY = 'sk-cp-y8O2TXsT_znnat_MK2jsjLi32m4PVqC3prvlhS5_bBkwOxJNIaKr7WS6WPowmi2qOj5cMNMs57E6hztvv6ZegVySrpPW6N0PVeHA3EdPwvG_rco82W0UmMY'
 zoxide init nushell | save -f ~/.zoxide.nu
 $env.CARAPACE_BRIDGES = 'zsh,fish,bash,inshellisense' # optional
 mkdir $"($nu.cache-dir)"

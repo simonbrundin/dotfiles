@@ -5,4 +5,4 @@ root: ~/repos/matchmaker
 
 windows:
   - Editor: nvim
-  - Agnet: simon ai
+  - Agent: simon ai

@@ -23,8 +23,11 @@ export PATH=$PATH:$HOME/.local/opt/go/bin
 # Bun global bin
 export PATH="/home/simon/.cache/.bun/bin:$PATH"
 
+# Simon CLI
+export PATH="/home/simon/repos/simon-cli:$PATH"
+
 # Alias for simon CLI to source and set environment variables
-alias simon='source /home/simon/repos/simon-cli/simon'
+# alias simon='source /home/simon/repos/simon-cli/simon'
 
 # AI Agent configuration (used by 'simon ai')
 export AI_AGENT='~/.config/opencode/opencode-secure'
