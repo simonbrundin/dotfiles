@@ -20,6 +20,9 @@ yarn-error.log*
 dev-debug.log
 # Dependency directories
 node_modules/
+# Package lock files
+package-lock.json
+opencode/.config/opencode/package-lock.json
 # Environment variables
 # Editor directories and files
 .idea
