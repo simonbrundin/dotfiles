@@ -6,3 +6,4 @@ root: ~/repos/software-agent/
 windows:
   - Editor: nvim
   - Agent: simon ai
+  - DEV: cd environments/dev ; tilt up
