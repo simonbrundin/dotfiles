@@ -24,6 +24,7 @@ Alla dotfiles hanteras med **GNU Stow**.
 ## Setup
 
 ### Automatisk installation
+
 ```
 curl -sL bootstrap.simonbrundin.com | bash
 ```
@@ -31,11 +32,13 @@ curl -sL bootstrap.simonbrundin.com | bash
 ### Manuell installation
 
 1. Klona repot:
+
    ```
    git clone git@github.com:simonbrundin/dotfiles.git ~/repos/dotfiles
    ```
 
 2. Installera paket (valfritt):
+
    ```
    brew bundle --file=~/repos/dotfiles/brew/.Brewfile
    ```
@@ -49,6 +52,7 @@ curl -sL bootstrap.simonbrundin.com | bash
 ## Struktur
 
 Varje applikation har sin konfiguration i en egen katalog:
+
 - `hypr/` → `~/.config/hypr/`
 - `neovim/` → `~/.config/nvim/`
 - `tmux/` → `~/.config/tmux/` och `~/.tmux.conf`
