@@ -1,4 +1,4 @@
- <p align="center">
+<p align="center">
   <a href="https://simonbrundin.com">
     <picture>
       <source media="(prefers-color-scheme: dark)" srcset="https://alfonsofortunato.com/img/logo.png">
@@ -9,35 +9,47 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/MovieMaker93/devpod-dotfiles-chezmoi/commit">
+  <a href="https://github.com/simonbrundin/dotfiles/commit">
     <img alt="LastCommit" src="https://img.shields.io/github/last-commit/simonbrundin/dotfiles/main?style=for-the-badge&logo=github&color=%237dcfff">
   </a>
-  <!-- <a href="https://github.com/MovieMaker93/devpod-dotfiles-chezmoi/actions/workflows/"> -->
-  <!-- </a> -->
-  <a href="https://github.com/MovieMaker93/devpod-dotfiles-chezmoi/blob/main/LICENSE">
-    <img alt="License" src="https://img.shields.io/github/license/MovieMaker93/devpod-dotfiles-chezmoi?style=for-the-badge&logo=github">
-  </a>
-  <a href="https://github.com/MovieMaker93/devpod-dotfiles-chezmoi/stars">
-    <img alt="stars" src="https://img.shields.io/github/stars/MovieMaker93/devpod-dotfiles-chezmoi?style=for-the-badge&logo=github&color=%23f7768e">
+  <a href="https://github.com/simonbrundin/dotfiles/blob/main/LICENSE">
+    <img alt="License" src="https://img.shields.io/github/license/simonbrundin/dotfiles?style=for-the-badge&logo=github">
   </a>
 </p>
 
 # Dotfiles
 
-Alla mina dotfiles går att installera genom
+Alla dotfiles hanteras med **GNU Stow**.
 
+## Setup
+
+### Automatisk installation
 ```
 curl -sL bootstrap.simonbrundin.com | bash
 ```
 
-## Setup
+### Manuell installation
 
-1. Install chezmoi:
-   `sh -c "$(curl -fsSL https://git.io/chezmoi)" -- -b "$HOME/.local/bin"`
-2. Clone and apply:
-   `chezmoi init --apply https://github.com/yourusername/dotfiles`
-3. For 1Password integration:
-   - Install 1Password CLI: `brew install 1password-cli`
-   - Sign in: `op signin`
-   - Ensure vault "dotfiles" exists with item "mcp-auth" containing the
-4.
+1. Klona repot:
+   ```
+   git clone git@github.com:simonbrundin/dotfiles.git ~/repos/dotfiles
+   ```
+
+2. Installera paket (valfritt):
+   ```
+   brew bundle --file=~/repos/dotfiles/brew/.Brewfile
+   ```
+
+3. Skapa symlinks med stow:
+   ```
+   cd ~/repos/dotfiles
+   stow alacritty bash brew hypr kanata neovim nushell opencode omarchy sidecar starship stow tmux tmuxinator voxtype
+   ```
+
+## Struktur
+
+Varje applikation har sin konfiguration i en egen katalog:
+- `hypr/` → `~/.config/hypr/`
+- `neovim/` → `~/.config/nvim/`
+- `tmux/` → `~/.config/tmux/` och `~/.tmux.conf`
+- etc.
