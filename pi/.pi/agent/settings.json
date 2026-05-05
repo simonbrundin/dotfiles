@@ -2,5 +2,14 @@
   "lastChangelogVersion": "0.73.0",
   "defaultProvider": "minimax",
   "defaultModel": "MiniMax-M2.7",
-  "defaultThinkingLevel": "medium"
+  "defaultThinkingLevel": "medium",
+  "packages": [
+    "npm:context-mode",
+    "npm:pi-mcp-adapter",
+    "npm:pi-lens",
+    "npm:@samfp/pi-memory",
+    "npm:@runfusion/fusion",
+    "npm:pi-context",
+    "npm:pi-web-access"
+  ]
 }

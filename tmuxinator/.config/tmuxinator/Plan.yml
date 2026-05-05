@@ -6,5 +6,5 @@ root: ~/repos/plan
 windows:
   - NeoVim: nvim README.md
   - Agent: simon ai
-  - Development Server: simon dev
+  - DEV: simon dev
   - Terminal:
