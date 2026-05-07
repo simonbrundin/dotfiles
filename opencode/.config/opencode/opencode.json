@@ -55,6 +55,17 @@
       "type": "remote",
       "url": "https://ui.nuxt.com/mcp",
       "enabled": true
+    },
+    "flux-operator-mcp": {
+      "type": "local",
+      "command": [
+        "flux-operator-mcp",
+        "serve",
+        "--read-only=false"
+      ],
+      "environment": {
+        "KUBECONFIG": "/tmp/kubeconfig-certificate"
+      }
     }
   }
 }
