@@ -7,7 +7,7 @@ set -e
 echo "Installing kanata configuration..."
 
 # Use pre-installed binary by default (no interactive prompt)
-REPLY="n"
+REPLY="y"
 if [[ $REPLY =~ ^[Yy]$ ]]; then
     echo "Building kanata from source..."
     if ! command -v cargo &> /dev/null; then
