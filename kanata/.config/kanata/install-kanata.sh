@@ -6,30 +6,33 @@ set -e
 
 echo "Installing kanata configuration..."
 
-# Use pre-installed binary by default (no interactive prompt)
-REPLY="y"
-if [[ $REPLY =~ ^[Yy]$ ]]; then
-    echo "Building kanata from source..."
-    if ! command -v cargo &> /dev/null; then
-        echo "Cargo not found. Please install Rust first."
-        exit 1
+# Skip build if binary already exists
+if [[ ! -f "$HOME/.local/bin/kanata" ]]; then
+    REPLY="y"
+    if [[ $REPLY =~ ^[Yy]$ ]]; then
+        echo "Building kanata from source..."
+        if ! command -v cargo &> /dev/null; then
+            echo "Cargo not found. Please install Rust first."
+            exit 1
+        fi
+        rm -rf /tmp/kanata-build
+        git clone https://github.com/jtroo/kanata.git /tmp/kanata-build || { echo "Failed to clone repo"; exit 1; }
+        cd /tmp/kanata-build
+        cargo build --release --features cmd
+        mkdir -p "$HOME/.local/bin"
+        cp target/release/kanata "$HOME/.local/bin/kanata"
+        echo "Kanata built and installed to $HOME/.local/bin/kanata"
+    else
+        echo "Copying cmd-allowed kanata binary..."
+        mkdir -p "$HOME/.local/bin"
+        echo "Stopping kanata service if running..."
+        systemctl --user stop kanata.service || true
+        cp "/home/simon/repos/dotfiles/kanata_cmd_allowed" "$HOME/.local/bin/kanata"
+        chmod +x "$HOME/.local/bin/kanata"
+        echo "Kanata binary installed to $HOME/.local/bin/kanata"
     fi
-    rm -rf /tmp/kanata-build
-    git clone https://github.com/jtroo/kanata.git /tmp/kanata-build || { echo "Failed to clone repo"; exit 1; }
-    cd /tmp/kanata-build
-    cargo build --release --features cmd
-    mkdir -p "$HOME/.local/bin"
-    cp target/release/kanata "$HOME/.local/bin/kanata"
-    echo "Kanata built and installed to $HOME/.local/bin/kanata"
 else
-    # Copy cmd-allowed kanata binary
-    echo "Copying cmd-allowed kanata binary..."
-    mkdir -p "$HOME/.local/bin"
-echo "Stopping kanata service if running..."
-systemctl --user stop kanata.service || true
-    cp "/home/simon/repos/dotfiles/kanata_cmd_allowed" "$HOME/.local/bin/kanata"
-    chmod +x "$HOME/.local/bin/kanata"
-    echo "Kanata binary installed to $HOME/.local/bin/kanata"
+    echo "Kanata binary already exists, skipping build..."
 fi
 
 # Ensure ~/.local/bin is in PATH
