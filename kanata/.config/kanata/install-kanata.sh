@@ -64,8 +64,11 @@ fi
 # Udev rule already installed
 echo "Udev rule already installed, skipping..."
 
-# Create config directory
 mkdir -p "$HOME/.config/kanata"
+mkdir -p "$HOME/.local/bin"
+
+cp "$HOME/.config/kanata/kanata-wrapper.sh" "$HOME/.local/bin/kanata-wrapper"
+chmod +x "$HOME/.local/bin/kanata-wrapper"
 
 # Config is already in place via stow
 
@@ -82,8 +85,8 @@ After=graphical-session.target
 
 [Service]
 Type=simple
-Environment=DISPLAY=:0
-ExecStart=$HOME/.local/bin/kanata -c $HOME/.config/kanata/kanata.kbd
+Environment=HYPRLAND_INSTANCE_SIGNATURE=
+ExecStart=$HOME/.local/bin/kanata-wrapper
 Restart=always
 RestartSec=3
 
