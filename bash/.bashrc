@@ -30,7 +30,7 @@ export PATH="/home/simon/repos/simon-cli:$PATH"
 # alias simon='source /home/simon/repos/simon-cli/simon'
 
 # AI Agent configuration (used by 'simon ai')
-export AI_AGENT='~/.config/opencode/opencode-secure'
+export AI_AGENT='pi'
 
 # Converted aliases from Nushell config.nu
 alias s='simon'
