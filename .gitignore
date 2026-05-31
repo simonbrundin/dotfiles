@@ -1,7 +1,13 @@
 nushell/.config/nushell/history.txt
 .todos/
 pi/.pi/agent/auth.json
-pi/.pi/agent/sessions
+pi/.pi/agent/sessions/
+pi/.pi/memory/
+pi/.pi/memory/*
+pi/.pi/context-mode/sessions/
+pi/.pi/context-mode/sessions/context-mode.db
+
+
 
 
 # Sidecar worktree state files

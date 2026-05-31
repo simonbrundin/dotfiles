@@ -1,5 +1,5 @@
 {
-  "lastChangelogVersion": "0.73.0",
+  "lastChangelogVersion": "0.78.0",
   "defaultProvider": "minimax",
   "defaultModel": "MiniMax-M2.7",
   "defaultThinkingLevel": "medium",
@@ -11,5 +11,6 @@
     "npm:@runfusion/fusion",
     "npm:pi-context",
     "npm:pi-web-access"
-  ]
+  ],
+  "theme": "dark"
 }
