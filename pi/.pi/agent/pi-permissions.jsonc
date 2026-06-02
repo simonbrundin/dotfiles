@@ -1,0 +1,68 @@
+{
+  // Default policy - ask before anything not explicitly allowed
+  "defaultPolicy": {
+    "tools": "allow",
+    "bash": "ask",
+    "mcp": "allow",
+    "skills": "allow",
+    "special": "ask"
+  },
+  // Tool-specific rules
+  "tools": {
+    // Allow read-only tools silently
+    "read": "allow",
+    "grep": "allow",
+    "find": "allow",
+    "ls": "allow",
+    // Always ask before file modifications
+    "write": "ask",
+    "edit": "ask",
+    // Block dangerous bash by default (overridden in bash section)
+    "bash": "allow"
+  },
+  // Bash command patterns - last matching rule wins, so put fallbacks FIRST
+  "bash": {
+    // All other commands ask (fallback - must be FIRST so more specific rules override)
+    "*": "ask",
+    // Safe read-only commands
+    "git status": "allow",
+    "git diff": "allow",
+    "git log *": "allow",
+    "git show *": "allow",
+    "head": "allow",
+    "find": "allow",
+    "grep": "allow",
+    "sleep": "allow",
+    "flux get *": "allow",
+    "flux reconcile *": "allow",
+    "flux logs *": "allow",
+    "echo": "allow",
+    "which": "allow",
+    "tail": "allow",
+    "2>&1": "allow",
+    "pwd": "allow",
+    "ls *": "allow",
+    "cd": "allow",
+    "cat *": "allow",
+    // Dangerous commands - always deny
+    "rm -rf *": "deny",
+    "sudo *": "deny",
+    "kubectl get *": "allow",
+    "kubectl logs *": "allow",
+    "dd *": "deny",
+    "mkfs *": "deny"
+  },
+  // MCP permissions
+  "mcp": {
+    "*": "allow"
+  },
+  // Skills permissions
+  "skills": {
+    "*": "allow"
+  },
+  // Special permissions
+  "special": {
+    "external_directory": "allow",
+    "doom_loop": "deny"
+  }
+}

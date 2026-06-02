@@ -3,14 +3,18 @@
   "defaultProvider": "minimax",
   "defaultModel": "MiniMax-M2.7",
   "defaultThinkingLevel": "medium",
+  "prompts": [
+    "/home/simon/repos/software-agent/app/commands"
+  ],
   "packages": [
-    "npm:context-mode",
     "npm:pi-mcp-adapter",
     "npm:pi-lens",
     "npm:@samfp/pi-memory",
     "npm:@runfusion/fusion",
     "npm:pi-context",
-    "npm:pi-web-access"
+    "npm:pi-web-access",
+    "npm:pi-permission-system"
   ],
-  "theme": "dark"
+  "theme": "dark",
+  "hideThinkingBlock": true
 }
