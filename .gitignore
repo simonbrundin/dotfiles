@@ -2,6 +2,7 @@ nushell/.config/nushell/history.txt
 .todos/
 pi/.pi/agent/auth.json
 pi/.pi/agent/sessions/
+pi/.pi/agent/prompts/
 pi/.pi/memory/
 pi/.pi/memory/*
 pi/.pi/context-mode/sessions/
