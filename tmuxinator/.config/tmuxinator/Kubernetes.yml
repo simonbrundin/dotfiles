@@ -4,9 +4,10 @@ name: Kubernetes
 root: ~/repos/infrastructure/
 
 windows:
-  - Editor: nvim README.md
+  - Nvim: nvim README.md
+  - SA: simon ai
+  - Health: simon cluster health
   - Talos Dashboard: simon talos dashboard
-  - Agent: simon ai
   - Terminal:
   # - Kubernetes Dashboard: simon kubernetes dashboard
   # - Nodes:

@@ -1,5 +1,8 @@
 {
   "mcpServers": {
+    "context7": {
+      "command": "context7-mcp"
+    },
     "context-mode": {
       "command": "context-mode"
     },

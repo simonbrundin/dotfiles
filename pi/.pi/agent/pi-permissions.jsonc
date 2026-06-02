@@ -49,6 +49,7 @@
     "sudo *": "deny",
     "kubectl get *": "allow",
     "kubectl logs *": "allow",
+    "kubectl describe *": "allow",
     "dd *": "deny",
     "mkfs *": "deny"
   },
