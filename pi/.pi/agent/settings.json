@@ -4,7 +4,7 @@
   "defaultModel": "MiniMax-M2.7",
   "defaultThinkingLevel": "medium",
   "prompts": [
-    "/home/simon/repos/software-agent/app/commands"
+    "/home/simon/repos/agents/app/commands"
   ],
   "packages": [
     "npm:pi-mcp-adapter",
