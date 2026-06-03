@@ -1,0 +1,200 @@
+{
+  "benchmark": "flux-debug-skill-v1",
+  "date": "2026-06-03",
+  "skill_name": "flux-debug",
+  "iterations": [
+    {
+      "iteration": 1,
+      "evals": [
+        {
+          "eval_id": 0,
+          "eval_name": "gitrepository-not-ready",
+          "configurations": [
+            {
+              "name": "with_skill",
+              "output": "eval-0/with_skill/outputs/diagnostic.md",
+              "assertions": [
+                {
+                  "text": "Kör kubectl describe gitrepository för att se status och events",
+                  "passed": true,
+                  "evidence": "kubectl describe gitrepository flux-system -n flux-system"
+                },
+                {
+                  "text": "Kollar flux logs för felmeddelanden",
+                  "passed": true,
+                  "evidence": "kubectl logs -n flux-system -l app=source-controller"
+                },
+                {
+                  "text": "Verifierar SSH-åtkomst med ssh -T git@github.com",
+                  "passed": true,
+                  "evidence": "ssh -T git@github.com"
+                },
+                {
+                  "text": "Nämner flux-git-ssh-key Secret",
+                  "passed": true,
+                  "evidence": "kubectl get secret flux-git-ssh-key -n flux-system -o yaml"
+                }
+              ],
+              "pass_rate": 1.0,
+              "tokens": 8420,
+              "duration_ms": 18432
+            },
+            {
+              "name": "without_skill",
+              "output": "eval-0/without_skill/outputs/diagnostic.md",
+              "assertions": [
+                {
+                  "text": "Kör kubectl describe gitrepository för att se status och events",
+                  "passed": true,
+                  "evidence": "kubectl describe gitrepository flux-system -n flux-system"
+                },
+                {
+                  "text": "Kollar flux logs för felmeddelanden",
+                  "passed": false,
+                  "evidence": "Inga flux logs nämns"
+                },
+                {
+                  "text": "Verifierar SSH-åtkomst med ssh -T git@github.com",
+                  "passed": false,
+                  "evidence": "Ingen SSH-verifiering"
+                },
+                {
+                  "text": "Nämner flux-git-ssh-key Secret",
+                  "passed": false,
+                  "evidence": "Ingen mention av Secret"
+                }
+              ],
+              "pass_rate": 0.25,
+              "tokens": 5832,
+              "duration_ms": 12340
+            }
+          ]
+        },
+        {
+          "eval_id": 1,
+          "eval_name": "helmrelease-artifact-failed",
+          "configurations": [
+            {
+              "name": "with_skill",
+              "output": "eval-1/with_skill/outputs/diagnostic.md",
+              "assertions": [
+                {
+                  "text": "Använder kubectl describe helmrelease för detaljer",
+                  "passed": true,
+                  "evidence": "kubectl describe helmrelease cert-manager -n cert-manager"
+                },
+                {
+                  "text": "Kollar helm-controller loggar",
+                  "passed": true,
+                  "evidence": "kubectl logs -n flux-system -l app=helm-controller"
+                },
+                {
+                  "text": "Verifierar OCIRepository eller HelmRepository som source",
+                  "passed": true,
+                  "evidence": "kubectl describe ocirepository/helmrepository"
+                }
+              ],
+              "pass_rate": 1.0,
+              "tokens": 7840,
+              "duration_ms": 16720
+            },
+            {
+              "name": "without_skill",
+              "output": "eval-1/without_skill/outputs/diagnostic.md",
+              "assertions": [
+                {
+                  "text": "Använder kubectl describe helmrelease för detaljer",
+                  "passed": true,
+                  "evidence": "kubectl describe helmrelease cert-manager -n cert-manager"
+                },
+                {
+                  "text": "Kollar helm-controller loggar",
+                  "passed": true,
+                  "evidence": "kubectl logs -n flux-system -l app=helm-controller"
+                },
+                {
+                  "text": "Verifierar OCIRepository eller HelmRepository som source",
+                  "passed": false,
+                  "evidence": "Ingen specifik source-verifiering"
+                }
+              ],
+              "pass_rate": 0.67,
+              "tokens": 5120,
+              "duration_ms": 11200
+            }
+          ]
+        },
+        {
+          "eval_id": 2,
+          "eval_name": "kustomization-dependency-not-ready",
+          "configurations": [
+            {
+              "name": "with_skill",
+              "output": "eval-2/with_skill/outputs/diagnostic.md",
+              "assertions": [
+                {
+                  "text": "Använder flux tree kustomization för att visa beroenden",
+                  "passed": true,
+                  "evidence": "flux tree kustomization <name> -n <namespace>"
+                },
+                {
+                  "text": "Kollar flux get sources -A för att verifiera alla sources",
+                  "passed": true,
+                  "evidence": "flux get sources -A"
+                },
+                {
+                  "text": "Rekommenderar flux reconcile source för att reparera",
+                  "passed": true,
+                  "evidence": "flux reconcile source git"
+                }
+              ],
+              "pass_rate": 1.0,
+              "tokens": 9230,
+              "duration_ms": 20100
+            },
+            {
+              "name": "without_skill",
+              "output": "eval-2/without_skill/outputs/diagnostic.md",
+              "assertions": [
+                {
+                  "text": "Använder flux tree kustomization för att visa beroenden",
+                  "passed": false,
+                  "evidence": "Ingen flux tree"
+                },
+                {
+                  "text": "Kollar flux get sources -A för att verifiera alla sources",
+                  "passed": true,
+                  "evidence": "flux get sources -A"
+                },
+                {
+                  "text": "Rekommenderar flux reconcile source för att reparera",
+                  "passed": false,
+                  "evidence": "Ingen specifik reconcile-rekommendation"
+                }
+              ],
+              "pass_rate": 0.33,
+              "tokens": 4890,
+              "duration_ms": 9800
+            }
+          ]
+        }
+      ],
+      "summary": {
+        "with_skill": {
+          "avg_pass_rate": 1.0,
+          "avg_tokens": 8497,
+          "avg_duration_ms": 18417
+        },
+        "without_skill": {
+          "avg_pass_rate": 0.42,
+          "avg_tokens": 5281,
+          "avg_duration_ms": 11113
+        },
+        "improvement": {
+          "pass_rate_delta": "+0.58",
+          "token_delta": "+3216"
+        }
+      }
+    }
+  ]
+}

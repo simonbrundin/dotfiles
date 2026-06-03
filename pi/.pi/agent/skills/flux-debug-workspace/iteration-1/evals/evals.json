@@ -1,0 +1,82 @@
+{
+  "skill_name": "flux-debug",
+  "evals": [
+    {
+      "id": 0,
+      "eval_name": "gitrepository-not-ready",
+      "prompt": "Min flux-system gitrepository är inte Ready. Kan du hjälpa mig felsöka vad som är fel?",
+      "expected_output": "Diagnostik med kubectl describe, flux logs, och SSH-verifiering",
+      "files": [],
+      "assertions": [
+        {
+          "text": "Kör kubectl describe gitrepository för att se status och events",
+          "passed": null,
+          "evidence": ""
+        },
+        {
+          "text": "Kollar flux logs för felmeddelanden",
+          "passed": null,
+          "evidence": ""
+        },
+        {
+          "text": "Verifierar SSH-åtkomst med ssh -T git@github.com",
+          "passed": null,
+          "evidence": ""
+        },
+        {
+          "text": "Nämner flux-git-ssh-key Secret",
+          "passed": null,
+          "evidence": ""
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "eval_name": "helmrelease-artifact-failed",
+      "prompt": "Ett HelmRelease för cert-manager har ArtifactFailed. Hur felsöker jag detta?",
+      "expected_output": "Steg för att undersöka HelmRelease och dess source",
+      "files": [],
+      "assertions": [
+        {
+          "text": "Använder kubectl describe helmrelease för detaljer",
+          "passed": null,
+          "evidence": ""
+        },
+        {
+          "text": "Kollar helm-controller loggar",
+          "passed": null,
+          "evidence": ""
+        },
+        {
+          "text": "Verifierar OCIRepository eller HelmRepository som source",
+          "passed": null,
+          "evidence": ""
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "eval_name": "kustomization-dependency-not-ready",
+      "prompt": "Jag har en Kustomization som visar DependencyNotReady. Den har en dependency till flux-system gitrepository. Hur listar jag ut vad som är fel?",
+      "expected_output": "Använder flux tree för att visualisera dependencies",
+      "files": [],
+      "assertions": [
+        {
+          "text": "Använder flux tree kustomization för att visa beroenden",
+          "passed": null,
+          "evidence": ""
+        },
+        {
+          "text": "Kollar flux get sources -A för att verifiera alla sources",
+          "passed": null,
+          "evidence": ""
+        },
+        {
+          "text": "Rekommenderar flux reconcile source för att reparera",
+          "passed": null,
+          "evidence": ""
+        }
+      ]
+    }
+  ]
+}
