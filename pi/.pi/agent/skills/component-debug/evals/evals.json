@@ -1,0 +1,29 @@
+{
+  "skill_name": "component-debug",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Felsök longhorn-system komponenten i mitt kubernetes-kluster. Några volymer är degraded. Använd health_score.sh för att beräkna hälsopoäng före och efter.",
+      "expected_output": "Ska läsa YAML, beräkna health score, hämta klusterstatus med parallella anrop, identifiera degraded volymer med beslutsträd, skapa fix med fix_component.sh, commit/push, övervaka och verifiera med health score",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Reparera flux-komponenten. Kustomizationen är inte Reconciled och har DependencyNotReady. Beräkna health score för flux-system namespace.",
+      "expected_output": "Ska identifiera orsaken med beslutsträd (flux tree), köra fix_component.sh dependency, rekonciliera, beräkna health score före/efter, pusha och verifiera",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "Fixa cert-manager - det finns problem med certificate issuers och ACME challenges. Visa health score för cert-manager namespace.",
+      "expected_output": "Ska läsa cert-manager YAML, beräkna health score, kontrollera ClusterIssuer, diagnostisera challenge-problem, använda troubleshooting.md, applicera fix, pusha och verifiera health score",
+      "files": []
+    },
+    {
+      "id": 4,
+      "prompt": "Longhorn har ImagePullBackOff på en pod. Felsök och reparera.",
+      "expected_output": "Ska köra fix_component.sh longhorn imagepull, identifiera image, uppdatera YAML, pusha och verifiera",
+      "files": []
+    }
+  ]
+}
