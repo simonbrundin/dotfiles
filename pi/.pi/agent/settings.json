@@ -1,5 +1,5 @@
 {
-  "lastChangelogVersion": "0.78.1",
+  "lastChangelogVersion": "0.79.1",
   "defaultProvider": "minimax",
   "defaultModel": "MiniMax-M2.7",
   "defaultThinkingLevel": "medium",
@@ -16,5 +16,5 @@
     "npm:pi-permission-system"
   ],
   "theme": "dark",
-  "hideThinkingBlock": true
+  "hideThinkingBlock": false
 }

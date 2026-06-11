@@ -38,7 +38,7 @@
   c (tap-hold $tap-time $hold-time c (macro M-c (cmd notify-send "Kopierat!")))
   y (tap-hold $tap-time $hold-time y (macro M-c (cmd notify-send "Kopierat!")))
   v (tap-hold $tap-time $hold-time v (macro M-v (cmd notify-send "Klistrat in!")))
-  p (tap-hold $tap-time $hold-time p (macro M-v (cmd notify-send "Klistrat in!")))
+  p (tap-hold $tap-time $hold-time p p)
   sesh (tap-hold $tap-time $hold-time ralt (layer-while-held tmuxsessions))
   ;; Arrow på f: Tap f, hold → arrow
   nav (tap-hold $tap-time $hold-time f (layer-while-held arrow))
