@@ -2,7 +2,7 @@
   "version": 1,
   "servers": {
     "context7": {
-      "configHash": "7ee7671e91148394cc9a55d85e8d4987b98deaa86ff18e45d86ef72b13f53612",
+      "configHash": "293ff466b2caf7088e6c0b90ffa2d13ea5f7523c112a25783038dcfd5e952b6f",
       "tools": [
         {
           "name": "resolve-library-id",
@@ -50,7 +50,7 @@
         }
       ],
       "resources": [],
-      "cachedAt": 1780565089580
+      "cachedAt": 1781217214733
     }
   }
 }
