@@ -1,0 +1,113 @@
+{
+  "skill_name": "write-test",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Jag vill ha tester för inloggningsfunktionen.",
+      "expected_output": "Ska först ställa discovery-frågor: Vem? Vad? Varför? Sen skriva enkel, användarvänlig Gherkin-feature med Emma/Anna som karaktärer, max 3-5 steg per scenario.",
+      "files": [],
+      "assertions": [
+        {
+          "name": "asks_discovery_questions",
+          "description": "Ställer discovery-frågor innan testerna"
+        },
+        {
+          "name": "has_user_focused_scenarios",
+          "description": "Scenarier med personliga namn (Emma, Anna)"
+        },
+        {
+          "name": "max_5_steps_per_scenario",
+          "description": "Max 3-5 steg per scenario"
+        },
+        {
+          "name": "declarative_not_imperative",
+          "description": "Fokuserar på outcome, inte tekniska steg"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Skapa BDD-tester för en varukorg där användare kan lägga till och ta bort produkter.",
+      "expected_output": "Discovery-frågor om användartyp och mål, sen enkel feature med personliga namn och fokus på användarupplevelse, inte tekniska detaljer.",
+      "files": [],
+      "assertions": [
+        {
+          "name": "discovery_questions_asked",
+          "description": "Frågar om vem som handlar och varför"
+        },
+        {
+          "name": "simple_scenarios",
+          "description": "Max 4 steg per scenario"
+        },
+        {
+          "name": "user_journey_focus",
+          "description": "Fokuserar på användarresan, inte implementation"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Skriv tester för en sökfunktion som filtrerar produkter.",
+      "expected_output": "Frågar först vem som söker och varför, sen deklarativa scenarier med personliga namn som fokuserar på outcome.",
+      "files": [],
+      "assertions": [
+        {
+          "name": "asks_who_and_why",
+          "description": "Frågar vem som söker och varför"
+        },
+        {
+          "name": "declarative_scenarios",
+          "description": "Scenarier beskriver outcome, inte procedurer"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "Jag behöver enhetstester för validateEmail-funktionen med Vitest.",
+      "expected_output": "Frågar om funktionens syfte och edge cases, sen skriver tydliga tester med describe/it-block och bra felmeddelanden.",
+      "files": [],
+      "assertions": [
+        {
+          "name": "asks_about_purpose",
+          "description": "Frågar om funktionens syfte"
+        },
+        {
+          "name": "covers_edge_cases",
+          "description": "Testar edge cases och felhantering"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "Skapa tester för användarregistrering.",
+      "expected_output": "Discovery först: Vem registrerar sig? Vad ska hända vid framgång/misslyckande? Sen enkel feature med max 4 steg per scenario.",
+      "files": [],
+      "assertions": [
+        {
+          "name": "covers_success_and_failure",
+          "description": "Testar både happy path och felscenarier"
+        },
+        {
+          "name": "simple_scenario_structure",
+          "description": "Max 4 steg per scenario"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "prompt": "Testa att en admin kan radera användare.",
+      "expected_output": "Frågar om admin-upplevelsen och konsekvenser, sen skriver scenarier som beskriver adminens perspektiv.",
+      "files": [],
+      "assertions": [
+        {
+          "name": "role_clarified",
+          "description": "Förtydligar admin-rollen"
+        },
+        {
+          "name": "consequences_documented",
+          "description": "Beskriver konsekvenser av radering"
+        }
+      ]
+    }
+  ]
+}
