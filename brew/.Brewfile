@@ -1,8 +1,8 @@
 tap "antoniorodr/cronboard", trusted: true
-tap "arimxyer/tap", trusted: true
 tap "arl/arl", trusted: true
 tap "boolean-maybe/tap", trusted: true
 tap "buildpacks/tap", trusted: true
+tap "caarlos0/tap"
 tap "charmbracelet/tap", trusted: true
 tap "controlplaneio-fluxcd/tap", trusted: true
 tap "dagger/tap", trusted: true
@@ -12,13 +12,15 @@ tap "floatpane/matcha", trusted: true
 tap "fluxcd/tap", trusted: true
 tap "gromgit/brewtils", trusted: true
 tap "hashicorp/tap", trusted: true
+tap "kyverno/chainsaw", "https://github.com/kyverno/chainsaw"
 tap "loft-sh/tap", trusted: true
 tap "marcus/tap", trusted: true
 tap "oven-sh/bun", trusted: true
 tap "retlehs/tap", trusted: true
+tap "reyamira/tap"
 tap "teamookla/speedtest", trusted: true
 tap "tilt-dev/tap", trusted: true
-tap "vmware-tanzu/buildkit-cli-for-kubectl", "https://github.com/vmware-tanzu/buildkit-cli-for-kubectl", trusted: true
+tap "vmware-tanzu/buildkit-cli-for-kubectl", "https://github.com/vmware-archive/buildkit-cli-for-kubectl.git"
 # Simple, modern, secure file encryption
 brew "age"
 # Interpreted, interactive, object-oriented programming language
@@ -97,6 +99,8 @@ brew "lazysql"
 brew "llmfit"
 # Polyglot runtime manager (asdf rust clone)
 brew "mise"
+# Fast TUI and CLI for browsing AI models, benchmarks, and coding agents
+brew "models"
 # Free (GNU) replacement for the Pico text editor
 brew "nano"
 # Ambitious Vim-fork focused on extensibility and agility
@@ -173,8 +177,6 @@ brew "yazi"
 brew "yq"
 # Shell extension to navigate your filesystem faster
 brew "zoxide"
-# A fast TUI and CLI for browsing AI models, benchmarks, and coding agents
-brew "arimxyer/tap/models"
 # Git in your tmux status bar.
 brew "arl/arl/gitmux"
 # Terminal-based kanban/scrum board application
@@ -201,6 +203,8 @@ brew "fluxcd/tap/flux"
 brew "gromgit/brewtils/taproom"
 # Vault
 brew "hashicorp/tap/vault"
+# Declarative Kubernetes end-to-end testing.
+brew "kyverno/chainsaw/chainsaw"
 # A TUI dashboard for AI coding agents
 brew "marcus/tap/sidecar"
 # Task management CLI for AI-assisted development
@@ -211,8 +215,6 @@ brew "oven-sh/bun/bun"
 brew "teamookla/speedtest/speedtest"
 # Making local Kubernetes clusters easy to set up and tear down
 brew "tilt-dev/tap/ctlptl"
-# BuildKit CLI for kubectl
-brew "vmware-tanzu/buildkit-cli-for-kubectl/kubectl-buildkit"
 # Terminal-based AI coding assistant
 cask "claude-code"
 vscode "aaron-bond.better-comments"

@@ -60,7 +60,7 @@
   bdev (cmd /home/simon/repos/dotfiles/kanata/.config/kanata/switch-session.sh Begbot)
   match (cmd /home/simon/repos/dotfiles/kanata/.config/kanata/switch-session.sh MatchMaker)
   sterm (cmd /home/simon/repos/dotfiles/kanata/.config/kanata/switch-session.sh Terminal)
-  sai (cmd /home/simon/repos/dotfiles/kanata/.config/kanata/switch-session.sh Software+Agent)
+  sai (cmd /home/simon/repos/dotfiles/kanata/.config/kanata/switch-session.sh Agents)
   sall (macro (cmd hyprctl dispatch workspace 1) 50 C-u)
 )
 

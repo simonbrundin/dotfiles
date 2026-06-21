@@ -52,6 +52,10 @@ alias cat='bat'
 alias ut='simon talos update config'
 alias config_talos='code $TALOSCONFIG'
 alias config_kube='code $KUBECONFIG'
+alias nw='source ~/repos/simon-cli/simon new worktree'
+alias pr='source ~/repos/simon-cli/simon pr'
+
+
 
 # OpenCode wrapper: cleanup orphaned LSP processes before starting
 opencode() {
