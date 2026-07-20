@@ -17,6 +17,14 @@
       "env": {
         "KUBECONFIG": "/tmp/kubeconfig-certificate"
       }
+    },
+    "chrome-devtools": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "chrome-devtools-mcp@latest",
+        "--executable-path=/usr/bin/chromium"
+      ]
     }
   }
 }

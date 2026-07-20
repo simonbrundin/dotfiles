@@ -3,8 +3,20 @@
   "entries": {
     "[\"npx\",\"-y\",\"@upstash/context7-mcp\"]": {
       "resolvedBin": "/home/simon/.npm/_npx/eea2bd7412d4593b/node_modules/@upstash/context7-mcp/dist/index.js",
-      "resolvedAt": 1781823797439,
+      "resolvedAt": 1782411323336,
       "packageVersion": "3.2.1",
+      "isJs": true
+    },
+    "[\"npx\",\"mcp-remote\",\"https://nuxt.com/mcp\"]": {
+      "resolvedBin": "/home/simon/.npm/_npx/705d23756ff7dacc/node_modules/mcp-remote/dist/proxy.js",
+      "resolvedAt": 1782411292143,
+      "packageVersion": "0.1.38",
+      "isJs": true
+    },
+    "[\"npx\",\"-y\",\"chrome-devtools-mcp@latest\",\"--executable-path=/usr/bin/chromium\"]": {
+      "resolvedBin": "/home/simon/.npm/_npx/15c61037b1978c83/node_modules/chrome-devtools-mcp/build/src/bin/chrome-devtools-mcp.js",
+      "resolvedAt": 1783977105929,
+      "packageVersion": "1.5.0",
       "isJs": true
     }
   }
