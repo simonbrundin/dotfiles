@@ -17,10 +17,10 @@ tap "loft-sh/tap", trusted: true
 tap "marcus/tap", trusted: true
 tap "oven-sh/bun", trusted: true
 tap "retlehs/tap", trusted: true
-tap "reyamira/tap"
+tap "reyamira/tap", "https://github.com/reyamira/homebrew-tap.git"
 tap "teamookla/speedtest", trusted: true
 tap "tilt-dev/tap", trusted: true
-tap "vmware-tanzu/buildkit-cli-for-kubectl", "https://github.com/vmware-archive/buildkit-cli-for-kubectl.git"
+tap "vmware-tanzu/buildkit-cli-for-kubectl", "https://github.com/vmware-archive/buildkit-cli-for-kubectl.git", trusted: true
 # Simple, modern, secure file encryption
 brew "age"
 # Interpreted, interactive, object-oriented programming language
@@ -215,6 +215,8 @@ brew "oven-sh/bun/bun"
 brew "teamookla/speedtest/speedtest"
 # Making local Kubernetes clusters easy to set up and tear down
 brew "tilt-dev/tap/ctlptl"
+# BuildKit CLI for kubectl
+brew "vmware-tanzu/buildkit-cli-for-kubectl/kubectl-buildkit"
 # Terminal-based AI coding assistant
 cask "claude-code"
 vscode "aaron-bond.better-comments"
@@ -294,16 +296,8 @@ go "golang.org/x/tools/gopls"
 go "github.com/joshmedeski/sesh/v2"
 cargo "trippy"
 cargo "unifi-tui"
-npm "@earendil-works/pi-coding-agent"
-npm "@runfusion/fusion"
-npm "@samfp/pi-memory"
-npm "@upstash/context7-mcp"
-npm "context-mode"
-npm "diffity"
-npm "mcp-hub"
-npm "pi-context"
-npm "pi-lens"
-npm "pi-mcp-adapter"
-npm "pi-web-access"
-npm "pnpm"
-npm "task-master-ai"
+npm "@fission-ai/openspec"
+npm "@github/copilot"
+npm "node-gyp"
+npm "nopt"
+npm "semver"
