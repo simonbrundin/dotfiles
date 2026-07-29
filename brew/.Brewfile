@@ -179,6 +179,8 @@ brew "yq"
 brew "zoxide"
 # Git in your tmux status bar.
 brew "arl/arl/gitmux"
+# Offline voice-to-text dictation app with AI enhancement
+cask "fluidvoice"
 # Terminal-based kanban/scrum board application
 brew "boolean-maybe/tap/tiki"
 # A CLI for building apps using Cloud Native Buildpacks
