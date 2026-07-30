@@ -1,11 +1,9 @@
 {
-  "lastChangelogVersion": "0.82.1",
+  "lastChangelogVersion": "0.83.0",
   "defaultProvider": "minimax",
   "defaultModel": "MiniMax-M2.7",
   "defaultThinkingLevel": "medium",
-  "prompts": [
-    "/home/simon/repos/agents/app/commands"
-  ],
+  "prompts": ["/home/simon/repos/agents/src/commands"],
   "packages": [
     "npm:pi-mcp-adapter",
     "npm:pi-lens",
