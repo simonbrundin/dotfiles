@@ -2,7 +2,7 @@
   "version": 1,
   "servers": {
     "context7": {
-      "configHash": "293ff466b2caf7088e6c0b90ffa2d13ea5f7523c112a25783038dcfd5e952b6f",
+      "configHash": "eea9bf0c8f198e5d02c7f9cc889cf5016d2b4031e2cc3bc0d01069634835f913",
       "tools": [
         {
           "name": "resolve-library-id",
@@ -12,7 +12,7 @@
             "properties": {
               "query": {
                 "type": "string",
-                "description": "The question or task you need help with. This is used to rank library results by relevance to what the user is trying to accomplish. The query is sent to the Context7 API for processing. Do not include any sensitive or confidential information such as API keys, passwords, credentials, personal data, or proprietary code in your query."
+                "description": "What to look up in the library's documentation. This is used to rank library results by relevance to what the user is trying to accomplish. The query is sent to the Context7 API for processing. Do not include any sensitive or confidential information such as API keys, passwords, credentials, personal data, or proprietary code in your query."
               },
               "libraryName": {
                 "type": "string",
@@ -38,7 +38,7 @@
               },
               "query": {
                 "type": "string",
-                "description": "The question or task you need help with. Be specific and include relevant details. Good: 'How to set up authentication with JWT in Express.js' or 'React useEffect cleanup function examples'. Bad: 'auth' or 'hooks'. The query is sent to the Context7 API for processing. Do not include any sensitive or confidential information such as API keys, passwords, credentials, personal data, or proprietary code in your query."
+                "description": "What to look up in the library's documentation, scoped to a single concept. Be specific and include relevant details, but keep each query to one topic — if the user's question spans multiple distinct concepts, make a separate call per concept instead of combining them, unless the question is about how the concepts interact. Good: 'How to set up authentication with JWT in Express.js' or 'React useEffect cleanup function examples'. Bad (too vague): 'auth' or 'hooks'. Bad (too broad): 'routing and auth and caching in Next.js'. The query is sent to the Context7 API for processing. Do not include any sensitive or confidential information such as API keys, passwords, credentials, personal data, or proprietary code in your query."
               }
             },
             "required": [
@@ -50,10 +50,12 @@
         }
       ],
       "resources": [],
-      "cachedAt": 1782411323623
+      "prompts": [],
+      "instructions": "Use this server to fetch current documentation whenever the user asks about a library, framework, SDK, API, CLI tool, or cloud service — even well-known ones like React, Next.js, Prisma, Express, Tailwind, Django, or Spring Boot. This includes API syntax, configuration, version migration, library-specific debugging, setup instructions, and CLI tool usage. Use even when you think you know the answer — your training data may not reflect recent changes. Prefer this over web search for library docs.\n\nDo not use for: refactoring, writing scripts from scratch, debugging business logic, code review, or general programming concepts.",
+      "cachedAt": 1785450048326
     },
     "nuxt": {
-      "configHash": "ea4c12178ea81c6cf319738167a4258e20b521cfedd058e461906bed4af675d3",
+      "configHash": "c6fd27f3f168ee7e26a96e08a261e3e42c077076bc22e3d7eb84878f1619832e",
       "tools": [
         {
           "name": "get-changelog",
@@ -74,6 +76,38 @@
               }
             },
             "$schema": "http://json-schema.org/draft-07/schema#"
+          }
+        },
+        {
+          "name": "get-deploy-provider",
+          "description": "Retrieves detailed deployment instructions and setup guide for a specific hosting provider.\n\nWHEN TO USE: Use this tool when you know EXACTLY which provider the user wants. Common scenarios:\n- User asks for a specific provider: \"How do I deploy to Vercel?\" → /deploy/vercel\n- User mentions a known platform: \"Cloudflare deployment\" → /deploy/cloudflare\n- You found a relevant provider from list_deploy_providers and want full details\n\nWHEN NOT TO USE: If the user is asking about options or comparing providers, use list_deploy_providers first.\n\nEXAMPLES: \"/deploy/vercel\", \"/deploy/cloudflare\", \"/deploy/netlify\", \"/deploy/aws\", \"/deploy/node-server\"",
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "path": {
+                "type": "string",
+                "description": "The path to the deploy provider (e.g., /deploy/vercel)"
+              },
+              "sections": {
+                "description": "Specific h2 section titles to return. If omitted, returns full content.",
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            },
+            "required": [
+              "path"
+            ],
+            "$schema": "http://json-schema.org/draft-07/schema#"
+          }
+        },
+        {
+          "name": "list-deploy-providers",
+          "description": "Lists all deployment providers and hosting platforms for Nuxt applications with their features and capabilities.\n\nWHEN TO USE: Use this tool when you need to DISCOVER or COMPARE deployment options. Common scenarios:\n- \"What deployment platforms are available?\" - browse all options\n- \"I need edge functions support\" - compare features across providers\n- \"Show me platforms with free tiers\" - search for specific features\n- \"What are my deployment options?\" - general exploration\n\nWHEN NOT TO USE: If you know the exact provider (e.g., \"Vercel\", \"Cloudflare\"), you can use get_deploy_provider directly with the path.\n\nOUTPUT: Returns list of providers with titles, descriptions, and paths. Use get_deploy_provider for detailed deployment instructions.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {}
           }
         },
         {
@@ -99,6 +133,65 @@
           "inputSchema": {
             "type": "object",
             "properties": {}
+          }
+        },
+        {
+          "name": "get-module",
+          "description": "Retrieves complete details about a specific Nuxt module including README, compatibility, maintainers, and stats.\n\nWHEN TO USE: Use this tool when you know the EXACT module identifier. Common scenarios:\n- User asks for a specific module: \"Get details about @nuxt/ui\"\n- User mentions a known module: \"Show me nuxt-icon module\"\n- You found a relevant module from list_modules and want full details\n- You need to check Nuxt 4 compatibility for a specific module\n\nWHEN NOT TO USE: If you don't know the exact module identifier and need to search/discover modules, use list_modules first.\n\nPARAMETER: slug (required) - The unique module identifier\nEXAMPLES:\n- slug: \"@nuxt/ui\"\n- slug: \"@nuxtjs/i18n\"\n- slug: \"nuxt-icon\"\n- slug: \"@nuxt/image\"\n- slug: \"nuxt-auth\"",
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "slug": {
+                "type": "string",
+                "description": "The unique module identifier, exactly as shown in list_modules (e.g., \"@nuxt/ui\", \"@nuxtjs/i18n\", \"nuxt-icon\")"
+              }
+            },
+            "required": [
+              "slug"
+            ],
+            "$schema": "http://json-schema.org/draft-07/schema#"
+          }
+        },
+        {
+          "name": "list-modules",
+          "description": "Lists all available Nuxt modules with optional filtering and sorting capabilities.\n\nWHEN TO USE: Use this tool when you need to DISCOVER or SEARCH for modules. Common scenarios:\n- \"I need an authentication module\" - search by category or keyword\n- \"What UI libraries are available?\" - filter by category\n- \"Show me popular image optimization modules\" - filter + sort by downloads\n- \"Find a module for X feature\" - general exploration\n\nPARAMETERS:\n- search: Filter by name, description, or npm package name\n- category: Filter by exact category name (e.g., \"Security\", \"UI\", \"Database\", \"CMS\", \"SEO\") — use search for keyword discovery, not category\n- sort: Order by downloads, stars, publishedAt, or createdAt\n- order: asc or desc\n- includeStats: Include full per-module stats (downloads, stars, publishedAt, createdAt, etc.). Defaults to true when sort is publishedAt or createdAt.\n\nWHEN NOT TO USE: If you already know the exact module slug (e.g., \"@nuxt/ui\"), use get_module directly.\n\nOUTPUT: Returns list of modules with name, description, category, and either downloads/stars or full stats. Use get_module for complete details including README and compatibility.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "search": {
+                "description": "Search term to filter modules by name, description, or npm package name",
+                "type": "string"
+              },
+              "category": {
+                "description": "Filter by exact category name (e.g., \"Security\", \"UI\", \"Database\", \"CMS\", \"SEO\"). Auth modules use category \"Security\", not \"auth\". Prefer search for keyword discovery.",
+                "type": "string"
+              },
+              "sort": {
+                "default": "downloads",
+                "description": "Sort modules by downloads, stars, published date, or created date",
+                "type": "string",
+                "enum": [
+                  "downloads",
+                  "stars",
+                  "publishedAt",
+                  "createdAt"
+                ]
+              },
+              "order": {
+                "default": "desc",
+                "description": "Sort order (ascending or descending)",
+                "type": "string",
+                "enum": [
+                  "asc",
+                  "desc"
+                ]
+              },
+              "includeStats": {
+                "description": "Include full per-module stats. Defaults to true when sort is publishedAt or createdAt.",
+                "type": "boolean"
+              }
+            },
+            "$schema": "http://json-schema.org/draft-07/schema#"
           }
         },
         {
@@ -137,7 +230,8 @@
                 "type": "string",
                 "enum": [
                   "3.x",
-                  "4.x"
+                  "4.x",
+                  "5.x"
                 ]
               },
               "sections": {
@@ -175,93 +269,6 @@
             },
             "$schema": "http://json-schema.org/draft-07/schema#"
           }
-        },
-        {
-          "name": "get-module",
-          "description": "Retrieves complete details about a specific Nuxt module including README, compatibility, maintainers, and stats.\n\nWHEN TO USE: Use this tool when you know the EXACT module identifier. Common scenarios:\n- User asks for a specific module: \"Get details about @nuxt/ui\"\n- User mentions a known module: \"Show me nuxt-icon module\"\n- You found a relevant module from list_modules and want full details\n- You need to check Nuxt 4 compatibility for a specific module\n\nWHEN NOT TO USE: If you don't know the exact module identifier and need to search/discover modules, use list_modules first.\n\nPARAMETER: slug (required) - The unique module identifier\nEXAMPLES:\n- slug: \"@nuxt/ui\"\n- slug: \"@nuxtjs/i18n\"\n- slug: \"nuxt-icon\"\n- slug: \"@nuxt/image\"\n- slug: \"nuxt-auth\"",
-          "inputSchema": {
-            "type": "object",
-            "properties": {
-              "slug": {
-                "type": "string",
-                "description": "The unique module identifier, exactly as shown in list_modules (e.g., \"@nuxt/ui\", \"@nuxtjs/i18n\", \"nuxt-icon\")"
-              }
-            },
-            "required": [
-              "slug"
-            ],
-            "$schema": "http://json-schema.org/draft-07/schema#"
-          }
-        },
-        {
-          "name": "list-modules",
-          "description": "Lists all available Nuxt modules with optional filtering and sorting capabilities.\n\nWHEN TO USE: Use this tool when you need to DISCOVER or SEARCH for modules. Common scenarios:\n- \"I need an authentication module\" - search by category or keyword\n- \"What UI libraries are available?\" - filter by category\n- \"Show me popular image optimization modules\" - filter + sort by downloads\n- \"Find a module for X feature\" - general exploration\n\nPARAMETERS:\n- search: Filter by name, description, or npm package name\n- category: Filter by category (e.g., \"ui\", \"auth\", \"database\", \"media\", \"seo\")\n- sort: Order by downloads, stars, publishedAt, or createdAt\n- order: asc or desc\n\nWHEN NOT TO USE: If you already know the exact module slug (e.g., \"@nuxt/ui\"), use get_module directly.\n\nOUTPUT: Returns list of modules with name, description, category, stats. Use get_module for complete details including README and compatibility.",
-          "inputSchema": {
-            "type": "object",
-            "properties": {
-              "search": {
-                "description": "Search term to filter modules by name, description, or npm package name",
-                "type": "string"
-              },
-              "category": {
-                "description": "Filter modules by category (e.g., \"ui\", \"database\", \"auth\", \"seo\")",
-                "type": "string"
-              },
-              "sort": {
-                "default": "downloads",
-                "description": "Sort modules by downloads, stars, published date, or created date",
-                "type": "string",
-                "enum": [
-                  "downloads",
-                  "stars",
-                  "publishedAt",
-                  "createdAt"
-                ]
-              },
-              "order": {
-                "default": "desc",
-                "description": "Sort order (ascending or descending)",
-                "type": "string",
-                "enum": [
-                  "asc",
-                  "desc"
-                ]
-              }
-            },
-            "$schema": "http://json-schema.org/draft-07/schema#"
-          }
-        },
-        {
-          "name": "get-deploy-provider",
-          "description": "Retrieves detailed deployment instructions and setup guide for a specific hosting provider.\n\nWHEN TO USE: Use this tool when you know EXACTLY which provider the user wants. Common scenarios:\n- User asks for a specific provider: \"How do I deploy to Vercel?\" → /deploy/vercel\n- User mentions a known platform: \"Cloudflare deployment\" → /deploy/cloudflare\n- You found a relevant provider from list_deploy_providers and want full details\n\nWHEN NOT TO USE: If the user is asking about options or comparing providers, use list_deploy_providers first.\n\nEXAMPLES: \"/deploy/vercel\", \"/deploy/cloudflare\", \"/deploy/netlify\", \"/deploy/aws\", \"/deploy/node-server\"",
-          "inputSchema": {
-            "type": "object",
-            "properties": {
-              "path": {
-                "type": "string",
-                "description": "The path to the deploy provider (e.g., /deploy/vercel)"
-              },
-              "sections": {
-                "description": "Specific h2 section titles to return. If omitted, returns full content.",
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              }
-            },
-            "required": [
-              "path"
-            ],
-            "$schema": "http://json-schema.org/draft-07/schema#"
-          }
-        },
-        {
-          "name": "list-deploy-providers",
-          "description": "Lists all deployment providers and hosting platforms for Nuxt applications with their features and capabilities.\n\nWHEN TO USE: Use this tool when you need to DISCOVER or COMPARE deployment options. Common scenarios:\n- \"What deployment platforms are available?\" - browse all options\n- \"I need edge functions support\" - compare features across providers\n- \"Show me platforms with free tiers\" - search for specific features\n- \"What are my deployment options?\" - general exploration\n\nWHEN NOT TO USE: If you know the exact provider (e.g., \"Vercel\", \"Cloudflare\"), you can use get_deploy_provider directly with the path.\n\nOUTPUT: Returns list of providers with titles, descriptions, and paths. Use get_deploy_provider for detailed deployment instructions.",
-          "inputSchema": {
-            "type": "object",
-            "properties": {}
-          }
         }
       ],
       "resources": [
@@ -271,20 +278,68 @@
           "description": "Complete list of Nuxt blog posts including releases, tutorials, and announcements"
         },
         {
-          "uri": "resource://nuxt-com/documentation-pages",
-          "name": "nuxt-documentation-pages",
-          "description": "Complete list of available Nuxt documentation pages (defaults to v4.x)"
-        },
-        {
           "uri": "resource://nuxt-com/deploy-providers",
           "name": "nuxt-deploy-providers",
           "description": "Complete list of deployment providers and hosting platforms for Nuxt applications"
+        },
+        {
+          "uri": "resource://nuxt-com/documentation-pages",
+          "name": "nuxt-documentation-pages",
+          "description": "Complete list of available Nuxt documentation pages across v3.x, v4.x, and v5.x"
         }
       ],
-      "cachedAt": 1782411317737
+      "prompts": [
+        {
+          "name": "deployment-guide",
+          "title": "Deployment Guide",
+          "description": "Get deployment instructions for a specific hosting provider",
+          "arguments": [
+            {
+              "name": "provider",
+              "description": "Hosting provider name (e.g., \"Vercel\", \"Netlify\", \"AWS\", \"Cloudflare\")",
+              "required": true
+            }
+          ]
+        },
+        {
+          "name": "find-documentation-for-topic",
+          "title": "Find Documentation For Topic",
+          "description": "Find the best Nuxt documentation for a specific topic or feature",
+          "arguments": [
+            {
+              "name": "topic",
+              "description": "Describe what you want to learn about (e.g., \"server-side rendering\", \"data fetching\", \"routing\")",
+              "required": true
+            },
+            {
+              "name": "version",
+              "description": "Documentation version to search (defaults to 4.x)",
+              "required": false
+            }
+          ]
+        },
+        {
+          "name": "migration-help",
+          "title": "Migration Help",
+          "description": "Get help with migrating between Nuxt versions",
+          "arguments": [
+            {
+              "name": "fromVersion",
+              "description": "Current Nuxt version (e.g., \"2\", \"3.x\")",
+              "required": true
+            },
+            {
+              "name": "toVersion",
+              "description": "Target Nuxt version (e.g., \"3.x\", \"4.x\")",
+              "required": true
+            }
+          ]
+        }
+      ],
+      "cachedAt": 1785425646136
     },
     "flux-operator-mcp": {
-      "configHash": "8330f1c133931302b50a5f15f52c12cd958b6e4eab921b59bb2fba734ea3276c",
+      "configHash": "890be544732050fe84075afbab81200429d8672c1ca09f0e7d4c29ffade3191d",
       "tools": [
         {
           "name": "apply_kubernetes_manifest",
@@ -697,10 +752,50 @@
         }
       ],
       "resources": [],
-      "cachedAt": 1782411325969
+      "prompts": [
+        {
+          "name": "debug_flux_helmrelease",
+          "arguments": [
+            {
+              "name": "name",
+              "description": "The name of the Flux resource.",
+              "required": true
+            },
+            {
+              "name": "namespace",
+              "description": "The namespace of the Flux resource.",
+              "required": true
+            },
+            {
+              "name": "cluster",
+              "description": "The context name of the cluster, defaults to current."
+            }
+          ]
+        },
+        {
+          "name": "debug_flux_kustomization",
+          "arguments": [
+            {
+              "name": "name",
+              "description": "The name of the Flux resource.",
+              "required": true
+            },
+            {
+              "name": "namespace",
+              "description": "The namespace of the Flux resource.",
+              "required": true
+            },
+            {
+              "name": "cluster",
+              "description": "The context name of the cluster, defaults to current."
+            }
+          ]
+        }
+      ],
+      "cachedAt": 1785419718615
     },
     "chrome-devtools": {
-      "configHash": "e8ef9918d10fc751546b8dbd49602a4a7ec83a197ec614cf21f7ce15eba95c98",
+      "configHash": "3163afd478880d8a8add26d3fef4147082911e89882ebfe2c5f584d1489e61ac",
       "tools": [
         {
           "name": "click",
@@ -1530,7 +1625,8 @@
         }
       ],
       "resources": [],
-      "cachedAt": 1783985924777
+      "prompts": [],
+      "cachedAt": 1785448883604
     }
   }
 }

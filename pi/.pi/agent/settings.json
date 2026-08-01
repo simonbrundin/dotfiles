@@ -3,7 +3,9 @@
   "defaultProvider": "minimax",
   "defaultModel": "MiniMax-M2.7",
   "defaultThinkingLevel": "medium",
-  "prompts": ["/home/simon/repos/agents/src/commands"],
+  "prompts": [
+    "/home/simon/repos/agents/src/commands"
+  ],
   "packages": [
     "npm:pi-mcp-adapter",
     "npm:pi-lens",
@@ -14,5 +16,5 @@
     "npm:pi-permission-system"
   ],
   "theme": "dark",
-  "hideThinkingBlock": false
+  "hideThinkingBlock": true
 }

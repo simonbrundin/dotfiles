@@ -15,6 +15,7 @@ tap "hashicorp/tap", trusted: true
 tap "kyverno/chainsaw", "https://github.com/kyverno/chainsaw"
 tap "loft-sh/tap", trusted: true
 tap "marcus/tap", trusted: true
+tap "nubjs/tap"
 tap "oven-sh/bun", trusted: true
 tap "retlehs/tap", trusted: true
 tap "reyamira/tap", "https://github.com/reyamira/homebrew-tap.git"
@@ -179,8 +180,6 @@ brew "yq"
 brew "zoxide"
 # Git in your tmux status bar.
 brew "arl/arl/gitmux"
-# Offline voice-to-text dictation app with AI enhancement
-cask "fluidvoice"
 # Terminal-based kanban/scrum board application
 brew "boolean-maybe/tap/tiki"
 # A CLI for building apps using Cloud Native Buildpacks
@@ -211,6 +210,8 @@ brew "kyverno/chainsaw/chainsaw"
 brew "marcus/tap/sidecar"
 # Task management CLI for AI-assisted development
 brew "marcus/tap/td"
+# Fast TypeScript runtime and package manager that augments Node
+brew "nubjs/tap/nub", trusted: true
 # Incredibly fast JavaScript runtime, bundler, transpiler and package manager - all in one.
 brew "oven-sh/bun/bun"
 # Ookla Speedtest
@@ -298,8 +299,16 @@ go "golang.org/x/tools/gopls"
 go "github.com/joshmedeski/sesh/v2"
 cargo "trippy"
 cargo "unifi-tui"
-npm "@fission-ai/openspec"
-npm "@github/copilot"
-npm "node-gyp"
-npm "nopt"
-npm "semver"
+npm "@earendil-works/pi-coding-agent"
+npm "@runfusion/fusion"
+npm "@samfp/pi-memory"
+npm "@upstash/context7-mcp"
+npm "context-mode"
+npm "diffity"
+npm "mcp-hub"
+npm "pi-context"
+npm "pi-lens"
+npm "pi-mcp-adapter"
+npm "pi-web-access"
+npm "pnpm"
+npm "task-master-ai"

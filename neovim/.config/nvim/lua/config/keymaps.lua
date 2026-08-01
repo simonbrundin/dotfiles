@@ -2,6 +2,10 @@
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
 
+-- GitHub Copilot
+vim.keymap.set("n", "<leader>cp", "<cmd>Copilot panel<cr>", { desc = "Open Copilot panel" })
+vim.keymap.set("n", "<leader>ca", "<cmd>Copilot auth<cr>", { desc = "Authenticate with GitHub" })
+
 vim.keymap.set("n", "<leader>kr", "<cmd>!simon kanata restart<cr>", { desc = "Restart Kanata" })
 
 -- Markera all text i dokumentet
