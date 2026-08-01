@@ -13,7 +13,8 @@
     "npm:@runfusion/fusion",
     "npm:pi-context",
     "npm:pi-web-access",
-    "npm:pi-permission-system"
+    "npm:pi-permission-system",
+    "npm:pi-dep-audit"
   ],
   "theme": "dark",
   "hideThinkingBlock": true
