@@ -1,40 +1,23 @@
 -- GitHub Copilot integration with blink.cmp
--- Provides inline code completions with low latency
+-- Uses: zbirenbaum/copilot.lua + fang2hou/blink-copilot
 return {
+  -- Copilot.lua as the backend
   {
     "zbirenbaum/copilot.lua",
-    event = { "InsertEnter" },
     cmd = "Copilot",
-    build = ":Copilot auth",
+    event = "InsertEnter",
     opts = {
-      suggestion = {
-        enabled = true,
-        -- Show suggestions as ghost text (inline, no popup)
-        auto_trigger = true,
-        keymap = {
-          accept = "<M-l>",
-          accept_word = "<M-.>",
-          accept_line = "<M-Enter>",
-          next = "<M-]>",
-          prev = "<M-[>",
-          dismiss = "<C-]>",
-        },
-      },
-      panel = {
-        enabled = false, -- We use blink.cmp for suggestions
-      },
+      suggestion = { enabled = false }, -- We use blink.cmp instead
+      panel = { enabled = false },
       filetypes = {
-        -- Disable copilot for certain filetypes
-        yaml = false,
-        markdown = false,
-        help = false,
+        markdown = true,
+        help = true,
       },
     },
   },
-  -- Copilot source for blink.cmp
+  -- blink-copilot as the blink.cmp source
   {
-    "CopilotC-Nvim/blink.copilot",
-    -- External dependency that blink.cmp will auto-load
-    -- no plugin spec needed - blink.cmp handles this automatically
+    "fang2hou/blink-copilot",
+    enabled = true,
   },
 }
