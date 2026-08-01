@@ -91,37 +91,34 @@ neovim/.config/nvim/
 ```mermaid
 flowchart TB
     subgraph Kärna
-        LazyVim["LazyVim<br/>(Plugin Manager)"]
+        LazyVim[LazyVim<br/>Plugin Manager]
     end
 
     subgraph Användargränssnitt
-        Snacks["🍭 Snacks.nvim<br/>(Dashboard, Picker, Explorer)"]
-        Bufferline["Bufferline<br/>(Tab-bar)"]
-        Bullets["Bullets.vim<br/>(Automatisk numrering)"]
-        Catppuccin["Catppuccin<br/>(Tema)"]
+        Snacks[Snacks.nvim<br/>Dashboard, Picker]
+        Bufferline[Bufferline<br/>Tab-bar]
+        Bullets[Bullets.vim<br/>Numrering]
+        Catppuccin[Catppuccin<br/>Tema]
     end
 
-    subgraph AI & Kodassistent
-        Copilot["GitHub Copilot<br/>(Code Suggestions)"]
-        OpenCode["OpenCode.nvim<br/>(AI-chat)"]
+    subgraph AI_Kodassistent
+        Copilot[GitHub Copilot<br/>Suggestions]
+        OpenCode[OpenCode.nvim<br/>AI-chat]
     end
 
-    subgraph LSP & Formattering
-        Mason["Mason.nvim<br/>(LSP-installering)"]
-        Conform["Conform.nvim<br/>(Formatering)"]
-        Prettier["Vim-Prettier<br/>(Markdown)"]
+    subgraph LSP_Formattering
+        Mason[Mason.nvim<br/>LSP-installering]
+        Conform[Conform.nvim<br/>Formatering]
     end
 
     subgraph Versionskontroll
-        LazyGit["LazyGit.nvim<br/>(Git GUI)"]
-        Pipeline["Pipeline.nvim<br/>(CI/CD)"]
-        GitHubActions["Pipeline.nvim<br/>(Actions)"]
+        LazyGit[LazyGit.nvim<br/>Git GUI]
+        Pipeline[Pipeline.nvim<br/>CI/CD]
     end
 
     subgraph Verktyg
-        AutoSave["Auto-Save.nvim<br/>(Spara automatiskt)"]
-        MCPHub["MCPHub.nvim<br/>(MCP-klient)"]
-        SSHF["Remote-SSHFS.nvim<br/>(Fjärrfiler)"]
+        AutoSave[Auto-Save.nvim<br/>Spara automatiskt]
+        MCPHub[MCPHub.nvim<br/>MCP-klient]
     end
 
     LazyVim --> Snacks
@@ -198,7 +195,7 @@ AI-chatintegration direkt i Neovim.
 
 #### 📄 Bufferline
 
-Visar öppna buffertar som flikflikar i toppen av fönstret.
+Visar öppna buffertar somflikflikar i toppen av fönstret.
 
 #### 📝 Bullets.vim
 
@@ -277,32 +274,6 @@ Följande teman är installerade och kan växlas mellan:
 **Växla tema:** `<leader>uC`
 
 ### Viktiga Tangentbordsgenvägar
-
-```mermaid
-flowchart LR
-    subgraph Sök
-        SP["<leader><space> Smart Find"]
-        SF["<leader>ff Files"]
-        SG["<leader>/ Grep"]
-    end
-
-    subgraph Git
-        GG["<leader>gg LazyGit"]
-        GS["<leader>gs Git Status"]
-        GB["<leader>gb Branches"]
-    end
-
-    subgraph Navigation
-        E["<leader>e Explorer"]
-        J["<leader>j Buffers"]
-        Z["<leader>z Zen Mode"]
-    end
-
-    subgraph AI
-        OT["<leader>ot OpenCode Toggle"]
-        OA["<leader>oa Ask AI"]
-    end
-```
 
 #### Grundläggande navigation
 
@@ -411,9 +382,9 @@ Varje applikation har tilldelade workspaces:
 flowchart TB
     subgraph Hyprland
         WM[Window Manager]
-        Idle[Hypridle<br/>Skärmlås]
-        Lock[Hyprlock<br/>Låsskärm]
-        Sunset[Hyprsunset<br/>Blåljus]
+        Idle[Hypridle]
+        Lock[Hyprlock]
+        Sunset[Hyprsunset]
     end
 
     subgraph Omarchy
@@ -430,8 +401,8 @@ flowchart TB
     WM --> Lock
     WM --> Sunset
     WM --> Waybar
-    Omarchy --> Theme
     WM --> Tray
+    Omarchy --> Theme
 ```
 
 ---
@@ -598,14 +569,14 @@ kanata/.config/kanata/
 ```mermaid
 flowchart TB
     subgraph Bas
-        Base["base<br/>(Normalt tangentbord)"]
+        Base[base<br/>Normalt tangentbord]
     end
 
-    subgraph Hold-Layers
-        Arrow["arrow<br/>(Håll f)"]
-        App["app<br/>(Håll caps)"]
-        Tmux["tmux<br/>(Håll s)"]
-        Audio["audio<br/>(Håll a)"]
+    subgraph HoldLayers[Hold Layers]
+        Arrow[arrow<br/>Håll f]
+        App[app<br/>Håll caps]
+        Tmux[tmux<br/>Håll s]
+        Audio[audio<br/>Håll a]
     end
 
     Base --> Arrow
@@ -879,7 +850,7 @@ flowchart TB
     end
 
     subgraph Themes
-        Current[Aetheria<br/>Nuvarande]
+        Current[Aetheria]
         Others[Andra teman]
     end
 
