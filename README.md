@@ -340,3 +340,609 @@ flowchart LR
 - `lua/config/keymaps.lua` - Anpassade tangentbindningar
 - `lua/config/autocmds.lua` - Anpassade autocommands
 - `lua/plugins/` - Plugin-konfiguration (en fil per plugin)
+
+---
+
+## Hyprland
+
+**Wayland-fönsterhanterare** med dynamisk tiling och flytande fönster. Konfigurationen integreras med **Omarchy** för temahantering.
+
+### Mappstruktur
+
+```
+hypr/.config/hypr/
+├── hyprland.conf      # Huvudkonfiguration
+├── bindings.conf      # Tangentbindningar
+├── autostart.conf     # Program som startar automatiskt
+├── monitors.conf      # Skärmkonfiguration
+├── input.conf         # Inmatningsinställningar
+├── looknfeel.conf     # Utseende & känsla
+├── workspace-rules.conf
+├── hypridle.conf      # Skärmlås
+├── hyprlock.conf      # Skärmlåsskärm
+├── hyprsunset.conf    # Blåljusfilter
+└── envs.conf         # Miljövariabler
+```
+
+### Tangentbindningar
+
+Hyprland använder Omarchys standardbindningar, utökade med personliga tillägg:
+
+| Genväg | Åtgärd |
+|--------|--------|
+| `Super + Return` | Öppna terminal |
+| `Super + Shift + Return` | Tmux-terminal |
+| `Super + Shift + F` | Filhanterare (Nautilus) |
+| `Super + Shift + B` | Webbläsare |
+| `Super + Shift + N` | Neovim (Editor) |
+| `Super + Shift + D` | Docker TUI |
+| `Super + Shift + G` | Signal |
+| `Super + Shift + M` | Spotify |
+| `Super + Shift + W` | Typora |
+
+#### Web-appar
+
+| Genväg | Mål |
+|--------|-----|
+| `Super + Shift + A` | ChatGPT |
+| `Super + Shift + Y` | YouTube |
+| `Super + Shift + E` | Email (Hey) |
+| `Super + Shift + C` | Kalender |
+| `Super + Shift + X` | X/Twitter |
+| `Super + Shift + P` | Google Photos |
+
+### Workspace-regler
+
+Varje applikation har tilldelade workspaces:
+
+| Workspace | Applikation |
+|-----------|-------------|
+| 1 | Terminal/Tmux |
+| 2 | Webbläsare |
+| 3 | AI-verktyg |
+| 4 | Anteckningar |
+| 5 | Konfiguration |
+| 6 | Mooni |
+| 10 | UniFi Controller |
+
+### Systemintegration
+
+```mermaid
+flowchart TB
+    subgraph Hyprland
+        WM[Window Manager]
+        Idle[Hypridle<br/>Skärmlås]
+        Lock[Hyprlock<br/>Låsskärm]
+        Sunset[Hyprsunset<br/>Blåljus]
+    end
+
+    subgraph Omarchy
+        Theme[Temahantering]
+        Menu[Meny]
+    end
+
+    subgraph Status
+        Waybar[Waybar]
+        Tray[System Tray]
+    end
+
+    WM --> Idle
+    WM --> Lock
+    WM --> Sunset
+    WM --> Waybar
+    Omarchy --> Theme
+    WM --> Tray
+```
+
+---
+
+## Waybar
+
+**Snabb och stilren statusrad** för Hyprland. Visar systeminformation, workspaces och anpassade moduler.
+
+### Konfigurerade moduler
+
+#### Vänster sida
+
+| Modul | Beskrivning |
+|-------|-------------|
+| `omarchy` | Omarchy-menyikon |
+| `workspaces` | Workspace-indikator (1-10) |
+
+#### Centrum
+
+| Modul | Beskrivning |
+|-------|-------------|
+| `update` | Uppdateringsindikator |
+| `screenrecording` | Skärminspelningsindikator |
+| `task` | Aktiva uppgifter |
+
+#### Höger sida
+
+| Modul | Beskrivning |
+|-------|-------------|
+| `tray` | Systemfack |
+| `bluetooth` | Bluetooth-status |
+| `network` | Nätverksstatus |
+| `pulseaudio` | Ljudvolym |
+| `cpu` | CPU-användning |
+| `battery` | Batteristatus |
+| `clock` | Klocka |
+
+### Anpassade skript
+
+| Skript | Funktion |
+|--------|----------|
+| `task_script.sh` | Visa aktiva Fusion-uppgifter |
+| `screen-recording.sh` | Indikator för skärminspelning |
+| `idle.sh` | Inaktivitetsindikator |
+| `notification-silencing.sh` | Tystnadsläge |
+
+### Workspace-visning
+
+```
+┌─────────────────────────────────────────────────────────┐
+│ [Omarchy] [1] [2] [3] [4] [5]   [Update] [Task]   🔊 📶 🔋 14:32  │
+└─────────────────────────────────────────────────────────┘
+```
+
+---
+
+## Tmux
+
+**Terminal-multiplexer** med sessioner, fönster och paneler. Används för att organisera arbetsflöden.
+
+### Konfiguration
+
+```bash
+Prefix: Ctrl-b
+```
+
+### Plugins
+
+| Plugin | Funktion |
+|--------|----------|
+| **Catppuccin** | Tema (Mocha) |
+| **tpm** | Plugin Manager |
+| **tmux-battery** | Batteristatus |
+| **tmux-cpu** | CPU-användning |
+| **tmux-continuum** | Sessionssparning |
+| **sesh** | Zoxide-integrerad sessionhantering |
+| **gitmux** | Git-status i statusrad |
+
+### Tangentbindningar
+
+| Genväg | Funktion |
+|--------|----------|
+| `Ctrl-b r` | Ladda om konfiguration |
+| `Ctrl-b x` | Stäng pane |
+| `Ctrl-b f` | Öppna Files-session |
+| `Ctrl-b h/j/k/l` | Navigera paneler |
+| `Ctrl-u` | Sesh sessionväljare (med fzf) |
+| `Ctrl-y` | Nästa fönster |
+
+### Sesh Sessionväljare
+
+`Ctrl-u` öppnar en interaktiv sessionväljare med:
+
+```
+┌──────────────────────────────────────────────────────────┐
+│  ⚡  session                                                │
+│  ─────────────────────────────────────────────────────────│
+│  🪟 tmux sessions                                          │
+│  ⚙️  configs                                                │
+│  📁 zoxide dirs                                            │
+│                                                          │
+│  ┌────────────────────────────────────────────────────┐   │
+│  │ ● Dotfiles                                         │   │
+│  │ ● Kubernetes                                       │   │
+│  │ ● Home                                            │   │
+│  │ ● Plan                                            │   │
+│  │ ● Agents                                          │   │
+│  └────────────────────────────────────────────────────┘   │
+│                                                          │
+│  ^a all  ^t tmux  ^g configs  ^x zoxide  ^d kill  ^f find │
+└──────────────────────────────────────────────────────────┘
+```
+
+### Tmuxinator
+
+**Fördefinierade sessioner** för olika arbetsflöden:
+
+```yaml
+# Exempel: Kubernetes.yml
+name: kubernetes
+root: ~/repos/infrastructure
+windows:
+  - editor:
+      layout: main-vertically
+      panes:
+        - nvim
+        - kubectl get pods -n flux-system
+  - monitoring: lazydocker
+  - shell: ~
+```
+
+| Session | Syfte |
+|---------|--------|
+| `Dotfiles` | Dotfiles-arbete |
+| `Kubernetes` | Klusterhantering |
+| `Plan` | Planering och anteckningar |
+| `Agents` | AI-agentövervakning |
+| `Infrastructure` | Kubernetes-konfiguration |
+| `Hacking` | Utforskande arbete |
+| `Music` | Musikstreamingtjänster |
+
+---
+
+## Kanata
+
+**Tangentbordsanpassning** med avancerade layouter och alias. Förbättrar produktivitet genom smarta tangentkombinationer.
+
+### Mappstruktur
+
+```
+kanata/.config/kanata/
+├── kanata.kbd          # Huvudkonfiguration
+├── kanata-wrapper.sh   # Startskript
+├── kanata.service      # Systemd-tjänst
+├── switch-session.sh   # Sessionsbyte
+├── spotify-ctl.sh      # Spotify-kontroll
+└── etc/
+    ├── systemd/system/  # Systemd-filer
+    └── udev/rules/     # Enhetsregler
+```
+
+### Lagersystem
+
+```mermaid
+flowchart TB
+    subgraph Bas
+        Base["base<br/>(Normalt tangentbord)"]
+    end
+
+    subgraph Hold-Layers
+        Arrow["arrow<br/>(Håll f)"]
+        App["app<br/>(Håll caps)"]
+        Tmux["tmux<br/>(Håll s)"]
+        Audio["audio<br/>(Håll a)"]
+    end
+
+    Base --> Arrow
+    Base --> App
+    Base --> Tmux
+    Base --> Audio
+```
+
+### Tap-Hold Beteende
+
+| Tangent | Tap | Hold |
+|---------|-----|------|
+| `Caps` | `Esc` | `Meta` |
+| `f` | `f` | Arrow-lager |
+| `s` | `s` | Tmux-lager |
+| `a` | `a` | Audio-lager |
+| `meh` | `Esc` | Plan-växling |
+
+### App-lager (Caps + Hold)
+
+Snabbåtkomst till applikationer:
+
+| Tangent | Applikation |
+|---------|-------------|
+| `unifi` | UniFi Controller |
+| `term` | Terminal |
+| `web` | Webbläsare |
+| `ai` | AI-workspace |
+| `note` | Anteckningar |
+| `mooni` | Mooni |
+| `grok` | Grok |
+
+### Tmux-lager
+
+| Tangent | Åtgärd |
+|---------|--------|
+| `C-b $` | Byt session |
+| `C-b s` | Lista sessioner |
+| `C-b p` | Föregående |
+| `C-b n` | Nästa |
+| `C-b c` | Skapa |
+| `C-b x` | Stäng |
+| `C-b ,` | Byt namn |
+
+---
+
+## Starship
+
+**Minimalistisk och snabb prompt** med rik information om git, program och mer.
+
+### Format
+
+```
+[OS][User][📁 Current Dir][🌿 Git Branch][⚡ Git Status] [🕐 Time]
+❯
+```
+
+### Aktiverade moduler
+
+| Modul | Symbol | Visar |
+|-------|--------|-------|
+| `os` | 🌐 | Operativsystem |
+| `username` | 👤 | Användarnamn |
+| `directory` | 📁 | Aktuell mapp (trunkerad) |
+| `git_branch` | 🌿 | Git-branch |
+| `git_status` | ⚡ | Ändringar, commits |
+| `nodejs` | 🜘 | Node.js-version |
+| `c` |  | C-version |
+| `rust` |  | Rust-version |
+| `golang` |  | Go-version |
+| `python` |  | Python-version |
+| `docker_context` | 🐳 | Docker-kontext |
+| `time` | 🕐 | Tid |
+
+### Färgschema
+
+Använder **Catppuccin Mocha** som palette:
+
+```toml
+palette = 'catppuccin_mocha'
+
+[palettes.catppuccin_mocha]
+peach = "#fab387"    # Directory
+green = "#a6e3a1"    # Git branch
+teal = "#94e2d5"     # Programversioner
+blue = "#89b4fa"     # Docker
+purple = "#cba6f7"   # Tid
+```
+
+### Mapp-substitutioner
+
+| Kortkommando | Fullständig sökväg |
+|--------------|--------------------|
+| 📁 `…/` | Aktuell mapp (3 nivåer) |
+| 📁 `…/` | Documents → `󰈙` |
+| 📁 `…/` | Downloads → `` |
+| 📁 `…/` | Music → `󰝚` |
+| 📁 `…/` | Pictures → `` |
+| 📁 `…/` | Developer → `󰲋` |
+
+---
+
+## Terminaler
+
+### Alacritty
+
+**GPU-accelererad terminalemulator** med minimal latens.
+
+```toml
+[font]
+family = "JetBrainsMono Nerd Font"
+size = 9
+
+[window]
+padding.x = 14
+padding.y = 14
+decorations = "None"
+
+[terminal.shell]
+program = "/home/linuxbrew/.linuxbrew/bin/nu"
+```
+
+| Inställning | Värde |
+|-------------|-------|
+| Font | JetBrainsMono Nerd Font 9pt |
+| Padding | 14px |
+| Dekorationer | None (ramlös) |
+| Shell | Nushell |
+
+### Ghostty
+
+**Snabb terminalemulator** byggd medansamtidighet i åtanke.
+
+```
+font-family = "JetBrainsMono Nerd Font"
+font-size = 9
+window-padding-x = 14
+window-padding-y = 14
+cursor-style = "block"
+async-backend = epoll
+```
+
+| Inställning | Värde |
+|-------------|-------|
+| Font | JetBrainsMono 9pt |
+| Padding | 14px |
+| Cursor | Block (fast) |
+| Backend | epoll (Linux) |
+| Shell-integration | SSH + cursor |
+
+---
+
+## Nushell
+
+**Modern, strukturerad shell** med inbyggt dataformatering och VI-stöd.
+
+### Konfiguration
+
+```nu
+# ~/.config/nushell/config.nu
+
+$env.config = {
+    show_banner: false
+    edit_mode: "vi"
+    cursor_shape: {
+        vi_insert: "line"
+        vi_normal: "block"
+    }
+    buffer_editor: "nvim"
+}
+```
+
+### Alias
+
+| Alias | Kommando | Beskrivning |
+|-------|----------|-------------|
+| `n` | nvim | Textredigerare |
+| `lg` | lazygit | Git GUI |
+| `y` | yazi | Filhanterare |
+| `d` | dagger | CI/CD |
+| `ld` | lazydocker | Docker GUI |
+| `ai` | simon ai | AI-klient |
+| `s` | simon | Personligt CLI |
+| `k` | kubectl | Kubernetes |
+| `t` | talosctl | Talos |
+
+### Miljövariabler
+
+```nu
+$env.devenv-repo = "/home/simon/repos/devenv"
+$env.dotfiles-path = "$HOME/repos/dotfiles"
+$env.OMARCHY_PATH = "$HOME/.local/share/omarchy"
+```
+
+### PATH-sökvägar
+
+Prioriterade sökvägar:
+
+```nu
+/home/simon/repos/simon-cli
+/home/linuxbrew/.linuxbrew/bin
+/home/simon/go/bin
+/home/simon/.cargo/bin
+~/.local/bin
+```
+
+---
+
+## Tmuxinator
+
+**Sessionshantering** för återkommande arbetsflöden. Skapar kompletta workspaces med flera fönster och paneler.
+
+### Tilgängliga Sessioner
+
+| Session | Beskrivning |
+|---------|-------------|
+| `AI` | AI-experiment och debugging |
+| `Agents` | Agentövervakning |
+| `Begbot` | Discord-bot |
+| `Boot Dev` | Boot-utveckling |
+| `Cluster Agent` | Klusterhantering |
+| `Deployment Pipeline` | CI/CD-arbete |
+| `Dotfiles` | Dotfiles-arbete |
+| `Files` | Filhantering |
+| `Hacking` | Utforskande arbete |
+| `Home` | Hemautomatisering |
+| `Homelab` | Homelab-konfiguration |
+| `Infrastructure` | Kubernetes + Talos |
+| `Kubernetes` | Klusterövervakning |
+| `MatchMaker` | Matchningstjänst |
+| `Mooni` | AI-companion |
+| `Music` | Musikstreaming |
+| `Network` | Nätverkskonfiguration |
+| `Nuxt Base Layer` | Nuxt-projekt |
+| `Plan` | Planering |
+| `Repository Template` | Projektmallar |
+| `Simon CLI` | CLI-utveckling |
+| `Support - Pappa` | Support-session |
+| `Terminal` | Allmän terminal |
+
+### Exempel: Infrastructure
+
+```yaml
+name: infrastructure
+root: ~/repos/infrastructure
+windows:
+  - editor:
+      layout: main-vertically
+      panes:
+        - nvim
+        - kubectl get pods -A
+  - monitoring: btop
+  - terraform: ~
+  - logs: tail -f /var/log/syslog
+```
+
+---
+
+## Omarchy
+
+**Desktop Environment Framework** som hanterar tema, konfiguration och integration mellan komponenter.
+
+### Integration
+
+```mermaid
+flowchart TB
+    subgraph Omarchy
+        Theme[Temahantering]
+        Menu[Desktopmeny]
+        Config[Konfiguration]
+    end
+
+    subgraph Themes
+        Current[Aetheria<br/>Nuvarande]
+        Others[Andra teman]
+    end
+
+    subgraph Components
+        Hyprland[Hyprland]
+        Waybar[Waybar]
+        Alacritty[Alacritty]
+        Ghostty[Ghostty]
+    end
+
+    Theme --> Current
+    Theme --> Others
+    Current --> Hyprland
+    Current --> Waybar
+    Current --> Alacritty
+    Current --> Ghostty
+    Omarchy --> Menu
+```
+
+### Funktioner
+
+| Funktion | Beskrivning |
+|----------|-------------|
+| **Teman** | Centraliserad temahantering |
+| **Meny** | Super + Alt + Space |
+| **Launchers** | Applikationsstartare |
+| **Toggles** | Dynamiska konfigurationsflaggor |
+| **Waybar-integration** | Statusbarsmoduler |
+
+---
+
+## Övriga Konfigurationer
+
+### Bash
+
+- `bash/profile` - Systemomfattande inställningar
+- `bash/bashrc` - Interaktiva inställningar
+- `bash/zshrc` - Zsh-kompatibilitet
+
+### Brew
+
+- `brew/.Brewfile` - Homebrew-paket för macOS och Linux
+
+### NetworkManager
+
+- `networkmanager/` - Nätverkskonfiguration
+
+### Sidecar
+
+- `sidecar/` - iPad-sidecar-inställningar
+
+### Walker
+
+- `walker/.config/walker/config.toml` - Snabbappmeny
+
+### Voxtype
+
+- `voxtype/.config/voxtype/config.toml` - Tal-till-text-klient
+
+### Elio
+
+- `elio/.config/elio/` - Terminal AI-klient
+
+### Stow
+
+- `stow/` - GNU Stow-konfiguration
