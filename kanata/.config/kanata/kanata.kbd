@@ -18,13 +18,13 @@
 
 ;; Applications
 (defalias
-  term (cmd hyprctl dispatch workspace 1)
-  web (cmd hyprctl dispatch workspace 2)
-  ha (macro (cmd hyprctl dispatch workspace 2) (cmd xdg-open https://home.simonbrundin.com))
-  unifi (macro (cmd hyprctl dispatch workspace 10) (cmd xdg-open https://unifi.ui.com))
-  ai (cmd hyprctl dispatch workspace 3)
-  note (cmd hyprctl dispatch workspace 4)
-  mooni (cmd hyprctl dispatch workspace 6)
+  term (cmd hyprctl dispatch "hl.dsp.focus({ workspace = '1' })")
+  web (cmd hyprctl dispatch "hl.dsp.focus({ workspace = '2' })")
+  ha (macro (cmd hyprctl dispatch "hl.dsp.focus({ workspace = '2' })") (cmd xdg-open https://home.simonbrundin.com))
+  unifi (macro (cmd hyprctl dispatch "hl.dsp.focus({ workspace = '10' })") (cmd xdg-open https://unifi.ui.com))
+  ai (cmd hyprctl dispatch "hl.dsp.focus({ workspace = '3' })")
+  note (cmd hyprctl dispatch "hl.dsp.focus({ workspace = '4' })")
+  mooni (cmd hyprctl dispatch "hl.dsp.focus({ workspace = '6' })")
   aplan (cmd /home/simon/repos/dotfiles/kanata/.config/kanata/toggle-plan.sh)
 )
 
@@ -43,8 +43,7 @@
   ;; Arrow på f: Tap f, hold → arrow
   nav (tap-hold $tap-time $hold-time f (layer-while-held arrow))
   audio (tap-hold $tap-time $hold-time a (layer-while-held audio))
-  grok (cmd hyprctl dispatch workspace 4 && omarchy-launch-webapp
-"https://grok.com")
+  grok (cmd hyprctl dispatch "hl.dsp.focus({ workspace = '4' })" && omarchy-launch-webapp "https://grok.com")
   lctl (tap-hold $tap-time $hold-time C-bspc lctl)
 )
 
@@ -61,7 +60,7 @@
   match (cmd /home/simon/repos/dotfiles/kanata/.config/kanata/switch-session.sh MatchMaker)
   sterm (cmd /home/simon/repos/dotfiles/kanata/.config/kanata/switch-session.sh Terminal)
   sai (cmd /home/simon/repos/dotfiles/kanata/.config/kanata/switch-session.sh Agents)
-  sall (macro (cmd hyprctl dispatch workspace 1) 50 C-u)
+  sall (macro (cmd hyprctl dispatch "hl.dsp.focus({ workspace = '1' })") 50 C-u)
 )
 
 ;; Player
