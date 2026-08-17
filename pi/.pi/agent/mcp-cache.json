@@ -2,7 +2,7 @@
   "version": 1,
   "servers": {
     "context7": {
-      "configHash": "eea9bf0c8f198e5d02c7f9cc889cf5016d2b4031e2cc3bc0d01069634835f913",
+      "configHash": "1cb62df7ed7eb2713f39ebccd9010a18e8fa6a05ad3e0a3f9aaa210761923961",
       "tools": [
         {
           "name": "resolve-library-id",
@@ -52,7 +52,7 @@
       "resources": [],
       "prompts": [],
       "instructions": "Use this server to fetch current documentation whenever the user asks about a library, framework, SDK, API, CLI tool, or cloud service — even well-known ones like React, Next.js, Prisma, Express, Tailwind, Django, or Spring Boot. This includes API syntax, configuration, version migration, library-specific debugging, setup instructions, and CLI tool usage. Use even when you think you know the answer — your training data may not reflect recent changes. Prefer this over web search for library docs.\n\nDo not use for: refactoring, writing scripts from scratch, debugging business logic, code review, or general programming concepts.",
-      "cachedAt": 1785450048326
+      "cachedAt": 1786359697342
     },
     "nuxt": {
       "configHash": "c6fd27f3f168ee7e26a96e08a261e3e42c077076bc22e3d7eb84878f1619832e",
@@ -339,7 +339,7 @@
       "cachedAt": 1785425646136
     },
     "flux-operator-mcp": {
-      "configHash": "890be544732050fe84075afbab81200429d8672c1ca09f0e7d4c29ffade3191d",
+      "configHash": "ec75bf6509f636e219c971cfc558839dab296118f9bae0635abc687e7460cea8",
       "tools": [
         {
           "name": "apply_kubernetes_manifest",
@@ -792,10 +792,10 @@
           ]
         }
       ],
-      "cachedAt": 1785419718615
+      "cachedAt": 1786296947687
     },
     "chrome-devtools": {
-      "configHash": "3163afd478880d8a8add26d3fef4147082911e89882ebfe2c5f584d1489e61ac",
+      "configHash": "5525be43374a27f7fbfa34cf402d59f1d3f4b958db0d10b4a8298f3c05b704e7",
       "tools": [
         {
           "name": "click",
@@ -1626,7 +1626,7 @@
       ],
       "resources": [],
       "prompts": [],
-      "cachedAt": 1785448883604
+      "cachedAt": 1786279939172
     }
   }
 }
