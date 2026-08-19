@@ -256,7 +256,10 @@ opt.addEventListener('click', function() {
 
 ## Slutlig överlämning
 
-Returnera den exakta absoluta sökvägen till den genererade HTML-filen som en klickbar lokal fil-länk. Beskriv kort vad som undersöktes och eventuella antaganden eller valideringsbegränsningar. Placera inte leveransen inne i koddatabasen om inte användaren explicit begär det.
+1. Returnera den exakta absoluta sökvägen till den genererade HTML-filen som en klickbar lokal fil-länk.
+2. Öppna sidan i standardwebbläsaren med `xdg-open` eller motsvarande plattformskommando.
+
+Beskriv kort vad som undersöktes och eventuella antaganden eller valideringsbegränsningar. Placera inte leveransen inne i koddatabasen om inte användaren explicit begär det.
 
 ## Säkerhetsvillkor
 
