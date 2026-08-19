@@ -100,76 +100,52 @@ Använd denna exakta mallstruktur för frågesport-sektionen. **Viktigt:** Spara
 </section>
 
 <script>
-const quizData = {
-    1: {
-        correct: 0,  // 0-indexed position of correct answer in HTML above
-        explanations: [
-            "Förklaring för alternativ A",
-            "Förklaring för alternativ B (korrekt)",
-            "Förklaring för alternativ C",
-            "Förklaring för alternativ D"
-        ]
-    },
-    // ... repeat for questions 2-5
-};
-
-function shuffle(arr) {
-    const result = [...arr];
-    for (let i = result.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [result[i], result[j]] = [result[j], result[i]];
-    }
-    return result;
-}
+// KRITISKT: Scopa ALLA DOM-frågor till quiz-container, inte globalt!
 
 document.querySelectorAll('.quiz').forEach(quiz => {
-    const num = parseInt(quiz.dataset.quiz);
-    const data = quizData[num];
     const container = quiz.querySelector('.options');
     const feedback = quiz.querySelector('.quiz-feedback');
-    
-    // Get all options in HTML order (0, 1, 2, 3)
     const options = Array.from(container.querySelectorAll('.quiz-option'));
     
-    // Create ONE shuffle permutation: perm[i] = original HTML index at position i
-    const perm = shuffle([0, 1, 2, 3]);
+    // Randomisera ordning
+    const shuffled = options.sort(() => Math.random() - 0.5);
+    shuffled.forEach(opt => container.appendChild(opt));
     
-    // Step 1: Tag elements with their original HTML position
-    options.forEach((opt, htmlIdx) => { opt.dataset.htmlIdx = htmlIdx; });
-    
-    // Step 2: Reorder DOM based on permutation
-    const reordered = [];
-    for (let pos = 0; pos < 4; pos++) {
-        reordered.push(options[perm[pos]]);
-    }
-    reordered.forEach(el => container.appendChild(el));
-    
-    // Step 3: Tag elements with their origIdx = perm[displayPosition]
-    reordered.forEach((opt, displayPos) => {
-        opt.dataset.origIdx = perm[displayPos];
-    });
-    
-    // Step 4: Click handler - read origIdx directly from element
-    container.querySelectorAll('.quiz-option').forEach(opt => {
+    // Lägg till click handler på varje alternativ
+    options.forEach((opt, idx) => {
         opt.addEventListener('click', function() {
-            if (this.classList.contains('disabled')) return;
+            // ❌ FEL: document.querySelectorAll('.quiz-option') — disablar ALLA quiz på sidan!
+            // ✅ RÄTT: Använd quiz (this.closest('.quiz')) för att scopa korrekt
             
-            container.querySelectorAll('.quiz-option').forEach(o => o.classList.add('disabled'));
+            const parentQuiz = this.closest('.quiz');
+            const allOptions = parentQuiz.querySelectorAll('.quiz-option');
             
-            const origIdx = parseInt(this.dataset.origIdx);
-            const isCorrect = origIdx === data.correct;
+            // Disabla bara alternativ i DENNA quiz, inte alla
+            allOptions.forEach(o => o.style.pointerEvents = 'none');
             
-            this.classList.add(isCorrect ? 'correct' : 'incorrect');
+            const isCorrect = this.dataset.answer === 'correct';
             
-            feedback.classList.add('show', isCorrect ? 'correct' : 'incorrect');
-            feedback.textContent = data.explanations[origIdx];
-            
-            if (!isCorrect) {
-                container.querySelectorAll('.quiz-option').forEach(o => {
-                    if (parseInt(o.dataset.origIdx) === data.correct) {
-                        o.classList.add('reveal');
+            if (isCorrect) {
+                this.style.borderColor = 'var(--success)';
+                this.style.background = 'rgba(74, 222, 128, 0.2)';
+                feedback.textContent = '✓ Rätt!';
+                feedback.style.display = 'block';
+                feedback.style.borderColor = 'var(--success)';
+            } else {
+                this.style.borderColor = 'var(--error)';
+                this.style.background = 'rgba(248, 113, 113, 0.2)';
+                
+                // Visa rätt svar
+                allOptions.forEach(o => {
+                    if (o.dataset.answer === 'correct') {
+                        o.style.borderColor = 'var(--success)';
+                        o.style.background = 'rgba(74, 222, 128, 0.2)';
                     }
                 });
+                
+                feedback.textContent = '✗ Fel. Rätt svar är markerat.';
+                feedback.style.display = 'block';
+                feedback.style.borderColor = 'var(--error)';
             }
         });
     });
@@ -203,55 +179,51 @@ document.querySelectorAll('.quiz').forEach(quiz => {
 .quiz-feedback.incorrect { background: rgba(248, 113, 113, 0.15); border: 1px solid var(--error); }
 ```
 
-### Felsökning
+### Vanliga buggar och hur man undviker dem
 
-Om quiz-feedbacken inte matchar det klickade alternativet beror det på **flera separata shuffle-operationer** som inte är synkroniserade.
-
-❌ **Fel approach** (två oberoende shuffles):
+#### ❌ Fel: Global DOM-fråga
 ```javascript
-const shuffleIndices = shuffle([0, 1, 2, 3]);
-options.forEach((opt, i) => { opt.dataset.origIdx = shuffleIndices[i]; });
-
-const shuffledOrder = shuffle([0, 1, 2, 3]); // ❌ NY shuffle!
-options.sort(...shuffledOrder...).forEach(el => container.appendChild(el));
+// FEL — disablar ALLA quiz-alternativ på HELA sidan
+document.querySelectorAll('.quiz-option').forEach(o => o.disabled = true);
 ```
 
-❌ **Ännu värre: find()-baserad lookup**:
+✅ **Rätt: Scopa till quiz-container**
 ```javascript
-const shuffledOptions = options.map((el, i) => ({element: el, origIdx: ...}));
+const parentQuiz = this.closest('.quiz');
+const allOptions = parentQuiz.querySelectorAll('.quiz-option');
+allOptions.forEach(o => o.style.pointerEvents = 'none');
+```
+
+#### ❌ Fel: Shuffle utan synkronisering
+```javascript
+// Två oberoende shuffles som inte hänger ihop
+const shuffle1 = shuffle([0,1,2,3]);
+const shuffle2 = shuffle([0,1,2,3]); // ❌ Annorlunda ordning!
+```
+
+✅ **Rätt: En permutation, synkad mappning**
+```javascript
+const perm = shuffle([0, 1, 2, 3]); // EN shuffle
+options.forEach((opt, displayPos) => {
+    opt.dataset.origIdx = perm[displayPos];
+});
+// Sen: if (parseInt(this.dataset.origIdx) === correctIdx) ...
+```
+
+#### ❌ Fel: find() efter DOM-omordning
+```javascript
+const shuffled = options.sort(() => Math.random() - 0.5);
 options.forEach(opt => {
-    opt.addEventListener('click', function() {
-        // find() letar i arrayen, inte i DOM - missar after reorder!
-        const isCorrect = shuffledOptions.find(o => o.element === this).isCorrect;
+    opt.addEventListener('click', () => {
+        // find() letar i originallistan, inte i omordnad DOM!
+        const data = quizData.find(q => q.element === this); // ❌ Fel
     });
 });
 ```
 
-✅ **Rätt approach** (en permutation, synkad mappning):
+✅ **Rätt: Använd data-answer-attributet direkt**
 ```javascript
-// STEG 1: Skapa EN permutation
-const perm = shuffle([0, 1, 2, 3]);
-// perm = [2, 0, 3, 1] → position 0 får original index 2, etc.
-
-// STEG 2: Spara htmlIdx på elementen först
-options.forEach((opt, htmlIdx) => { opt.dataset.htmlIdx = htmlIdx; });
-
-// STEG 3: Ordnar om DOM
-const reordered = [];
-for (let pos = 0; pos < 4; pos++) {
-    reordered.push(options[perm[pos]]);  // Element med detta origIdx
-}
-reordered.forEach(el => container.appendChild(el));
-
-// STEG 4: Spara perm[displayPosition] som origIdx
-reordered.forEach((opt, displayPos) => {
-    opt.dataset.origIdx = perm[displayPos];
-});
-
-// STEG 5: Läs origIdx direkt i handlern
-opt.addEventListener('click', function() {
-    const origIdx = parseInt(this.dataset.origIdx); // ✅ Alltid rätt!
-});
+const isCorrect = this.dataset.answer === 'correct';
 ```
 
 ## Slutlig överlämning
