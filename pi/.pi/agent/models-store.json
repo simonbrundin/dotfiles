@@ -56,13 +56,13 @@
           "cacheRead": 0.06,
           "cacheWrite": 0
         },
-        "contextWindow": 1000000,
-        "maxTokens": 128000
+        "contextWindow": 1048576,
+        "maxTokens": 512000
       }
     ],
-    "checkedAt": 1787235010840,
-    "lastModified": 1785329971000,
-    "etag": "W/\"59585c4d7fe23cba444549b6c50f2504\""
+    "checkedAt": 1788267027900,
+    "lastModified": 1787823119000,
+    "etag": "W/\"76fd732bcd92a0ec53fd9ed002a636f9\""
   },
   "anthropic": {
     "models": [

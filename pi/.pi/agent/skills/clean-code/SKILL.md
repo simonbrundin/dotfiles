@@ -2,7 +2,7 @@
 name: clean-code
 description: >-
   Refaktorera kod och förbättra kodkvalitet med Robert C. Martins Clean Code-principer.
-  
+
   ANVÄND DENNA SKILL när användaren ber om:
   - Refaktorering, omstrukturering eller uppdelning av kod
   - Förbättring av kodstruktur, namngivning eller läsbarhet
@@ -13,15 +13,11 @@ description: >-
   - Martin Fowler-refaktorering (extract method, rename, etc.)
   - Kodgranskning för kvalitet eller strukturella förbättringar
   - Granska ändringar som inte pushats ännu (unstaged, staged, unpushed commits)
-  
+
   Utlösande ord/fraser: "refaktorera", "clean code", "förbättra", "bryt upp",
-  "granska mina ändringar", "vad har jag ändrat", "unstaged files", "unpushed",
-  "kodlukt", "SOLID", "små funktioner", "boy scout", "duplicering", "TDD",
-  "test-first", "namngivning", "extract method", "single responsibility",
-  "code smell", "lång funktion", "följ principles", "code review".
-  
-  Om användaren arbetar med befintlig kod och vill göra den renare, enklare
-  eller mer strukturerad — detta är rätt skill.
+  "granska mina ändringar", "unstaged", "unpushed", "kodlukt", "SOLID",
+  "duplicering", "TDD", "test-first", "namngivning", "extract method",
+  "single responsibility", "code smell", "lång funktion", "code review".
 ---
 
 # Clean Code — Robert C. Martin

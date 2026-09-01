@@ -1,0 +1,17 @@
+{
+  "providers": {
+    "freellmapi": {
+      "baseUrl": "https://freellmapi.simonbrundin.com/v1",
+      "api": "openai-completions",
+      "apiKey": "freellmapi-b3aabc0df71748a01dd5adec0b3121f98db35b3cc792e53f",
+      "models": [
+        {
+          "id": "auto",
+          "name": "Auto (Best Available)",
+          "contextWindow": 128000,
+          "maxTokens": 32000
+        }
+      ]
+    }
+  }
+}
