@@ -145,9 +145,9 @@
 (deflayer tmuxsessions
   XX     XX     XX     XX     XX     XX     XX     XX     XX     XX     XX     XX     XX
   XX     XX     XX     XX     XX     (macro C-b (unicode $))     @sterm     XX     XX     XX     XX     @plan     XX     XX
-  XX     XX     @sai     (macro C-b s)     XX     XX     @home     @home  up    @k8s    C-u     @sall     XX
+  XX     XX     @sai     (macro C-b s)     XX     XX     XX     @home     @home  up    @k8s    C-u     @sall     XX
   XX     XX     XX     XX     @cli     XX     @bdev     XX     @match     (macro C-b t)     @dot     XX     XX
-          XX     XX     XX                XX               XX     XX     XX
+          XX     XX     XX                XX               XX     XX
 )
 
 (deflayer audio
