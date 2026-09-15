@@ -3,6 +3,13 @@
 ;; Höger Alt (ralt) → rmet (höger Super)
 ;; Hold f/s activates arrows for keys: i j k l / h j k l
 
+(defcfg
+  process-unmapped-keys yes
+  log-layer-changes yes
+  danger-enable-cmd yes
+  concurrent-tap-hold no
+)
+
 (defsrc
   grv    1    2    3    4    5    6    7    8    9    0    -    =    bspc
   tab      q    w    e    r    t    y    u    i    o    p    [    ]  ret
@@ -11,12 +18,14 @@
   lctl       lmet lalt          spc            ralt rctl left down up right
 )
 
-(defcfg
-  process-unmapped-keys yes
-  log-layer-changes yes
-  danger-enable-cmd yes
-  concurrent-tap-hold no
+(deflayer base
+  grv 1 2 3 4 5 6 7 8 9 0 - = bspc
+  tab q w e r t @y u i o @p [ ] ret
+  @caps @audio @s d @nav g h j k l ; ' \
+  lsft XX z x @c @v b n m @vox-sv @vox-en / rsft
+  lmet lalt @lctl spc @meh ralt left down up right
 )
+
 
 ;; Variables
 (defvar
@@ -38,8 +47,6 @@
 )
 
 (defalias
-  ;; Caps → Esc
-  ;; caps esc  ;; Caps → Esc
   caps (tap-hold $tap-time $hold-time esc lmet)
   meh (tap-hold $tap-time $hold-time @aplan (layer-while-held app))
   ;; t (tap-hold $tap-time $hold-time t (layer-while-held tmux))
@@ -104,13 +111,6 @@
 )
 
 
-(deflayer base
-  grv 1 2 3 4 5 6 7 8 9 0 - = bspc
-  tab q w e r t @y u i o @p [ ] ret
-  @caps @audio @s d @nav g h j k l ; ' \
-  lsft XX z x @c @v b n m @vox-sv @vox-en / rsft
-  lmet lalt @lctl spc @meh ralt left down up right
-)
 (deflayer arrow
   XX XX XX XX XX XX XX XX XX XX XX XX XX XX
   XX XX XX XX XX XX XX XX XX XX XX XX XX XX
