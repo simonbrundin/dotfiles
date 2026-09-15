@@ -95,67 +95,60 @@
   vox-en-stop (cmd voxtype record stop)
 )
 
+
 (defsrc
-  grv   1     2     3     4     5     6     7     8     9     0     -     =     bspc
-  tab   q     w     e     r     t     y     u     i     o     p     [     ]     \
-  caps  a     s     d     f     g     h     j     k     l     ;     '     ret
-  lsft  z     x     c     v     b     n     m     ,     .     /     rsft
-         lctl  lmet  lalt                spc              ralt  rctl  rmet
+  grv 1 2 3 4 5 6 7 8 9 0 - = bspc
+  tab q w e r t y u i o p [ ] ret
+  caps a s d f g h j k l ; ' \
+  lsft lsgt z x c v b n m , . / rsft
+  lctl lmet lalt spc ralt rctl left down up right
 )
 (deflayer base
-  grv   1     2     3     4     5     6     7     8     9     0     -     =     bspc
-  tab   q     w     e     r     t    @y     u     i     o     @p     [     ]     \
-  @caps @audio @s     d     @nav  g     h     j     k     l     ;     '     ret
-  lsft  z     x     @c     @v     b     n     m     @vox-sv @vox-en /     rsft
-          lmet  lalt  @lctl               spc              @meh  ralt  rmet
+  grv 1 2 3 4 5 6 7 8 9 0 - = bspc
+  tab q w e r t @y u i o @p [ ] ret
+  @caps @audio @s d @nav g h j k l ; ' \
+  lsft XX z x @c @v b n m @vox-sv @vox-en / rsft
+  lmet lalt @lctl spc @meh ralt left down up right
 )
-
 (deflayer arrow
-  XX     XX     XX     XX     XX     XX     XX     XX     XX     XX     XX     XX     XX
-  XX     XX     XX     XX     XX     XX     XX     XX     XX     XX     XX     XX     XX     XX
-  XX     XX     XX     XX     C-d     XX     XX     left  down  up    right XX     XX
-  XX     XX     XX     XX     XX     XX     XX     @playnext     XX     XX     XX     XX     XX
-          XX     XX     XX                XX               XX     XX     XX
+  XX XX XX XX XX XX XX XX XX XX XX XX XX XX
+  XX XX XX XX XX XX XX XX XX XX XX XX XX XX
+  XX XX XX C-d XX XX left down up right XX XX XX
+  XX XX XX XX XX XX XX @playnext XX XX XX XX XX
+  XX XX XX XX XX XX XX left down up
 )
-
 (deflayer app
-  XX     XX     XX     XX     XX     XX     XX     XX     XX     XX     XX     XX     XX
-  XX     XX     XX     XX     XX     XX     XX     XX     @unifi     XX     XX     @aplan     XX     XX
-  XX     XX     @ai     XX     XX     XX     XX     @ha   @term  @web    @ai   @note     XX
-  XX     XX     XX     @grok     XX     XX     XX     @note     @mooni     XX     XX     XX     XX
-          XX     XX     XX                XX               XX     XX     XX
+  XX XX XX XX XX XX XX XX XX XX XX XX XX XX
+  XX XX XX XX XX XX XX @unifi XX XX @aplan XX XX XX
+  XX @ai XX XX XX XX @ha @term @web @ai @note XX XX
+  XX XX XX @grok XX XX XX @note @mooni XX XX XX XX
+  XX XX XX XX XX XX XX left down up
 )
-
 (deflayer disabledmeh
-  XX     XX     XX     XX     XX     XX     XX     XX     XX     XX     XX     XX     XX
-  XX     XX     XX     XX     XX     XX     XX     XX     XX     XX     XX     XX     XX     XX
-  XX     XX     XX     XX     XX     XX     XX     @term  down  up    right XX     XX
-  XX     XX     XX     @grok     XX     XX     XX     XX     XX     XX     XX     XX     XX
-          XX     XX     XX                XX               XX     XX     XX
+  XX XX XX XX XX XX XX XX XX XX XX XX XX XX
+  XX XX XX XX XX XX XX XX XX XX XX XX XX XX
+  XX XX XX XX XX XX @term down up right XX XX XX
+  XX XX XX @grok XX XX XX XX XX XX XX XX XX
+  XX XX XX XX XX XX XX left down up
 )
-
 (deflayer tmux
-  XX     XX     XX     XX     XX     XX     XX     XX     XX     XX     XX     XX     XX
-  XX     XX     XX     XX     XX     (macro C-b (unicode $))     XX     XX     XX     XX     XX     XX     XX     XX
-  XX     XX     XX     (macro C-b s)     XX     XX     XX     (macro C-b p)  up    right  (macro C-b n)     XX     XX
-  XX     XX     XX     (macro C-b x)     XX     XX     XX     (macro C-b c)     XX     (macro C-b ,)      XX     XX     XX
-          XX     XX     XX                @sesh               @sesh     XX     XX
+  XX XX XX XX XX XX XX XX XX XX XX XX XX XX
+  XX XX XX XX (macro C-b (unicode $)) XX XX XX XX XX XX XX XX XX
+  XX XX (macro C-b s) XX XX XX (macro C-b p) up right (macro C-b n) XX XX XX
+  XX XX XX (macro C-b x) XX XX XX (macro C-b c) XX (macro C-b ,) XX XX XX
+  XX XX XX @sesh @sesh XX XX left down up
 )
-
 (deflayer tmuxsessions
-  XX     XX     XX     XX     XX     XX     XX     XX     XX     XX     XX     XX     XX
-  XX     XX     XX     XX     XX     (macro C-b (unicode $))     @sterm     XX     XX     XX     XX     @plan     XX     XX
-  XX     XX     @sai     (macro C-b s)     XX     XX     XX     @home     @home  up    @k8s    C-u     @sall     XX
-  XX     XX     XX     XX     @cli     XX     @bdev     XX     @match     (macro C-b t)     @dot     XX     XX
-          XX     XX     XX                XX               XX     XX
+  XX XX XX XX XX XX XX XX XX XX XX XX XX XX
+  XX XX XX XX (macro C-b (unicode $)) @sterm XX XX XX XX @plan XX XX XX
+  XX @sai (macro C-b s) XX XX XX @home XX @k8s XX @sall XX XX
+  XX XX XX XX @cli XX @bdev XX @match (macro C-b t) @dot XX XX 
+  XX XX XX XX XX XX XX XX XX XX
 )
-
 (deflayer audio
-  XX     XX     XX     XX     XX     XX     XX     XX     XX     XX     XX     XX     XX
-  XX     XX     XX     XX     XX     XX     XX     XX     XX     XX     XX     XX     XX     XX
-  XX     XX     XX     XX     XX     XX     @spotify-prev  @spotify-play  XX  @spotify-next  XX     XX     XX
-  XX     XX     XX     XX     XX     XX     XX           XX           XX     XX     XX     XX     XX
-          XX     XX     XX                spc               XX     XX     XX
+  XX XX XX XX XX XX XX XX XX XX XX XX XX XX
+  XX XX XX XX XX XX XX XX XX XX XX XX XX XX
+  XX XX XX XX XX @spotify-prev @spotify-play XX @spotify-next XX XX XX XX
+  XX XX XX XX XX XX XX XX XX XX XX XX XX
+  XX XX XX spc XX XX XX left down up
 )
-
-
