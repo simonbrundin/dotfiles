@@ -3,6 +3,14 @@
 ;; Höger Alt (ralt) → rmet (höger Super)
 ;; Hold f/s activates arrows for keys: i j k l / h j k l
 
+(defsrc
+  grv    1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  tab      q    w    e    r    t    y    u    i    o    p    [    ]  ret
+  caps      a    s    d    f    g    h    j    k    l    ;    '    \
+  lsft lsgt  z    x    c    v    b    n    m    ,    .    /          rsft
+  lctl       lmet lalt          spc            ralt rctl left down up right
+)
+
 (defcfg
   process-unmapped-keys yes
   log-layer-changes yes
@@ -96,13 +104,6 @@
 )
 
 
-(defsrc
-  grv 1 2 3 4 5 6 7 8 9 0 - = bspc
-  tab q w e r t y u i o p [ ] ret
-  caps a s d f g h j k l ; ' \
-  lsft lsgt z x c v b n m , . / rsft
-  lctl lmet lalt spc ralt rctl left down up right
-)
 (deflayer base
   grv 1 2 3 4 5 6 7 8 9 0 - = bspc
   tab q w e r t @y u i o @p [ ] ret
@@ -129,14 +130,14 @@
   XX XX XX XX XX XX XX XX XX XX XX XX XX XX
   XX XX XX XX XX XX @term down up right XX XX XX
   XX XX XX @grok XX XX XX XX XX XX XX XX XX
-  XX XX XX XX XX XX XX left down up
+  XX XX XX XX XX XX left down up right
 )
 (deflayer tmux
   XX XX XX XX XX XX XX XX XX XX XX XX XX XX
   XX XX XX XX (macro C-b (unicode $)) XX XX XX XX XX XX XX XX XX
   XX XX (macro C-b s) XX XX XX (macro C-b p) up right (macro C-b n) XX XX XX
   XX XX XX (macro C-b x) XX XX XX (macro C-b c) XX (macro C-b ,) XX XX XX
-  XX XX XX @sesh @sesh XX XX left down up
+  XX XX XX @sesh @sesh XX  left down up right
 )
 (deflayer tmuxsessions
   XX XX XX XX XX XX XX XX XX XX XX XX XX XX
