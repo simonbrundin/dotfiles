@@ -17,6 +17,7 @@ tap "loft-sh/tap", trusted: true
 tap "marcus/tap", trusted: true
 tap "nubjs/tap"
 tap "oven-sh/bun", trusted: true
+tap "raine/workmux"
 tap "retlehs/tap", trusted: true
 tap "reyamira/tap", "https://github.com/reyamira/homebrew-tap.git"
 tap "teamookla/speedtest", trusted: true
@@ -187,39 +188,41 @@ brew "boolean-maybe/tap/tiki"
 # A CLI for building apps using Cloud Native Buildpacks
 brew "buildpacks/tap/pack"
 # A powerful terminal-based AI assistant for developers, providing intelligent coding assistance directly in your terminal.
-brew "charmbracelet/tap/crush"
+brew "charmbracelet/tap/crush", trusted: true
 # Flux Operator CLI
-brew "controlplaneio-fluxcd/tap/flux-operator"
+brew "controlplaneio-fluxcd/tap/flux-operator", trusted: true
 # Flux MCP Server
-brew "controlplaneio-fluxcd/tap/flux-operator-mcp"
+brew "controlplaneio-fluxcd/tap/flux-operator-mcp", trusted: true
 # Dagger is an integrated platform to orchestrate the delivery of applications
 brew "dagger/tap/dagger", trusted: true
-# Secure dotenv–from the creator of `dotenv`
-brew "dotenvx/brew/dotenvx"
+# Secure dotenv—from the creator of `dotenv`
+brew "dotenvx/brew/dotenvx", trusted: true
 # Batteries-included terminal file manager with rich previews
-brew "elio-fm/elio/elio"
+brew "elio-fm/elio/elio", trusted: true
 # A beautiful and functional email client for your terminal.
 brew "floatpane/matcha/matcha"
 # Flux CLI
-brew "fluxcd/tap/flux"
+brew "fluxcd/tap/flux", trusted: true
 # Interactive TUI for Homebrew
 brew "gromgit/brewtils/taproom"
 # Vault
-brew "hashicorp/tap/vault"
+brew "hashicorp/tap/vault", trusted: true
 # Declarative Kubernetes end-to-end testing.
 brew "kyverno/chainsaw/chainsaw"
 # A TUI dashboard for AI coding agents
-brew "marcus/tap/sidecar"
+brew "marcus/tap/sidecar", trusted: true
 # Task management CLI for AI-assisted development
-brew "marcus/tap/td"
+brew "marcus/tap/td", trusted: true
 # Fast TypeScript runtime and package manager that augments Node
 brew "nubjs/tap/nub", trusted: true
 # Incredibly fast JavaScript runtime, bundler, transpiler and package manager - all in one.
-brew "oven-sh/bun/bun"
+brew "oven-sh/bun/bun", trusted: true
+# Opinionated workflow tool that orchestrates git worktrees and tmux
+brew "raine/workmux/workmux", trusted: true
 # Ookla Speedtest
 brew "teamookla/speedtest/speedtest"
 # Making local Kubernetes clusters easy to set up and tear down
-brew "tilt-dev/tap/ctlptl"
+brew "tilt-dev/tap/ctlptl", trusted: true
 # BuildKit CLI for kubectl
 brew "vmware-tanzu/buildkit-cli-for-kubectl/kubectl-buildkit"
 # Terminal-based AI coding assistant
@@ -233,6 +236,7 @@ vscode "antfu.iconify"
 vscode "antfu.unocss"
 vscode "benjaminbenais.copilot-theme"
 vscode "bjarne.ethereal-omarchy"
+vscode "bjarne.hackerman-omarchy"
 vscode "bradlc.vscode-tailwindcss"
 vscode "catppuccin.catppuccin-vsc"
 vscode "catppuccin.catppuccin-vsc-icons"
