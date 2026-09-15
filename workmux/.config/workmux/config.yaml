@@ -1,0 +1,99 @@
+# workmux global configuration
+# For project-specific overrides, edit .workmux.yaml in the project root.
+# All options below are commented out - uncomment to override defaults.
+
+#-------------------------------------------------------------------------------
+# Appearance
+#-------------------------------------------------------------------------------
+
+# Color scheme for the dashboard. Press T (shift+t) in the dashboard to cycle.
+# Options: default, emberforge, glacier-signal, obsidian-pop, slate-garden,
+#          phosphor-arcade, lasergrid, mossfire, night-sorbet, graphite-code,
+#          festival-circuit, teal-drift
+# theme: default
+
+#-------------------------------------------------------------------------------
+# Git
+#-------------------------------------------------------------------------------
+
+# The primary branch to merge into.
+# Default: Auto-detected from remote HEAD, falls back to main/master.
+# main_branch: main
+
+# Default base branch/commit to branch from when creating new worktrees.
+# Use "auto" to branch from main_branch or locally detected main/master branch.
+# Default: The currently checked out branch.
+# base_branch: auto
+
+# Default merge strategy for `workmux merge`.
+# Options: merge (default), rebase, squash
+# merge_strategy: rebase
+
+# Keep the worktree, window, and branch after `workmux merge` by default.
+# merge_keep: true
+
+#-------------------------------------------------------------------------------
+# Naming & Paths
+#-------------------------------------------------------------------------------
+
+# Prefix for tmux window and session names. Supports `{project}` for the main
+# worktree's directory name.
+# Default: "wm-"
+# window_prefix: "wm-"
+
+#-------------------------------------------------------------------------------
+# Tmux
+#-------------------------------------------------------------------------------
+
+# Mode for tmux operations: window (default) or session.
+# - window: Create windows within the current tmux session
+# - session: Create tmux sessions for each worktree
+# mode: window
+
+# Placement for new tmux windows in window mode.
+# Options: after_current (default), rightmost
+# window_placement: rightmost
+
+# Auto-apply agent status icons to tmux window format.
+# status_format: true
+
+#-------------------------------------------------------------------------------
+# Agent & AI
+#-------------------------------------------------------------------------------
+
+# Agent command for '<agent>' placeholder in pane commands.
+# Default: "claude"
+# agent: claude
+
+#-------------------------------------------------------------------------------
+# Hooks
+#-------------------------------------------------------------------------------
+
+# Commands to run in new worktree before tmux window opens.
+# post_create:
+#   - mise use
+
+# Commands to run before merging (e.g., linting, tests).
+# pre_merge:
+#   - cargo test
+
+#-------------------------------------------------------------------------------
+# Dashboard
+#-------------------------------------------------------------------------------
+
+# Preview size (10-90). Use +/- keys to adjust in dashboard.
+# dashboard:
+#   preview_size: 60
+#   sort_mode: priority
+#   close_on_jump: true
+
+#-------------------------------------------------------------------------------
+# Sidebar
+#-------------------------------------------------------------------------------
+
+# sidebar:
+#   position: left
+#   width: "10%"
+#   layout: tiles
+#   dim_stale: true
+nerdfont: true
