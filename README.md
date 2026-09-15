@@ -47,7 +47,7 @@ curl -sL bootstrap.simonbrundin.com | bash
 
    ```
    cd ~/repos/dotfiles
-   stow alacritty bash brew hypr kanata neovim nushell opencode omarchy sidecar starship stow tmux tmuxinator voxtype
+   stow alacritty bash brew hypr kanata neovim nushell opencode omarchy sidecar starship stow tmux tmuxinator voxtype workmux
    ```
 
 ## Struktur
