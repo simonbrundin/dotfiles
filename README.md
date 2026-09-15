@@ -162,23 +162,23 @@ Automatisk kodformatering vid spara (`BufLeave`, `FocusLost`).
 
 **Aktiverade formaterare:**
 
-| Filtyp | Formaterare |
-|--------|-------------|
-| markdown | prettier |
-| yaml | prettier |
-| typescript | prettier |
-| templ | templ |
+| Filtyp     | Formaterare |
+| ---------- | ----------- |
+| markdown   | prettier    |
+| yaml       | prettier    |
+| typescript | prettier    |
+| templ      | templ       |
 
 #### 🤖 GitHub Copilot
 
 Inline kodförslag med AI.
 
-| Tangent | Åtgärd |
-|---------|--------|
-| `<M-l>` | Acceptera förslag |
-| `<M-]>` | Nästa förslag |
+| Tangent | Åtgärd             |
+| ------- | ------------------ |
+| `<M-l>` | Acceptera förslag  |
+| `<M-]>` | Nästa förslag      |
 | `<M-[>` | Föregående förslag |
-| `<C-]>` | Avböj förslag |
+| `<C-]>` | Avböj förslag      |
 
 **Inaktiverad för:** `yaml`, `markdown`, `help`
 
@@ -186,12 +186,12 @@ Inline kodförslag med AI.
 
 AI-chatintegration direkt i Neovim.
 
-| Kommando | Beskrivning |
-|----------|-------------|
+| Kommando     | Beskrivning              |
+| ------------ | ------------------------ |
 | `<leader>ot` | Slå på/stäng av OpenCode |
-| `<leader>oa` | Ställ en fråga |
-| `<leader>op` | Välj prompt |
-| `<S-C-u/d>` | Scrolla i chatten |
+| `<leader>oa` | Ställ en fråga           |
+| `<leader>op` | Välj prompt              |
+| `<S-C-u/d>`  | Scrolla i chatten        |
 
 #### 📄 Bufferline
 
@@ -233,8 +233,8 @@ Inbyggd Git-GUI med `<leader>gg`.
 
 CI/CD-pipelinehantering direkt i Neovim.
 
-| Kommando | Beskrivning |
-|----------|-------------|
+| Kommando     | Beskrivning    |
+| ------------ | -------------- |
 | `<leader>ci` | Öppna Pipeline |
 
 #### 🎨 Catppuccin
@@ -257,19 +257,19 @@ Stöd för Tilt-filer (`Tiltfile`) med dedikerad LSP-konfiguration.
 
 Följande teman är installerade och kan växlas mellan:
 
-| Tema | Beskrivning |
-|------|-------------|
-| Catppuccin | Mjuk, pastellig palette |
-| Nord | Iskall nordisk design |
-| Tokyo Night | Mörk, avslappnande |
-| Rose Pine | Varm, naturlig |
-| Gruvbox | Retro, tight kontrast |
-| Kanagawa | Japansk estetik |
-| Everforest | Skogsgrön |
-| Flexoki | Läsbar, diskret |
-| Monokai Pro | Klassisk färgpalett |
-| Matte Black | Ultra-mörk |
-| Bamboo | Naturligt, varmt |
+| Tema        | Beskrivning             |
+| ----------- | ----------------------- |
+| Catppuccin  | Mjuk, pastellig palette |
+| Nord        | Iskall nordisk design   |
+| Tokyo Night | Mörk, avslappnande      |
+| Rose Pine   | Varm, naturlig          |
+| Gruvbox     | Retro, tight kontrast   |
+| Kanagawa    | Japansk estetik         |
+| Everforest  | Skogsgrön               |
+| Flexoki     | Läsbar, diskret         |
+| Monokai Pro | Klassisk färgpalett     |
+| Matte Black | Ultra-mörk              |
+| Bamboo      | Naturligt, varmt        |
 
 **Växla tema:** `<leader>uC`
 
@@ -277,33 +277,33 @@ Följande teman är installerade och kan växlas mellan:
 
 #### Grundläggande navigation
 
-| Genväg | Funktion |
-|--------|----------|
-| `<leader><space>` | Smart filsökning |
-| `<leader>e` | Filutforskare |
-| `<leader>j` | Buffer-lista |
-| `<leader>/` | Sök i filer |
-| `gd` | Gå till definition |
-| `gr` | Hitta referenser |
+| Genväg            | Funktion           |
+| ----------------- | ------------------ |
+| `<leader><space>` | Smart filsökning   |
+| `<leader>e`       | Filutforskare      |
+| `<leader>j`       | Buffer-lista       |
+| `<leader>/`       | Sök i filer        |
+| `gd`              | Gå till definition |
+| `gr`              | Hitta referenser   |
 
 #### Toggla-alternativ
 
-| Genväg | Funktion |
-|--------|----------|
+| Genväg       | Funktion          |
+| ------------ | ----------------- |
 | `<leader>us` | Stavningskontroll |
-| `<leader>uw` | Word wrap |
-| `<leader>ud` | Diagnostik |
-| `<leader>ul` | Radnummer |
-| `<leader>uT` | Treesitter |
-| `<leader>ub` | Ljust/mörkt tema |
+| `<leader>uw` | Word wrap         |
+| `<leader>ud` | Diagnostik        |
+| `<leader>ul` | Radnummer         |
+| `<leader>uT` | Treesitter        |
+| `<leader>ub` | Ljust/mörkt tema  |
 
 #### Terminal
 
-| Genväg | Funktion |
-|--------|----------|
-| `<C-/>` | Öppna terminal |
-| `<leader>gg` | LazyGit |
-| `<leader>n` | Notifieringar |
+| Genväg       | Funktion       |
+| ------------ | -------------- |
+| `<C-/>`      | Öppna terminal |
+| `<leader>gg` | LazyGit        |
+| `<leader>n`  | Notifieringar  |
 
 ### Konfigurationsfiler
 
@@ -339,42 +339,42 @@ hypr/.config/hypr/
 
 Hyprland använder Omarchys standardbindningar, utökade med personliga tillägg:
 
-| Genväg | Åtgärd |
-|--------|--------|
-| `Super + Return` | Öppna terminal |
-| `Super + Shift + Return` | Tmux-terminal |
-| `Super + Shift + F` | Filhanterare (Nautilus) |
-| `Super + Shift + B` | Webbläsare |
-| `Super + Shift + N` | Neovim (Editor) |
-| `Super + Shift + D` | Docker TUI |
-| `Super + Shift + G` | Signal |
-| `Super + Shift + M` | Spotify |
-| `Super + Shift + W` | Typora |
+| Genväg                   | Åtgärd                  |
+| ------------------------ | ----------------------- |
+| `Super + Return`         | Öppna terminal          |
+| `Super + Shift + Return` | Tmux-terminal           |
+| `Super + Shift + F`      | Filhanterare (Nautilus) |
+| `Super + Shift + B`      | Webbläsare              |
+| `Super + Shift + N`      | Neovim (Editor)         |
+| `Super + Shift + D`      | Docker TUI              |
+| `Super + Shift + G`      | Signal                  |
+| `Super + Shift + M`      | Spotify                 |
+| `Super + Shift + W`      | Typora                  |
 
 #### Web-appar
 
-| Genväg | Mål |
-|--------|-----|
-| `Super + Shift + A` | ChatGPT |
-| `Super + Shift + Y` | YouTube |
-| `Super + Shift + E` | Email (Hey) |
-| `Super + Shift + C` | Kalender |
-| `Super + Shift + X` | X/Twitter |
+| Genväg              | Mål           |
+| ------------------- | ------------- |
+| `Super + Shift + A` | ChatGPT       |
+| `Super + Shift + Y` | YouTube       |
+| `Super + Shift + E` | Email (Hey)   |
+| `Super + Shift + C` | Kalender      |
+| `Super + Shift + X` | X/Twitter     |
 | `Super + Shift + P` | Google Photos |
 
 ### Workspace-regler
 
 Varje applikation har tilldelade workspaces:
 
-| Workspace | Applikation |
-|-----------|-------------|
-| 1 | Terminal/Tmux |
-| 2 | Webbläsare |
-| 3 | AI-verktyg |
-| 4 | Anteckningar |
-| 5 | Konfiguration |
-| 6 | Mooni |
-| 10 | UniFi Controller |
+| Workspace | Applikation      |
+| --------- | ---------------- |
+| 1         | Terminal/Tmux    |
+| 2         | Webbläsare       |
+| 3         | AI-verktyg       |
+| 4         | Anteckningar     |
+| 5         | Konfiguration    |
+| 6         | Mooni            |
+| 10        | UniFi Controller |
 
 ### Systemintegration
 
@@ -415,39 +415,39 @@ flowchart TB
 
 #### Vänster sida
 
-| Modul | Beskrivning |
-|-------|-------------|
-| `omarchy` | Omarchy-menyikon |
+| Modul        | Beskrivning                |
+| ------------ | -------------------------- |
+| `omarchy`    | Omarchy-menyikon           |
 | `workspaces` | Workspace-indikator (1-10) |
 
 #### Centrum
 
-| Modul | Beskrivning |
-|-------|-------------|
-| `update` | Uppdateringsindikator |
+| Modul             | Beskrivning               |
+| ----------------- | ------------------------- |
+| `update`          | Uppdateringsindikator     |
 | `screenrecording` | Skärminspelningsindikator |
-| `task` | Aktiva uppgifter |
+| `task`            | Aktiva uppgifter          |
 
 #### Höger sida
 
-| Modul | Beskrivning |
-|-------|-------------|
-| `tray` | Systemfack |
-| `bluetooth` | Bluetooth-status |
-| `network` | Nätverksstatus |
-| `pulseaudio` | Ljudvolym |
-| `cpu` | CPU-användning |
-| `battery` | Batteristatus |
-| `clock` | Klocka |
+| Modul        | Beskrivning      |
+| ------------ | ---------------- |
+| `tray`       | Systemfack       |
+| `bluetooth`  | Bluetooth-status |
+| `network`    | Nätverksstatus   |
+| `pulseaudio` | Ljudvolym        |
+| `cpu`        | CPU-användning   |
+| `battery`    | Batteristatus    |
+| `clock`      | Klocka           |
 
 ### Anpassade skript
 
-| Skript | Funktion |
-|--------|----------|
-| `task_script.sh` | Visa aktiva Fusion-uppgifter |
-| `screen-recording.sh` | Indikator för skärminspelning |
-| `idle.sh` | Inaktivitetsindikator |
-| `notification-silencing.sh` | Tystnadsläge |
+| Skript                      | Funktion                      |
+| --------------------------- | ----------------------------- |
+| `task_script.sh`            | Visa aktiva Fusion-uppgifter  |
+| `screen-recording.sh`       | Indikator för skärminspelning |
+| `idle.sh`                   | Inaktivitetsindikator         |
+| `notification-silencing.sh` | Tystnadsläge                  |
 
 ### Workspace-visning
 
@@ -471,26 +471,26 @@ Prefix: Ctrl-b
 
 ### Plugins
 
-| Plugin | Funktion |
-|--------|----------|
-| **Catppuccin** | Tema (Mocha) |
-| **tpm** | Plugin Manager |
-| **tmux-battery** | Batteristatus |
-| **tmux-cpu** | CPU-användning |
-| **tmux-continuum** | Sessionssparning |
-| **sesh** | Zoxide-integrerad sessionhantering |
-| **gitmux** | Git-status i statusrad |
+| Plugin             | Funktion                           |
+| ------------------ | ---------------------------------- |
+| **Catppuccin**     | Tema (Mocha)                       |
+| **tpm**            | Plugin Manager                     |
+| **tmux-battery**   | Batteristatus                      |
+| **tmux-cpu**       | CPU-användning                     |
+| **tmux-continuum** | Sessionssparning                   |
+| **sesh**           | Zoxide-integrerad sessionhantering |
+| **gitmux**         | Git-status i statusrad             |
 
 ### Tangentbindningar
 
-| Genväg | Funktion |
-|--------|----------|
-| `Ctrl-b r` | Ladda om konfiguration |
-| `Ctrl-b x` | Stäng pane |
-| `Ctrl-b f` | Öppna Files-session |
-| `Ctrl-b h/j/k/l` | Navigera paneler |
-| `Ctrl-u` | Sesh sessionväljare (med fzf) |
-| `Ctrl-y` | Nästa fönster |
+| Genväg           | Funktion                      |
+| ---------------- | ----------------------------- |
+| `Ctrl-b r`       | Ladda om konfiguration        |
+| `Ctrl-b x`       | Stäng pane                    |
+| `Ctrl-b f`       | Öppna Files-session           |
+| `Ctrl-b h/j/k/l` | Navigera paneler              |
+| `Ctrl-u`         | Sesh sessionväljare (med fzf) |
+| `Ctrl-y`         | Nästa fönster                 |
 
 ### Sesh Sessionväljare
 
@@ -534,15 +534,15 @@ windows:
   - shell: ~
 ```
 
-| Session | Syfte |
-|---------|--------|
-| `Dotfiles` | Dotfiles-arbete |
-| `Kubernetes` | Klusterhantering |
-| `Plan` | Planering och anteckningar |
-| `Agents` | AI-agentövervakning |
-| `Infrastructure` | Kubernetes-konfiguration |
-| `Hacking` | Utforskande arbete |
-| `Music` | Musikstreamingtjänster |
+| Session          | Syfte                      |
+| ---------------- | -------------------------- |
+| `Dotfiles`       | Dotfiles-arbete            |
+| `Kubernetes`     | Klusterhantering           |
+| `Plan`           | Planering och anteckningar |
+| `Agents`         | AI-agentövervakning        |
+| `Infrastructure` | Kubernetes-konfiguration   |
+| `Hacking`        | Utforskande arbete         |
+| `Music`          | Musikstreamingtjänster     |
 
 ---
 
@@ -587,39 +587,39 @@ flowchart TB
 
 ### Tap-Hold Beteende
 
-| Tangent | Tap | Hold |
-|---------|-----|------|
-| `Caps` | `Esc` | `Meta` |
-| `f` | `f` | Arrow-lager |
-| `s` | `s` | Tmux-lager |
-| `a` | `a` | Audio-lager |
-| `meh` | `Esc` | Plan-växling |
+| Tangent | Tap   | Hold         |
+| ------- | ----- | ------------ |
+| `Caps`  | `Esc` | `Meta`       |
+| `f`     | `f`   | Arrow-lager  |
+| `s`     | `s`   | Tmux-lager   |
+| `a`     | `a`   | Audio-lager  |
+| `meh`   | `Esc` | Plan-växling |
 
 ### App-lager (Caps + Hold)
 
 Snabbåtkomst till applikationer:
 
-| Tangent | Applikation |
-|---------|-------------|
+| Tangent | Applikation      |
+| ------- | ---------------- |
 | `unifi` | UniFi Controller |
-| `term` | Terminal |
-| `web` | Webbläsare |
-| `ai` | AI-workspace |
-| `note` | Anteckningar |
-| `mooni` | Mooni |
-| `grok` | Grok |
+| `term`  | Terminal         |
+| `web`   | Webbläsare       |
+| `ai`    | AI-workspace     |
+| `note`  | Anteckningar     |
+| `mooni` | Mooni            |
+| `grok`  | Grok             |
 
 ### Tmux-lager
 
-| Tangent | Åtgärd |
-|---------|--------|
-| `C-b $` | Byt session |
+| Tangent | Åtgärd          |
+| ------- | --------------- |
+| `C-b $` | Byt session     |
 | `C-b s` | Lista sessioner |
-| `C-b p` | Föregående |
-| `C-b n` | Nästa |
-| `C-b c` | Skapa |
-| `C-b x` | Stäng |
-| `C-b ,` | Byt namn |
+| `C-b p` | Föregående      |
+| `C-b n` | Nästa           |
+| `C-b c` | Skapa           |
+| `C-b x` | Stäng           |
+| `C-b ,` | Byt namn        |
 
 ---
 
@@ -636,20 +636,20 @@ Snabbåtkomst till applikationer:
 
 ### Aktiverade moduler
 
-| Modul | Symbol | Visar |
-|-------|--------|-------|
-| `os` | 🌐 | Operativsystem |
-| `username` | 👤 | Användarnamn |
-| `directory` | 📁 | Aktuell mapp (trunkerad) |
-| `git_branch` | 🌿 | Git-branch |
-| `git_status` | ⚡ | Ändringar, commits |
-| `nodejs` | 🜘 | Node.js-version |
-| `c` |  | C-version |
-| `rust` |  | Rust-version |
-| `golang` |  | Go-version |
-| `python` |  | Python-version |
-| `docker_context` | 🐳 | Docker-kontext |
-| `time` | 🕐 | Tid |
+| Modul            | Symbol | Visar                    |
+| ---------------- | ------ | ------------------------ |
+| `os`             | 🌐     | Operativsystem           |
+| `username`       | 👤     | Användarnamn             |
+| `directory`      | 📁     | Aktuell mapp (trunkerad) |
+| `git_branch`     | 🌿     | Git-branch               |
+| `git_status`     | ⚡     | Ändringar, commits       |
+| `nodejs`         | 🜘      | Node.js-version          |
+| `c`              |       | C-version                |
+| `rust`           |       | Rust-version             |
+| `golang`         |       | Go-version               |
+| `python`         |       | Python-version           |
+| `docker_context` | 🐳     | Docker-kontext           |
+| `time`           | 🕐     | Tid                      |
 
 ### Färgschema
 
@@ -668,14 +668,14 @@ purple = "#cba6f7"   # Tid
 
 ### Mapp-substitutioner
 
-| Kortkommando | Fullständig sökväg |
-|--------------|--------------------|
-| 📁 `…/` | Aktuell mapp (3 nivåer) |
-| 📁 `…/` | Documents → `󰈙` |
-| 📁 `…/` | Downloads → `` |
-| 📁 `…/` | Music → `󰝚` |
-| 📁 `…/` | Pictures → `` |
-| 📁 `…/` | Developer → `󰲋` |
+| Kortkommando | Fullständig sökväg      |
+| ------------ | ----------------------- |
+| 📁 `…/`      | Aktuell mapp (3 nivåer) |
+| 📁 `…/`      | Documents → `󰈙`         |
+| 📁 `…/`      | Downloads → ``         |
+| 📁 `…/`      | Music → `󰝚`             |
+| 📁 `…/`      | Pictures → ``          |
+| 📁 `…/`      | Developer → `󰲋`         |
 
 ---
 
@@ -699,12 +699,12 @@ decorations = "None"
 program = "/home/linuxbrew/.linuxbrew/bin/nu"
 ```
 
-| Inställning | Värde |
-|-------------|-------|
-| Font | JetBrainsMono Nerd Font 9pt |
-| Padding | 14px |
-| Dekorationer | None (ramlös) |
-| Shell | Nushell |
+| Inställning  | Värde                       |
+| ------------ | --------------------------- |
+| Font         | JetBrainsMono Nerd Font 9pt |
+| Padding      | 14px                        |
+| Dekorationer | None (ramlös)               |
+| Shell        | Nushell                     |
 
 ### Ghostty
 
@@ -719,13 +719,13 @@ cursor-style = "block"
 async-backend = epoll
 ```
 
-| Inställning | Värde |
-|-------------|-------|
-| Font | JetBrainsMono 9pt |
-| Padding | 14px |
-| Cursor | Block (fast) |
-| Backend | epoll (Linux) |
-| Shell-integration | SSH + cursor |
+| Inställning       | Värde             |
+| ----------------- | ----------------- |
+| Font              | JetBrainsMono 9pt |
+| Padding           | 14px              |
+| Cursor            | Block (fast)      |
+| Backend           | epoll (Linux)     |
+| Shell-integration | SSH + cursor      |
 
 ---
 
@@ -751,17 +751,17 @@ $env.config = {
 
 ### Alias
 
-| Alias | Kommando | Beskrivning |
-|-------|----------|-------------|
-| `n` | nvim | Textredigerare |
-| `lg` | lazygit | Git GUI |
-| `y` | yazi | Filhanterare |
-| `d` | dagger | CI/CD |
-| `ld` | lazydocker | Docker GUI |
-| `ai` | simon ai | AI-klient |
-| `s` | simon | Personligt CLI |
-| `k` | kubectl | Kubernetes |
-| `t` | talosctl | Talos |
+| Alias | Kommando   | Beskrivning    |
+| ----- | ---------- | -------------- |
+| `n`   | nvim       | Textredigerare |
+| `lg`  | lazygit    | Git GUI        |
+| `y`   | yazi       | Filhanterare   |
+| `d`   | dagger     | CI/CD          |
+| `ld`  | lazydocker | Docker GUI     |
+| `ai`  | simon ai   | AI-klient      |
+| `s`   | simon      | Personligt CLI |
+| `k`   | kubectl    | Kubernetes     |
+| `t`   | talosctl   | Talos          |
 
 ### Miljövariabler
 
@@ -791,31 +791,31 @@ Prioriterade sökvägar:
 
 ### Tilgängliga Sessioner
 
-| Session | Beskrivning |
-|---------|-------------|
-| `AI` | AI-experiment och debugging |
-| `Agents` | Agentövervakning |
-| `Begbot` | Discord-bot |
-| `Boot Dev` | Boot-utveckling |
-| `Cluster Agent` | Klusterhantering |
-| `Deployment Pipeline` | CI/CD-arbete |
-| `Dotfiles` | Dotfiles-arbete |
-| `Files` | Filhantering |
-| `Hacking` | Utforskande arbete |
-| `Home` | Hemautomatisering |
-| `Homelab` | Homelab-konfiguration |
-| `Infrastructure` | Kubernetes + Talos |
-| `Kubernetes` | Klusterövervakning |
-| `MatchMaker` | Matchningstjänst |
-| `Mooni` | AI-companion |
-| `Music` | Musikstreaming |
-| `Network` | Nätverkskonfiguration |
-| `Nuxt Base Layer` | Nuxt-projekt |
-| `Plan` | Planering |
-| `Repository Template` | Projektmallar |
-| `Simon CLI` | CLI-utveckling |
-| `Support - Pappa` | Support-session |
-| `Terminal` | Allmän terminal |
+| Session               | Beskrivning                 |
+| --------------------- | --------------------------- |
+| `AI`                  | AI-experiment och debugging |
+| `Agents`              | Agentövervakning            |
+| `Begbot`              | Discord-bot                 |
+| `Boot Dev`            | Boot-utveckling             |
+| `Cluster Agent`       | Klusterhantering            |
+| `Deployment Pipeline` | CI/CD-arbete                |
+| `Dotfiles`            | Dotfiles-arbete             |
+| `Files`               | Filhantering                |
+| `Hacking`             | Utforskande arbete          |
+| `Home`                | Hemautomatisering           |
+| `Homelab`             | Homelab-konfiguration       |
+| `Infrastructure`      | Kubernetes + Talos          |
+| `Kubernetes`          | Klusterövervakning          |
+| `MatchMaker`          | Matchningstjänst            |
+| `Mooni`               | AI-companion                |
+| `Music`               | Musikstreaming              |
+| `Network`             | Nätverkskonfiguration       |
+| `Nuxt Base Layer`     | Nuxt-projekt                |
+| `Plan`                | Planering                   |
+| `Repository Template` | Projektmallar               |
+| `Simon CLI`           | CLI-utveckling              |
+| `Support - Pappa`     | Support-session             |
+| `Terminal`            | Allmän terminal             |
 
 ### Exempel: Infrastructure
 
@@ -872,13 +872,13 @@ flowchart TB
 
 ### Funktioner
 
-| Funktion | Beskrivning |
-|----------|-------------|
-| **Teman** | Centraliserad temahantering |
-| **Meny** | Super + Alt + Space |
-| **Launchers** | Applikationsstartare |
-| **Toggles** | Dynamiska konfigurationsflaggor |
-| **Waybar-integration** | Statusbarsmoduler |
+| Funktion               | Beskrivning                     |
+| ---------------------- | ------------------------------- |
+| **Teman**              | Centraliserad temahantering     |
+| **Meny**               | Super + Alt + Space             |
+| **Launchers**          | Applikationsstartare            |
+| **Toggles**            | Dynamiska konfigurationsflaggor |
+| **Waybar-integration** | Statusbarsmoduler               |
 
 ---
 
