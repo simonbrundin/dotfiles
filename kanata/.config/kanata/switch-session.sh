@@ -14,8 +14,8 @@ export PATH=/usr/bin:/home/linuxbrew/.linuxbrew/bin:/usr/local/bin:$PATH
 export WAYLAND_DISPLAY=$WAYLAND_DISPLAY
 export XDG_RUNTIME_DIR=/run/user/$(id -u)
 
-# Switch to workspace 1
-hyprctl dispatch workspace 1
+# Switch to workspace 1 using Omarchy HL via hyprctl eval
+hyprctl eval "hl.dispatch(hl.dsp.focus({ workspace = 1 }))"
 
 # Check if session exists, if not create it
 if ! tmux has-session -t "$session_name" 2>/dev/null; then
@@ -32,10 +32,7 @@ if ! tmux has-session -t "$session_name" 2>/dev/null; then
   fi
 fi
 
-# Switch to workspace 1
-hyprctl dispatch workspace 1
-
-# Get the Ghostty window on workspace 1
+# Get the Ghostty window on workspace 1 using Omarchy HL
 ghostty_addr=$(hyprctl clients -j | jq -r '.[] | select(.workspace.id == 1 and .class == "com.mitchellh.ghostty") | .address' | head -1)
 
 if [ -n "$ghostty_addr" ]; then
