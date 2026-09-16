@@ -72,3 +72,29 @@ local function toggle_todo_done()
 end
 
 vim.keymap.set("n", "<leader>tt", toggle_todo_done, { desc = "Toggle todo and sub-todos done" })
+
+-- Flytta nuvarande rad till slutet av dokumentet och navigera tillbaka
+vim.keymap.set("n", "<leader>mb", function()
+  -- Spara antalet rader i filen och aktuell rad
+  local total_lines = vim.fn.line("$")
+  local current_line = vim.fn.line(".")
+  local current_col = vim.fn.col(".")
+
+  -- Kopiera raden
+  vim.cmd("normal! yy")
+  -- Ta bort raden
+  vim.cmd("normal! dd")
+
+  -- Gå till slutet av dokumentet och klistra in
+  vim.cmd("normal! Gp")
+
+  -- Beräkna ny position (efter borttagning kan den ha ändrats)
+  local new_line = current_line
+  if current_line > total_lines then
+    -- Vi var på sista raden
+    new_line = total_lines - 1
+  end
+
+  -- Hoppa tillbaka
+  vim.api.nvim_win_set_cursor(0, { new_line, current_col - 1 })
+end, { desc = "Move line to bottom and return" })
