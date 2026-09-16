@@ -50,12 +50,16 @@
 # - session: Create tmux sessions for each worktree
 mode: session
 windows:
-  - name: NeoVim
+  - name: Editor
     panes:
       - command: nvim
   - name: Diff
     panes:
       - command: lg
+  - name: agent
+    panes:
+      - command: pi
+    focus: true
 
 # Placement for new tmux windows in window mode.
 # Options: after_current (default), rightmost
@@ -70,7 +74,7 @@ windows:
 
 # Agent command for '<agent>' placeholder in pane commands.
 # Default: "claude"
-# agent: claude
+agent: pi
 
 #-------------------------------------------------------------------------------
 # Hooks
