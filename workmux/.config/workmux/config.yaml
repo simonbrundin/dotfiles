@@ -48,7 +48,14 @@
 # Mode for tmux operations: window (default) or session.
 # - window: Create windows within the current tmux session
 # - session: Create tmux sessions for each worktree
-# mode: window
+mode: session
+windows:
+  - name: NeoVim
+    panes:
+      - command: nvim
+  - name: Diff
+    panes:
+      - command: lg
 
 # Placement for new tmux windows in window mode.
 # Options: after_current (default), rightmost
