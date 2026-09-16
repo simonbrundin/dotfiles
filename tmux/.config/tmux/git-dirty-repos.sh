@@ -1,11 +1,11 @@
 #!/bin/bash
 
 REPOS_DIR="$HOME/repos"
-SEP=" "
+_SEP=" "
 
 # Catppuccin Mocha färger (använd tmux-format)
-COLOR_DIRTY="#(#{E:@catppuccin_flavour} == 'mocha' && echo '#f38ba8' || echo '#ee99a0')"  # rosewater → red för dirty
-COLOR_CLEAN="#(#{E:@catppuccin_flavour} == 'mocha' && echo '#a6e3a1' || echo '#94e2d5')"  # green
+COLOR_DIRTY="#(#{E:@catppuccin_flavour} == 'mocha' && echo '#f38ba8' || echo '#ee99a0')" # rosewater → red för dirty
+COLOR_CLEAN="#(#{E:@catppuccin_flavour} == 'mocha' && echo '#a6e3a1' || echo '#94e2d5')" # green
 
 dirty_repos=()
 
@@ -25,11 +25,10 @@ done
 # Output
 if [[ ${#dirty_repos[@]} -eq 0 ]]; then
   echo
-  # echo "#[fg=#343246,bg=#1e1e2e]#[fg=#cdd6f4,bg=#343246] inga dirty #[fg=#343246,bg=#1e1e2e]"
 else
   output=""
   for name in "${dirty_repos[@]}"; do
-    output+="#[fg=#343246,bg=#1e1e2e]#[fg=#cdd6f4,bg=#343246] $name #[fg=#343246,bg=#1e1e2e] "
+    output+="#[fg=#343246,bg=default]#[fg=#cdd6f4,bg=#343246] $name #[fg=#343246,bg=default] "
   done
   echo "$output"
 fi
