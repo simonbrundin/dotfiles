@@ -8,7 +8,6 @@
   ],
   "packages": [
     "npm:pi-mcp-adapter",
-    "npm:pi-lens",
     "npm:@samfp/pi-memory",
     "npm:pi-context",
     "npm:pi-web-access",
