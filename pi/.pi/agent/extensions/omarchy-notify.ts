@@ -6,7 +6,7 @@ const execAsync = promisify(exec);
 
 /**
  * Omarchy notification extension for pi.
- * Shows a desktop notification when pi is waiting for user input.
+ * Shows a desktop notification when pi is done with its work.
  */
 export default function (pi: ExtensionAPI) {
   // Track if we should notify (avoid duplicate notifications)
@@ -27,8 +27,8 @@ export default function (pi: ExtensionAPI) {
     }
   }
 
-  // Listen for when pi starts waiting for user input
-  pi.on("ui_prompt_start", async (event, ctx) => {
+  // Listen for when pi is done and won't continue automatically
+  pi.on("agent_settled", async (event, ctx) => {
     // Only notify in TUI mode
     if (ctx.mode !== "tui") return;
 
@@ -53,7 +53,7 @@ export default function (pi: ExtensionAPI) {
     }
 
     const title = "pi klart";
-    const body = `Väntar på input${sessionInfo}`;
+    const body = `Färdig${sessionInfo}`;
 
     await showOmarchyNotification(title, body);
   });
