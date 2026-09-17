@@ -7,7 +7,8 @@ pi/.pi/memory/
 pi/.pi/memory/*
 pi/.pi/context-mode/sessions/
 pi/.pi/context-mode/sessions/context-mode.db
-
+pi/.pi/agent/*
+pi/.config/pi/web-search-cache/
 
 
 
