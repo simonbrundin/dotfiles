@@ -27,6 +27,32 @@ export default function (pi: ExtensionAPI) {
     }
   }
 
+  // Get the current working directory or path info
+  async function getPathInfo(): Promise<string> {
+    try {
+      // Try to get the repo/worktree info from git
+      const { stdout: worktreeInfo } = await execAsync(
+        `git rev-parse --show-toplevel 2>/dev/null | xargs -I{} sh -c 'basename $(git -C {} rev-parse --show-toplevel 2>/dev/null) && git -C {} branch --show-current 2>/dev/null || git -C {} rev-parse --abbrev-ref HEAD 2>/dev/null' || echo ""`,
+        { timeout: 3000 }
+      ).catch(() => ({ stdout: "" }));
+      
+      const trimmed = worktreeInfo.trim();
+      if (trimmed) {
+        return trimmed;
+      }
+    } catch {
+      // Fall through
+    }
+    
+    // Fallback: use current directory name
+    try {
+      const { stdout } = await execAsync(`basename "$PWD"`, { timeout: 1000 });
+      return stdout.trim();
+    } catch {
+      return "";
+    }
+  }
+
   // Listen for when pi is done and won't continue automatically
   pi.on("agent_settled", async (event, ctx) => {
     // Only notify in TUI mode
@@ -36,6 +62,9 @@ export default function (pi: ExtensionAPI) {
     const now = Date.now();
     if (now - lastNotified < COOLDOWN_MS) return;
     lastNotified = now;
+
+    // Get path info asynchronously
+    const pathInfo = await getPathInfo();
 
     // Get session info if available
     let sessionInfo = "";
@@ -53,7 +82,9 @@ export default function (pi: ExtensionAPI) {
     }
 
     const title = "pi klart";
-    const body = `Färdig${sessionInfo}`;
+    const body = pathInfo 
+      ? `Färdig: ${pathInfo}${sessionInfo}` 
+      : `Färdig${sessionInfo}`;
 
     await showOmarchyNotification(title, body);
   });
