@@ -94,6 +94,11 @@
   sall (macro (cmd hyprctl dispatch "hl.dsp.focus({ workspace = '1' })") 50 C-u)
 )
 
+;; Workmux
+(defalias
+  wmux (cmd /home/simon/repos/dotfiles/kanata/.config/kanata/workmux-dashboard.sh)
+)
+
 ;; Player
 (defalias
   playnext (cmd playerctl next)
@@ -135,7 +140,7 @@
 (deflayer tmux
   XX XX XX XX XX XX XX XX XX XX XX XX XX XX
   XX XX XX XX (macro C-b (unicode $)) XX XX XX XX XX XX XX XX XX
-  XX XX (macro C-b s) XX XX XX (macro C-b p) up right (macro C-b n) XX XX XX
+  XX XX (macro C-b s) @wmux XX XX (macro C-b p) up right (macro C-b n) XX XX XX
   XX XX XX (macro C-b x) XX XX XX (macro C-b c) XX (macro C-b ,) XX XX XX
   XX XX XX @sesh @sesh XX  left down up right
 )
