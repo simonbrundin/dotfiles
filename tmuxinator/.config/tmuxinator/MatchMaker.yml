@@ -4,6 +4,4 @@ name: MatchMaker
 root: ~/repos/matchmaker
 
 windows:
-  - TODO: nvim TODO.md
   - Editor: nvim
-  - SA: simon ai

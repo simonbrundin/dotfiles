@@ -5,7 +5,6 @@ root: ~/repos/infrastructure/
 
 windows:
   - Nvim: nvim README.md
-  - SA: simon ai
   - Health: simon cluster health
   - Talos Dashboard: simon talos dashboard
   - Terminal:

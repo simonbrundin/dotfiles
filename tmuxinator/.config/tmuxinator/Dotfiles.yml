@@ -5,6 +5,5 @@ root: ~/repos/dotfiles
 
 windows:
   - NeoVim: nvim README.md
-  - Agent: simon ai
   - Terminal:
   - LazyGit: lg
