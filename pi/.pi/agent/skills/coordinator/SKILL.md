@@ -190,12 +190,25 @@ The command runs in a new split pane. Exit code is propagated (exits 124 on time
 
 ### Merge & Cleanup
 
-Tell the agent to merge its own branch via `/merge`. This lets the agent handle
-rebasing and conflict resolution.
+Before merging, always run the **clean-code skill** first to ensure code quality.
+The clean-code skill should review and improve the code quality before the merge
+process begins.
 
 ```bash
-# Tell agent to commit, rebase, and merge
+# Step 1: Run clean-code skill on the agent's work
+workmux send agent-a "/clean-code"
+workmux wait agent-a --timeout 600
+
+# Step 2: Review clean-code output
+workmux capture agent-a -n 100
+
+# Step 3: If clean-code made changes, have agent commit them
+workmux send agent-a "/commit"
+workmux wait agent-a --timeout 120
+
+# Step 4: Now proceed with the merge
 workmux send agent-a "/merge"
+workmux wait agent-a --timeout 120
 
 # Remove a worktree without merging
 workmux remove agent-a
@@ -291,7 +304,10 @@ remaining handles. Keep finished handles out of subsequent wait commands.
    finishes, identify it with `workmux status`, capture and review its output,
    and merge it before waiting again on the remaining handles.
 6. **Capture and review output** before merging. Do not blindly merge.
-7. **Merge one at a time** by sending `/merge` to each agent sequentially. Wait
+7. **Run clean-code skill before merging.** Always invoke `/clean-code` on the
+   agent before `/merge`. Wait for clean-code to finish, review its output, and
+   have the agent commit any improvements. Only then proceed with the merge.
+8. **Merge one at a time** by sending `/merge` to each agent sequentially. Wait
    for each merge to complete before starting the next to avoid conflicts.
 8. **Use `--timeout`** to avoid waiting forever. Handle timeout exits
    gracefully.

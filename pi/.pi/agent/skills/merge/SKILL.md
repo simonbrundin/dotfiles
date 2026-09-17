@@ -11,7 +11,8 @@ allowed-tools: Read, Bash, Glob, Grep
 
 Check the arguments for flags:
 
-- `--keep`, `-k` → pass `--keep` to `workmux merge` (keeps the worktree and tmux window after merging)
+- `--keep`, `-k` → pass `--keep` to `workmux merge` (keeps the worktree and tmux
+  window after merging)
 - `--no-verify`, `-n` → pass `--no-verify` to `workmux merge`
 
 Strip all flags from arguments.
@@ -26,10 +27,10 @@ This command finishes work on the current branch by:
 
 ## Step 1: Commit
 
-Check for staged, unstaged, and untracked changes with `git status --porcelain`. If
-there are changes, stage all of them with `git add -A`, review the staged diff,
-and commit. Use lowercase, imperative mood, no conventional commit prefixes.
-Skip if the working tree is clean.
+Check for staged, unstaged, and untracked changes with `git status --porcelain`.
+If there are changes, stage all of them with `git add -A`, review the staged
+diff, and commit. Use lowercase, imperative mood, no conventional commit
+prefixes. Skip if the working tree is clean.
 
 ## Step 2: Rebase
 
@@ -47,7 +48,9 @@ Rebase onto the local base branch (do NOT fetch from origin first):
 git rebase <base-branch>
 ```
 
-IMPORTANT: Do NOT run `git fetch`. Do NOT rebase onto `origin/<branch>`. Only rebase onto the local branch name (e.g., `git rebase main`, not `git rebase origin/main`).
+IMPORTANT: Do NOT run `git fetch`. Do NOT rebase onto `origin/<branch>`. Only
+rebase onto the local branch name (e.g., `git rebase main`, not
+`git rebase origin/main`).
 
 If conflicts occur:
 
@@ -65,8 +68,8 @@ If conflicts occur:
 
 Run: `workmux merge --rebase --notification [--keep] [--no-verify]`
 
-Include `--keep` only if the `--keep` flag was passed in arguments.
-Include `--no-verify` only if the `--no-verify` flag was passed in arguments.
+Include `--keep` only if the `--keep` flag was passed in arguments. Include
+`--no-verify` only if the `--no-verify` flag was passed in arguments.
 
 This will merge the branch into the base branch and clean up the worktree and
 tmux window (unless `--keep` is used).
