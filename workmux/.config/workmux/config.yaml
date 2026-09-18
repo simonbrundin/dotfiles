@@ -53,9 +53,9 @@ windows:
   - name: Editor
     panes:
       - command: nvim
-  - name: Diff
+  - name: Dev
     panes:
-      - command: lg
+      - command: simon dev
   - name: agent
     panes:
       - command: pi
