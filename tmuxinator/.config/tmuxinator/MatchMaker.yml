@@ -5,3 +5,4 @@ root: ~/repos/matchmaker
 
 windows:
   - Editor: nvim
+  - Dev: simon dev
