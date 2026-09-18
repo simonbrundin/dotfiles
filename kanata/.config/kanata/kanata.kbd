@@ -22,7 +22,7 @@
   grv 1 2 3 4 5 6 7 8 9 0 - = bspc
   tab q w e r t @y u i o @p [ ] ret
   @caps @audio @s d @nav g h j k l ; ' \
-  lsft XX z x @c @v b n m @vox-sv @vox-en / rsft
+  lsft lsgt z x @c @v b n m @vox-sv @vox-en / rsft
   lmet lalt @lctl spc @meh ralt left down up right
 )
 
